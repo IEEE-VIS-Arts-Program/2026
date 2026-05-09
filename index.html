@@ -216,20 +216,20 @@
 </style>
   <style>
     :root {
-      --bg: #FAFAF8;
-      --bg-alt: #F3F1EE;
+      --bg: rgb(250, 250, 248);
+      --bg-alt: oklch(95.885% 0.00444 77.992);
       --ink: #1A1916;
       --ink-2: #6B6861;
       --ink-3: #A8A49E;
       --accent-a: #E84545;
       --accent-b: #8B3FC8;
-      --rule: #E4E1DB;
+      --rule: rgb(228, 225, 219);
       --motif: rings;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; scrollbar-width: none; -ms-overflow-style: none; }
     html::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
     body {
@@ -275,36 +275,16 @@
       height: 80px;
       z-index: 599;
       overflow: hidden;
-      background-color: #FFFBF4;
+      background-color: rgba(255, 251, 244, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       isolation: isolate;
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
     }
-    .nav-frozen-bg.visible {
-      opacity: 1;
-    }
-    /* SVG positioned so its bottom aligns with the bottom of the nav (80px).
-       This shows the exact bottom slice of the hero — what's visible at the
-       moment heroBottom = 80px. */
-    .nav-frozen-bg .hero-svg {
-      position: absolute !important;
-      top: calc(-100vh + 80px) !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100vh !important;
-    }
-    .nav-frozen-bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.8;
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilterBg"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilterBg)"/%3E%3C/svg%3E');
-      background-size: 250px 250px;
-      mix-blend-mode: overlay;
-    }
+    .nav-frozen-bg .hero-svg { display: none; }
+    .nav-frozen-bg.visible { opacity: 1; }
     .nav-inner {
       max-width: 1400px;
       margin: 0 auto;
@@ -614,6 +594,11 @@
       text-transform: uppercase;
       font-family: 'Montserrat', sans-serif;
     }
+    .scroll-text-mobile { display: none; }
+    @media (max-width: 720px) {
+      .scroll-text-desktop { display: none; }
+      .scroll-text-mobile  { display: inline; text-align: center; }
+    }
     .scroll-line::after {
       content: '';
       width: 1px;
@@ -671,7 +656,7 @@
     }
     #about, #organizers {
       padding: 3rem 0 3rem;
-      background-color: #E4E1DB;
+      background-color: rgb(228, 225, 219);
       background-image:
         url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseA1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseA1)"/%3E%3C/svg%3E'),
         url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseA2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseA2)"/%3E%3C/svg%3E');
@@ -680,13 +665,13 @@
     }
     .theme-quote {
       font-family: 'Funnel Display', serif;
-      font-size: clamp(1.5rem, 3.3vw, 2.8rem);
+      font-size: clamp(1.5rem, 3.5vw, 3.5rem);
       font-weight: 400;
       line-height: 1.18;
       letter-spacing: -0.02em;
       text-align: center;
       color: var(--ink);
-      margin: 0 0 6rem;
+      margin: 0 0 0rem;
       padding: 0;
       border: none;
     }
@@ -960,7 +945,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .hero-content {
-        padding-top: 15vh;
+        padding-top: 9vh;
         gap: 1.5rem;
       }
       .hero-desc {
@@ -977,10 +962,14 @@
       .hero-top-info {
         font-size: clamp(1.5rem, 6vw, 2.25rem);
         padding: 0.5rem 0;
+        gap: 0;
+      }
+      .hero-top-info span:nth-child(2) {
+        margin-bottom: 0.4rem;
       }
       .conf-name, .conf-details {
-        font-size: 0.85rem;
-        line-height: 1.3;
+        font-size: 0.95rem;
+        line-height: 1.35;
       }
       .hero-top-info::before {
         width: 160%;
@@ -988,7 +977,9 @@
       }
     }
     @media (max-width: 720px) {
-      #about, #organizers { background-size: 120px 120px; }
+      #about, #organizers, footer { background-size: 120px 120px; }
+      .footer-links { flex-wrap: wrap; justify-content: space-between; width: 100%; }
+      .footer-links .footer-copy { display: none; }
       .sub-blob-noise { background-size: 80px 80px; }
       #theme-intro, #about { padding: 2.25rem 0 2rem; }
       .sub-type { min-height: 180px; }
@@ -1047,35 +1038,19 @@
     .mobile-menu-bg {
       position: absolute;
       inset: 0;
-      background-color: #FFFBF4;
+      background-color: #E4E1DB;
+      background-image:
+        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseMm1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseMm1)"/%3E%3C/svg%3E'),
+        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseMm2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseMm2)"/%3E%3C/svg%3E');
+      background-size: 120px 120px;
+      background-blend-mode: overlay, overlay;
       overflow: hidden;
       isolation: isolate;
+      opacity: 0.95;
       z-index: 0;
     }
-    .mobile-menu-bg .mobile-menu-mesh {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      filter: blur(40px);
-    }
-    .mobile-menu-bg .mobile-menu-mesh .hero-svg {
-      position: absolute !important;
-      inset: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-    }
-    .mobile-menu-bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.8;
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilterMm"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilterMm)"/%3E%3C/svg%3E');
-      background-size: 250px 250px;
-      mix-blend-mode: overlay;
-    }
+    .mobile-menu-bg .mobile-menu-mesh { display: none; }
+    .mobile-menu-bg::after { display: none; }
     .mobile-menu.open {
       transform: translateY(0);
       pointer-events: all;
@@ -1289,14 +1264,14 @@
     
   </div>
 
-  <div class="scroll-line"><span>Scroll</span></div>
+  <div class="scroll-line"><span class="scroll-text-desktop">Scroll</span><span class="scroll-text-mobile">Tap and scroll to play sound</span></div>
 </section>
 
 <!-- ── THEME INTRO ── -->
 <section id="theme-intro">
   <div class="section-wrap">
     <blockquote class="theme-quote">Amplification — visualizations as instruments that make the quiet legible and the overlooked visible. What does it mean to turn up the signal on data, stories, and communities that the world tends not to hear?</blockquote>
-    <div class="theme-body">
+    <!-- <div class="theme-body">
       <h2 class="theme-body-label">This year's theme</h2>
       <p>
         As the world becomes increasingly shaped by algorithmic systems and automated decision-making, visualization must evolve beyond a purely technical act. It becomes an ethical, cultural, and emotional process. How can data visualization embody collective care? What practices emerge when we approach visualizing data as a responsible, thoughtful, and caring act?
@@ -1305,7 +1280,7 @@
 In embracing collective care, we advocate for a future in which data visualization becomes a process not only for insight, but for restoration, connection, and long-term social resilience. We ask:                                        
        </p><p> What becomes possible when data is treated as a space for healing, resistance, and belonging? How can we co-author meaning with algorithms with care, and engage AI as a collaborator in envisioning critical, thoughtful, future-oriented ideations? How might we take care of our environment and close-related communities by making use of data visualization? And when we give data physical form, how might the materials we choose and their environmental impact reflect the values of care we uphold?
       </p>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -1503,7 +1478,7 @@ In embracing collective care, we advocate for a future in which data visualizati
 
         <h3><a href="https://www.supsi.ch/ginevra-terenghi" target="_blank" class="org-link">Ginevra Terenghi</a></h3>
         <p class="org-affil-tag">SUPSI</p>
-        <p>Design collaborator at the University of Applied Sciences and Arts of Southern Switzerland (SUPSI), she recently completed her PhD at Brunel University London. Her work explores participatory approaches to data physicalization to improve self-awareness, collective meaning-making, and critical reflection. While her PhD focused on healthcare, examining how physical variables can support the perception and communication of symptoms, her broader research considers materiality for investigation.</p>
+        <p>Design collaborator at the University of Applied Sciences and Arts of Southern Switzerland (SUPSI), she recently completed her PhD at Brunel University London. Her work explores participatory approaches to data physicalization to improve self-awareness, collective meaning-making, and critical reflection. While her PhD focused on healthcare, examining how physical variables can support the perception and communication of symptoms, her broader research considers materiality for interpretation.</p>
       </div>
 
       <!-- <div class="sub-type">
@@ -1643,14 +1618,18 @@ In embracing collective care, we advocate for a future in which data visualizati
   const menuLinks  = document.querySelectorAll('.mobile-menu-link');
 
   function openMenu() {
+    _menuIsOpen = true;
     mobileMenu.classList.add('open');
     hamburger.classList.add('open');
     document.body.style.overflow = 'hidden';
+    applyNavBg();
   }
   function closeMenu() {
+    _menuIsOpen = false;
     mobileMenu.classList.remove('open');
     hamburger.classList.remove('open');
     document.body.style.overflow = '';
+    applyNavBg();
   }
 
   hamburger.addEventListener('click', () => {
@@ -1669,31 +1648,22 @@ In embracing collective care, we advocate for a future in which data visualizati
   }
 
   // ── NAV SCROLL BACKGROUND ──
-  (function () {
-    const nav    = document.querySelector('nav');
-    const hero   = document.getElementById('home');
-    const TARGET = 0.4;
-    function onScroll() {
-      const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-      const navH = nav.offsetHeight;
-      if (heroBottom > navH) {
-        nav.style.backgroundColor = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.webkitBackdropFilter = 'none';
-      } else if (heroBottom <= 0) {
-        nav.style.backgroundColor = 'rgba(228, 225, 219, ' + TARGET + ')';
-        nav.style.backdropFilter = 'blur(16px) saturate(1.15)';
-        nav.style.webkitBackdropFilter = 'blur(16px) saturate(1.15)';
-      } else {
-        const t = (1 - heroBottom / navH) * TARGET;
-        nav.style.backgroundColor = 'rgba(228, 225, 219, ' + t + ')';
-        nav.style.backdropFilter = 'blur(16px) saturate(1.15)';
-        nav.style.webkitBackdropFilter = 'blur(16px) saturate(1.15)';
-      }
+  const _navBgEl      = document.querySelector('nav');
+  const _navHeroEl    = document.getElementById('home');
+  const _navFrozenBg  = document.getElementById('navFrozenBg');
+  let   _menuIsOpen   = false;
+  function applyNavBg() {
+    if (!_navFrozenBg) return;
+    const heroBottom = _navHeroEl ? _navHeroEl.getBoundingClientRect().bottom : 0;
+    const navH = _navBgEl ? _navBgEl.offsetHeight : 80;
+    if (!_menuIsOpen && heroBottom <= navH) {
+      _navFrozenBg.classList.add('visible');
+    } else {
+      _navFrozenBg.classList.remove('visible');
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
+  }
+  window.addEventListener('scroll', applyNavBg, { passive: true });
+  applyNavBg();
 
   // ── LINK HOVER COLOURS ──
   (function assignLinkColors() {

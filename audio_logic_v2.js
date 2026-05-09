@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let audioStarted = false;
   const synths = {};
 
+  let isInHero = true;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  const AWAY_GAIN = 0.05;
+
   updateButtonUI(soundToggle, false);
   updateButtonUI(document.getElementById('soundToggleMobile'), false);
 
@@ -380,17 +385,18 @@ document.addEventListener('DOMContentLoaded', () => {
   soundToggle.addEventListener('click', e => { e.stopPropagation(); toggleSound(); });
 
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouchDevice) {
-    document.addEventListener('touchstart', function startOnTouch() {
-      if (!audioStarted) toggleSound();
-    }, { once: true, passive: true });
-  } else {
-    document.addEventListener('click', toggleSound);
+
+  if (!isTouchDevice) {
+    document.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      toggleSound();
+    });
   }
 
   // ── PROXIMITY → volume (only the nearest blob group plays) ──
   function updateProximity(clientX, clientY) {
     if (!isPlaying || !audioCtx) return;
+    if (!isInHero) return;
     const maxDist = window.innerWidth * 0.22;
 
     const distances = {};
@@ -417,6 +423,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── AWAY PROXIMITY → volume based on distance to text elements ──
+  const sectionSynthMap = {
+    'theme-intro': 'teal',
+    'about':       'lavender',
+    'submissions': 'orange',
+    'organizers':  'yellow',
+    'contact':     'teal',
+  };
+
+  const textAttractors = [];
+  document.querySelectorAll('section[id]').forEach(section => {
+    const synthKey = sectionSynthMap[section.id] || 'teal';
+    section.querySelectorAll('h1, h2, h3, a, p, blockquote, li').forEach(el => {
+      textAttractors.push({ el, synthKey });
+    });
+  });
+
+  function updateAwayProximity(clientX, clientY) {
+    if (!isPlaying || !audioCtx || isInHero) return;
+    const maxDist = 100; // px from element edge before sound starts
+    let minDist    = Infinity;
+    let closestKey = null;
+
+    for (const { el, synthKey } of textAttractors) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > window.innerHeight + 100) continue;
+      // Distance to nearest point on bounding box edge (0 when mouse is over the element)
+      const nearX = Math.max(r.left, Math.min(clientX, r.right));
+      const nearY = Math.max(r.top,  Math.min(clientY, r.bottom));
+      const d     = Math.hypot(clientX - nearX, clientY - nearY);
+      if (d < minDist) { minDist = d; closestKey = synthKey; }
+    }
+
+    for (const key in synths) {
+      let vol = 0;
+      if (key === closestKey && minDist < maxDist) {
+        vol = Math.pow(Math.max(0, 1 - minDist / maxDist), 2.0) * 0.45;
+      }
+      synths[key].gain.gain.setTargetAtTime(vol, audioCtx.currentTime, 0.10);
+    }
+  }
+
   function silenceAll() {
     if (!audioCtx) return;
     for (const key in synths) {
@@ -424,14 +472,114 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  document.addEventListener('mousemove', e => updateProximity(e.clientX, e.clientY));
+  document.addEventListener('mousemove', e => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    if (isInHero) {
+      updateProximity(e.clientX, e.clientY);
+    } else {
+      updateAwayProximity(e.clientX, e.clientY);
+    }
+  });
 
-  document.addEventListener('touchmove', e => {
-    const t = e.touches[0];
-    updateProximity(t.clientX, t.clientY);
-  }, { passive: true });
+  // ── MOBILE SCROLL SOUND ──
+  if (isTouchDevice) {
+    let mobileScrollActive = false;
+    let mobileCurrentSynth = null;
+    let mobileStopTimer    = null;
+    let mobileSwitchTimer  = null;
+    const MOBILE_GAIN = 0.28;
+    const STOP_DELAY  = 180;
 
-  document.addEventListener('touchend', silenceAll);
+    function pickSynth(exclude) {
+      const keys = Object.keys(synths);
+      const pool  = exclude ? keys.filter(k => k !== exclude) : keys;
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function mobileEnsureAudio() {
+      if (!audioStarted) {
+        audioStarted = true;
+        isPlaying    = true;
+        if (!audioCtx) initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        synths['teal']?.startBirds();
+        synths['orange']?.startBeeps();
+        updateButtonUI(soundToggle, true);
+        updateButtonUI(document.getElementById('soundToggleMobile'), true);
+      } else if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function scheduleMobileSwitch() {
+      const delay = 1500 + Math.random() * 1500;
+      mobileSwitchTimer = setTimeout(() => {
+        if (!mobileScrollActive || !audioCtx) return;
+        const next = pickSynth(mobileCurrentSynth);
+        synths[next]?.gain.gain.setTargetAtTime(MOBILE_GAIN, audioCtx.currentTime, 0.15);
+        const prev = mobileCurrentSynth;
+        mobileCurrentSynth = next;
+        setTimeout(() => {
+          if (audioCtx && synths[prev]) {
+            synths[prev].gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.2);
+          }
+        }, 500);
+        scheduleMobileSwitch();
+      }, delay);
+    }
+
+    function startMobileScroll() {
+      if (mobileScrollActive || !audioCtx) return;
+      mobileScrollActive = true;
+      mobileCurrentSynth = pickSynth(null);
+      synths[mobileCurrentSynth]?.gain.gain.setTargetAtTime(MOBILE_GAIN, audioCtx.currentTime, 0.12);
+      scheduleMobileSwitch();
+    }
+
+    function stopMobileScroll() {
+      if (!mobileScrollActive) return;
+      mobileScrollActive = false;
+      mobileCurrentSynth = null;
+      clearTimeout(mobileSwitchTimer);
+      for (const key in synths) {
+        synths[key].gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.4);
+      }
+    }
+
+    document.addEventListener('touchstart', () => {
+      mobileEnsureAudio();
+    }, { passive: true });
+
+    document.addEventListener('touchmove', () => {
+      if (!isPlaying || !audioCtx) return;
+      clearTimeout(mobileStopTimer);
+      startMobileScroll();
+      mobileStopTimer = setTimeout(stopMobileScroll, STOP_DELAY);
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+      clearTimeout(mobileStopTimer);
+      if (audioCtx) stopMobileScroll();
+    });
+  }
+
+  // ── HERO VISIBILITY → fade sound when scrolled away ──
+  const heroEl = document.getElementById('home');
+  if (heroEl) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isInHero = entry.isIntersecting;
+        if (!audioCtx || !isPlaying) return;
+        if (!isInHero) {
+          updateAwayProximity(lastMouseX, lastMouseY);
+        } else {
+          updateProximity(lastMouseX, lastMouseY);
+        }
+      });
+    }, { threshold: 0.1 });
+    heroObserver.observe(heroEl);
+  }
 
   // ── TITLE COLOR: shifts toward nearest blob on mousemove ──
   const titleH1    = document.querySelector('.hero h1');
