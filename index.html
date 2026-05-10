@@ -944,8 +944,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .hero { min-height: 100svh; }
       .hero-content {
-        padding-top: 9vh;
+        padding-top: 9svh;
         gap: 1.5rem;
       }
       .hero-desc {
@@ -978,7 +979,8 @@
     }
     @media (max-width: 720px) {
       #about, #organizers, footer { background-size: 120px 120px; }
-      .footer-links { flex-wrap: wrap; justify-content: space-between; width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; justify-content: flex-start; gap: 0.75rem 1.25rem; width: 100%; }
       .footer-links .footer-copy { display: none; }
       .sub-blob-noise { background-size: 80px 80px; }
       #theme-intro, #about { padding: 2.25rem 0 2rem; }
