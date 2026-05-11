@@ -505,8 +505,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         synths['teal']?.startBirds();
         synths['orange']?.startBeeps();
-        updateButtonUI(soundToggle, true);
-        updateButtonUI(document.getElementById('soundToggleMobile'), true);
+        requestAnimationFrame(() => {
+          updateButtonUI(soundToggle, true);
+          updateButtonUI(document.getElementById('soundToggleMobile'), true);
+        });
       } else if (audioCtx && audioCtx.state === 'suspended') {
         audioCtx.resume();
       }

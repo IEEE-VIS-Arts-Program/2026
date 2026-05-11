@@ -942,9 +942,11 @@
       color: var(--ink-3);
     }
 
+    .conf-name { margin-bottom: 0.4rem; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .hero { min-height: 100svh; }
+      .hero { min-height: 100vh; will-change: transform; }
       .hero-content {
         padding-top: 9svh;
         gap: 1.5rem;
@@ -966,11 +968,12 @@
         gap: 0;
       }
       .hero-top-info span:nth-child(2) {
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.2rem;
       }
       .conf-name, .conf-details {
         font-size: 0.95rem;
         line-height: 1.35;
+        margin-bottom: 0.8rem;
       }
       .hero-top-info::before {
         width: 160%;
@@ -1255,13 +1258,18 @@
       
     </div>
     <div class="hero-top-info">
-    <br>
-     <span class="conf-name">VISAP Keynote and exhibiton opening</span>
-      <span class="conf-details">November 11, 2026</span>
-    <br>
-     <span class="conf-name">Event hold alongside <a href="https://ieeevis.org/year/2026/welcome/" target="_blank" class="conf-vis-link">IEEE VIS</a></span>
-      <span class="conf-details">November 9–13, 2026 - Boston</span>
-    </div>
+ 
+     <span class="conf-name">
+      <p>Keynote and exhibiton opening</p>
+      <p>November 11, 2026</p>
+    </span>
+
+    <span class="conf-name">
+      <p>Event hold alongside <a href="https://ieeevis.org/year/2026/welcome/" target="_blank" class="conf-vis-link">IEEE VIS</a></p>
+      <p>November 9–13, 2026 - Boston</p>
+    </span>
+ 
+     </div>
     
     
   </div>
@@ -1872,7 +1880,9 @@ In embracing collective care, we advocate for a future in which data visualizati
       requestAnimationFrame(draw);
     }
 
-    draw();
+    // Don't run the loop on touch-only devices — ripples only trigger on mousemove
+    const _isTouchOnly = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
+    if (!_isTouchOnly) draw();
   })();
 </script>
 </body></html>
