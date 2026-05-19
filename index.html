@@ -1,1888 +1,321 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VISAP 2026 — Amplification</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Funnel+Display:wght@300..800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Tomorrow:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>/* latin-ext */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/8cb67514-7831-46bb-a8b2-9cc9b893a9e7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/4caed473-990a-48c0-aaa0-9c32e9d103f3.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/e7638636-1193-47df-b089-666e614ef6b9.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/64941278-4717-4620-8ac2-16e52acc025a.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/e7638636-1193-47df-b089-666e614ef6b9.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/64941278-4717-4620-8ac2-16e52acc025a.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("assets/e7638636-1193-47df-b089-666e614ef6b9.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("assets/64941278-4717-4620-8ac2-16e52acc025a.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/7c8893cd-f72f-42db-97fd-b97e44626ffd.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/6d649e2e-99c1-4d91-bdcf-8fedd760bdc7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("assets/771c340e-0fc4-45ce-b183-bc8d0424984b.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/7c8893cd-f72f-42db-97fd-b97e44626ffd.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/6d649e2e-99c1-4d91-bdcf-8fedd760bdc7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("assets/771c340e-0fc4-45ce-b183-bc8d0424984b.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("assets/7c8893cd-f72f-42db-97fd-b97e44626ffd.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("assets/6d649e2e-99c1-4d91-bdcf-8fedd760bdc7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("assets/771c340e-0fc4-45ce-b183-bc8d0424984b.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("assets/7c8893cd-f72f-42db-97fd-b97e44626ffd.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("assets/6d649e2e-99c1-4d91-bdcf-8fedd760bdc7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("assets/771c340e-0fc4-45ce-b183-bc8d0424984b.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("assets/7c8893cd-f72f-42db-97fd-b97e44626ffd.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("assets/6d649e2e-99c1-4d91-bdcf-8fedd760bdc7.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("assets/771c340e-0fc4-45ce-b183-bc8d0424984b.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-</style>
-  <style>
-    :root {
-      --bg: rgb(250, 250, 248);
-      --bg-alt: oklch(95.885% 0.00444 77.992);
-      --ink: #1A1916;
-      --ink-2: #6B6861;
-      --ink-3: #A8A49E;
-      --accent-a: #E84545;
-      --accent-b: #8B3FC8;
-      --rule: rgb(228, 225, 219);
-      --motif: rings;
-    }
+<!doctype html>
+<html lang="en">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="./main.js" defer></script>
+  <script src="./audio.js" defer></script>
+  <title>VISAP 2026</title>
+</head>
 
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; scrollbar-width: none; -ms-overflow-style: none; }
-    html::-webkit-scrollbar { width: 0; height: 0; display: none; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    body::-webkit-scrollbar { width: 0; height: 0; display: none; }
-
-
-    /* ── LINK SYSTEM ── */
-    a:not(.nav-logo) {
-      text-decoration: none;
-      border-bottom: 2px solid var(--rule);
-      transition: border-color 0.2s;
-    }
-    a:not(.nav-logo):hover {
-      border-color: var(--link-hover-color, #063F42);
-    }
-    .nav-logo { border-bottom: none !important; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 600;
-      background-color: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-    nav.nav-scrolled {
-    }
-    /* Fixed layer that shows the bottom-slice of the hero, frozen behind nav text */
-    .nav-frozen-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      z-index: 599;
-      overflow: hidden;
-      background-color: rgba(255, 251, 244, 0.82);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      isolation: isolate;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .nav-frozen-bg .hero-svg { display: none; }
-    .nav-frozen-bg.visible { opacity: 1; }
-    .nav-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; /* Left aligned */
-      gap: 4rem; /* Space between logo and links */
-      height: 80px;
-      position: relative;
-      z-index: 1;
-    }
-    .nav-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      letter-spacing: 0.02em;
-      color: #06212C;
-      text-decoration: none;
-    }
-    .nav-logo span {
-      font-weight: 400;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav a {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: #000;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      border-bottom: 2px solid transparent !important;
-    }
-    nav a:hover {
-      border-bottom-color: var(--link-hover-color, #063F42) !important;
-    }
-
-    .nav-sound-toggle {
-      background: none;
-      border: 1px solid rgba(0,0,0,0.2);
-      border-radius: 20px;
-      padding: 0.3rem 0.8rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #06212C;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .nav-sound-toggle:hover {
-      background: #06212C;
-      color: #FFFBF4;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-items: start; justify-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 8rem 0 7rem;
-      background-color: #FFFBF4;
-    }
-
-    .hero-svg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0;
-    }
-
-    .svg-blob {
-      opacity: 0.92;
-      mix-blend-mode: multiply;
-      animation: svgBlobPulse 10s ease-in-out infinite alternate;
-      will-change: transform, opacity;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    /* Per-color overrides for pulse feel */
-    .blob-teal    { fill: #063F42; animation-duration: 12s; }
-    .blob-orange  { fill: #F66A58; animation-duration: 9s; }
-    .blob-lavender{ fill: #B668DC; animation-duration: 14s; }
-    .blob-yellow  { fill: #E4DC35; animation-duration: 8s; }
-    .blob-pink    { fill: #F06C78; animation-duration: 11s; }
-
-    @keyframes svgBlobPulse {
-      0%   { transform: scale(1) translate(0px, 0px); opacity: 0.88; }
-      25%  { transform: scale(1.04) translate(8px, -6px); opacity: 0.94; }
-      50%  { transform: scale(0.97) translate(-5px, 8px); opacity: 0.85; }
-      75%  { transform: scale(1.06) translate(-8px, -4px); opacity: 0.95; }
-      100% { transform: scale(1) translate(4px, 6px); opacity: 0.90; }
-    }
-    
-    .hero-mesh {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      filter: blur(40px);
-      pointer-events: none;
-    }
-
-        
-
-    @keyframes gradientText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes morphBlobIrregular {
-      0%   { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: scale(1) rotate(0deg); }
-      33%  { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: scale(1.1) rotate(5deg); }
-      66%  { border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%; transform: scale(0.9) rotate(-5deg); }
-      100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: scale(1.05) rotate(2deg); }
-    }
-
-    @keyframes morphBlob {
-      0%   { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translateZ(0) scale(1) skew(0deg); }
-      25%  { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translateZ(0) scale(1.1) skew(5deg); }
-      50%  { border-radius: 40% 60% 70% 30% / 40% 60% 40% 60%; transform: translate3d(5%, 5%, 0) scale(0.9) skew(-5deg); }
-      75%  { border-radius: 70% 30% 40% 60% / 50% 70% 30% 50%; transform: translate3d(-5%, -5%, 0) scale(1.05) skew(2deg); }
-      100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translateZ(0) scale(1) skew(0deg); }
-    }
-    
-    @keyframes morphBlobCenter {
-      0%   { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate3d(-30%, -50%, 0) scale(1) skew(0deg); }
-      25%  { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate3d(-30%, -50%, 0) scale(1.1) skew(5deg); }
-      50%  { border-radius: 40% 60% 70% 30% / 40% 60% 40% 60%; transform: translate3d(-25%, -45%, 0) scale(0.9) skew(-5deg); }
-      75%  { border-radius: 70% 30% 40% 60% / 50% 70% 30% 50%; transform: translate3d(-35%, -55%, 0) scale(1.05) skew(2deg); }
-      100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate3d(-30%, -50%, 0) scale(1) skew(0deg); }
-    }
-    
-    @keyframes rotateBlob {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #ripple-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-      filter: blur(10px);
-      mix-blend-mode: multiply;
-    }
-
-    .noise-overlay {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-      background-color: transparent;
-      opacity: 0.8;
-    }
-    .noise-overlay::before {
-      content: "";
-      position: absolute;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilterBg"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilterBg)"/%3E%3C/svg%3E');
-      background-size: 250px 250px;
-      opacity: 0.85;
-      mix-blend-mode: overlay;
-      pointer-events: none;
-    }
-
-    /* ── HERO CONTENT ── */
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      text-align: left;
-      max-width: 1400px;
-      width: 100%;
-      color: #06212C;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-      padding-top: 0;
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-
-    .hero-desc {
-      order: 2;
-      position: relative;
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.2rem, 2vw, 1.7rem);
-      color: #06212C;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    .hero-top-info {
-      order: 3;
-      position: relative;
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 0.2rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 300;
-      line-height: 1.45;
-      letter-spacing: 0;
-      text-transform: none;
-      margin-bottom: 0;
-      padding: 0;
-      color: #06212C;
-      z-index: 3;
-    }
-    .hero-top-info::before {
-      content: "";
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-30%, -50%);
-      width: 140%; height: 250%;
-      background: #F98664; /* Orange blob background */
-      border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
-      filter: blur(30px);
-      z-index: -1;
-      opacity: 0.85;
-      animation: morphBlobCenter 10s ease-in-out infinite alternate;
-      will-change: transform, border-radius;
-      backface-visibility: hidden;
-    }
-
-    .conf-vis-link {
-      color: inherit;
-      border-bottom-color: var(--rule) !important;
-    }
-    .conf-vis-link:hover {
-      border-bottom-color: var(--link-hover-color, #063F42) !important;
-    }
-
-    .hero h1 {
-      font-family: 'Funnel Display', sans-serif;
-      font-size: clamp(3.3rem, 8vw, 7.3rem);
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.2em; /* Fix cut-off 'p' descender */
-      width: 100%;
-      text-align: left;
-      color: black;
-      /* color: transparent; */
-      /* Grain overlay + Interactive linear gradient */
-      background-image: 
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="1"/%3E%3C/svg%3E'),
-        linear-gradient(90deg, var(--blob-color, #FFFBF4) 0%, #F98664 25%, #06212C 50%, #B48CBE 75%, #FCEE87 100%);
-      background-blend-mode: overlay; /* Better blending for the title grain */
-      background-size: 250px 250px, 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      /* Fallback transition for smooth mouse movement */
-      transition: background-position 0.1s ease-out;
-    }
-
-    .title-wrapper {
-      order: 1;
-      position: relative;
-      width: 100%;
-    }
-
-
-
-
-
-    /* ── SCROLL INDICATOR ── */
-    .scroll-line {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 1;
-      color: #06212C;
-      z-index: 10;
-      isolation: isolate;
-    }
-    .scroll-line span {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .scroll-text-mobile { display: none; }
-    @media (max-width: 720px) {
-      .scroll-text-desktop { display: none; }
-      .scroll-text-mobile  { display: inline; text-align: center; }
-    }
-    .scroll-line::after {
-      content: '';
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(to bottom, #06212C, transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 0.8; transform: scaleY(0.8); }
-    }
-
-    /* ── SECTIONS ── */
-    .section-wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    section {
-      padding: 3rem 0;
-      /* border-top: 1px solid var(--rule); */
-    }
-    section.alt { background: var(--bg-alt); }
-
-    .section-header {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: baseline;
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-    }
-    .section-index {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      padding-top: 0.2rem;
-    }
-    .section-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      color: var(--ink);
-    }
-
-    /* ── THEME INTRO ── */
-    #theme-intro {
-      background: var(--bg);
-      padding: 4.5rem 0 4rem;
-    }
-    #about, #organizers {
-      padding: 3rem 0 3rem;
-      background-color: rgb(228, 225, 219);
-      background-image:
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseA1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseA1)"/%3E%3C/svg%3E'),
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseA2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseA2)"/%3E%3C/svg%3E');
-      background-size: 300px 300px;
-      background-blend-mode: overlay, overlay;
-    }
-    .theme-quote {
-      font-family: 'Funnel Display', serif;
-      font-size: clamp(1.5rem, 3.5vw, 3.5rem);
-      font-weight: 400;
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      text-align: center;
-      color: var(--ink);
-      margin: 0 0 0rem;
-      padding: 0;
-      border: none;
-    }
-    .theme-body-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      line-height: 1.4;
-      color: var(--ink);
-      margin: 0 0 1rem;
-    }
-    .theme-body p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--ink);
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-    .theme-body p:last-child { margin-bottom: 0; }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      max-width: 680px;
-    }
-    .about-body p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--ink-2);
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-    .about-body p:last-child { margin-bottom: 0; }
-
-    /* ── SUBMISSIONS ── */
-    #submissions { background: var(--bg); color: var(--ink); overflow: visible; padding: 3rem 0 3rem; }
-
-    .sub-types {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      background: none;
-      margin-top: 3.5rem;
-    }
-    .sub-type {
-      position: relative;
-      padding: 2rem 1.5rem;
-      background: transparent;
-      min-height: 300px;
-      overflow: visible;
-    }
-    .sub-blob-svg {
-      position: absolute;
-      inset: -2rem;
-      z-index: 0;
-      pointer-events: none;
-      overflow: visible;
-    }
-    .sub-blob-svg svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      overflow: visible;
-    }
-    .sub-type h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-      position: relative;
-      z-index: 2;
-    }
-    .sub-type p {
-      font-size: 0.9rem;
-      color: var(--ink);
-      line-height: 1.5;
-      font-weight: 300;
-      position: relative;
-      z-index: 2;
-    }
-
-    .sub-deadline-row {
-      display: grid;
-      grid-template-columns: repeat(4, auto);
-      justify-content: space-between;
-      gap: 0;
-      background: none;
-      border-top: 1px solid var(--rule);
-      margin-top: 4rem;
-      padding-top: 2rem;
-    }
-    .deadline-cell {
-      background: transparent;
-      padding: 0;
-    }
-    .sub-deadline-row .deadline-cell:last-child {
-      justify-self: end;
-    }
-.deadline-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-    }
-    .deadline-value {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--ink);
-    }
-
-    .sub-note {
-      margin-top: 2.5rem;
-      font-size: 0.9rem;
-      color: var(--ink-2);
-      text-align: center;
-    }
-    .sub-note a {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* ── ORGANIZERS ── */
-    #organizers .sub-type { padding: 2.5rem 2rem; }
-    #organizers .sub-blob-svg { inset: -2rem; }
-    #submissions .sub-type { padding-left: 2rem; }
-    .sub-blob-noise {
-      position: absolute;
-      inset: -2rem;
-      z-index: 1;
-      pointer-events: none;
-      background-image:
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="grain1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23grain1)"/%3E%3C/svg%3E'),
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="grain2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23grain2)"/%3E%3C/svg%3E');
-      background-size: 300px 300px;
-      mix-blend-mode: overlay;
-      opacity: 0.72;
-      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 85%);
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 85%);
-    }
-    .org-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background: var(--rule);
-    }
-    .org-card {
-      background: var(--bg);
-      padding: 2rem;
-    }
-    .org-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--ink-3);
-      margin-bottom: 1.25rem;
-    }
-    .org-name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
-    }
-    .org-name a { color: inherit; }
-    .org-link { color: inherit; font-family: 'DM Sans', sans-serif; }
-    #organizers .sub-type h3 {
-      font-family: 'DM Sans', sans-serif;
-      text-transform: none;
-      letter-spacing: 0;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-    .sub-type .org-affil-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--ink-3);
-      margin-bottom: 0.75rem;
-      position: relative;
-      z-index: 2;
-    }
-    .org-affil {
-      font-size: 0.85rem;
-      color: var(--ink-2);
-      margin-bottom: 0.85rem;
-    }
-    .org-bio {
-      font-size: 0.85rem;
-      color: var(--ink-2);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      align-items: start;
-    }
-    .contact-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-      color: var(--ink-3);
-      margin-bottom: 0.4rem;
-    }
-    .contact-email {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--ink);
-    }
-    .contact-context {
-      font-family: 'Montserrat', sans-serif;
-      margin-top: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--ink);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-    .contact-context a { color: var(--ink); font-weight: 500; }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 2rem 0;
-      background-color: #E4E1DB;
-      background-image:
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseF1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseF1)"/%3E%3C/svg%3E'),
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseF2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseF2)"/%3E%3C/svg%3E');
-      background-size: 300px 300px;
-      background-blend-mode: overlay, overlay;
-    }
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--ink-3);
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .footer-links a {
-      font-size: 0.8rem;
-      color: var(--ink-3);
-    }
-
-    .conf-name { margin-bottom: 0.4rem; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero { min-height: 100svh; will-change: transform; }
-      .hero-content {
-        padding-top: 9svh;
-        gap: 1.5rem;
-      }
-      .hero-desc {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0 1rem;
-      }
-      .nav-inner {
-        height: 80px;
-      }
-      .hero h1 {
-        font-size: clamp(3rem, 12vw, 4.5rem);
-      }
-      .hero-top-info {
-        font-size: clamp(1.5rem, 6vw, 2.25rem);
-        padding: 0.5rem 0;
-        gap: 0;
-      }
-      .hero-top-info span:nth-child(2) {
-        margin-bottom: 0.2rem;
-      }
-      .conf-name, .conf-details {
-        font-size: 0.95rem;
-        line-height: 1.35;
-        margin-bottom: 0.8rem;
-      }
-      .hero-top-info::before {
-        width: 160%;
-        height: 200%;
-      }
-    }
-    @media (max-width: 720px) {
-      #about, #organizers, footer { background-size: 120px 120px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-      .footer-links { flex-wrap: wrap; justify-content: flex-start; gap: 0.75rem 1.25rem; width: 100%; }
-      .footer-links .footer-copy { display: none; }
-      .sub-blob-noise { background-size: 80px 80px; }
-      #theme-intro, #about { padding: 2.25rem 0 2rem; }
-      .sub-type { min-height: 180px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .sub-types { grid-template-columns: 1fr; }
-      .sub-deadline-row { grid-template-columns: 1fr; gap: 1.5rem; }
-      .deadline-cell { text-align: left; }
-      .sub-deadline-row .deadline-cell:last-child { justify-self: auto; }
-      nav ul { display: none; }
-      .nav-sound-toggle { display: none; }
-      .section-header { grid-template-columns: 1fr; gap: 0.5rem; }
-    }
-
-    /* ── HAMBURGER BUTTON ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      margin: 0;
-      margin-left: auto;
-      align-self: center;
-      line-height: 0;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: #06212C;
-      transition: transform 0.35s ease, opacity 0.25s ease;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    @media (max-width: 720px) {
-      .nav-hamburger { display: flex; }
-    }
-
-    /* ── MOBILE MENU OVERLAY ── */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: transparent;
-      z-index: 500;
-      display: flex;
-      flex-direction: column;
-      padding: 80px 2rem 2.5rem;
-      transform: translateY(-100%);
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-    }
-    .mobile-menu-bg {
-      position: absolute;
-      inset: 0;
-      background-color: #E4E1DB;
-      background-image:
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseMm1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseMm1)"/%3E%3C/svg%3E'),
-        url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseMm2"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" result="noise"/%3E%3CfeColorMatrix type="matrix" values="1 0 0 0 0.06 0 1 0 0 0.04 0 0 0.7 0 0 0 0 0 1 0" in="noise"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseMm2)"/%3E%3C/svg%3E');
-      background-size: 120px 120px;
-      background-blend-mode: overlay, overlay;
-      overflow: hidden;
-      isolation: isolate;
-      opacity: 0.95;
-      z-index: 0;
-    }
-    .mobile-menu-bg .mobile-menu-mesh { display: none; }
-    .mobile-menu-bg::after { display: none; }
-    .mobile-menu.open {
-      transform: translateY(0);
-      pointer-events: all;
-    }
-    .mobile-menu-nav {
-      position: relative;
-      z-index: 1;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1.8rem;
-    }
-    .mobile-menu-link {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 9vw, 3rem);
-      font-weight: 400;
-      color: #06212C;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      width: fit-content;
-      text-decoration: none;
-      border-bottom: 2px solid transparent !important;
-    }
-    .mobile-menu-link:hover {
-      border-bottom: 2px solid #06212C !important;
-    }
-    .mobile-menu-footer {
-      position: relative;
-      z-index: 1;
-      padding-bottom: 0.5rem;
-    }
-
-    /* ── TWEAKS PANEL ── */
-    #tweaks-panel {
-      display: none;
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 1000;
-      background: var(--bg);
-      border: 1px solid var(--rule);
-      border-radius: 8px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      padding: 1.25rem 1.5rem;
-      width: 230px;
-    }
-    #tweaks-panel h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-      margin-bottom: 1rem;
-    }
-    .tweak-row { margin-bottom: 1rem; }
-    .tweak-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--ink-2);
-      margin-bottom: 0.4rem;
-    }
-    .tweak-btns {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .tweak-btn {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      padding: 0.3rem 0.65rem;
-      border-radius: 3px;
-      border: 1px solid var(--rule);
-      background: var(--bg);
-      color: var(--ink-2);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .tweak-btn:hover, .tweak-btn.active {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
-    }
-  </style>
-
-
-</head><body>
-
-<svg width="0" height="0" style="position:absolute;overflow:hidden">
-  <defs>
-    <filter id="sketch-border" x="-20%" y="-30%" width="140%" height="160%">
-      <feTurbulence type="turbulence" baseFrequency="0.035" numOctaves="3" result="noise" seed="6"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
-
-<!-- ── NAV FROZEN BACKGROUND (fixed, z-index 599, outside nav) ── -->
-<div class="nav-frozen-bg" id="navFrozenBg" aria-hidden="true">
-  <div style="position:absolute;inset:0;width:100%;height:100%;filter:blur(40px);">
-    <svg class="hero-svg" viewBox="0 0 860 592" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path class="svg-blob blob-teal" d="M448.799 121.936C423.275 120.053 398.02 128.183 378.388 144.603L366.885 154.223C358.508 161.23 352.548 170.695 349.851 181.278C344.521 202.186 352.652 224.214 370.287 236.645L382.436 245.209C395.151 254.172 404.699 266.933 409.709 281.66L422.928 320.515C430.773 343.575 445.737 363.548 465.664 377.556L512.685 410.61C527.344 420.915 536.225 437.579 536.606 455.493L536.666 458.325C536.883 468.507 533.836 478.491 527.97 486.817C505.703 518.422 528.307 562 566.969 562H587.862C607.879 562 626.508 551.774 637.254 534.887L675.348 475.025C684.982 459.885 698.026 447.21 713.436 438.014L738.638 422.974C747.383 417.755 757.377 415 767.561 415H797.355C812.071 415 824 403.071 824 388.355C824 374.565 813.478 363.053 799.743 361.817L762.861 358.497C739.362 356.383 719.481 340.253 712.568 317.694C707.75 301.975 696.492 289.035 681.589 282.09L633.632 259.741C613.008 250.13 595.699 234.617 583.895 215.165L561.747 178.667C542.455 146.876 508.98 126.376 471.894 123.64L448.799 121.936Z" style="animation-delay:0s"/>
-      <path class="svg-blob blob-yellow" d="M58.9733 356.083C41.3879 363.675 30 380.996 30 400.151V446.639C30 465.733 41.3178 483.012 58.8221 490.641L82.0392 500.76C89.1107 503.842 95.3352 508.583 100.186 514.581L120.548 539.763C122.4 542.053 123.471 544.876 123.605 547.818C123.94 555.193 130.017 561 137.399 561H252.252C272.912 561 291.255 547.78 297.789 528.181L299.456 523.18C302.267 514.747 307.365 507.26 314.182 501.554L347.105 473.994C360.908 462.44 361.58 441.443 348.544 429.029L343.906 424.613C340.89 421.741 339.183 417.759 339.183 413.594C339.183 405.191 332.371 398.379 323.968 398.379H315.948C313.209 398.379 310.492 397.895 307.922 396.949L157.617 341.62C152.555 339.757 147.215 338.76 141.822 338.672L111.184 338.169C104.375 338.058 97.6215 339.396 91.3702 342.095L58.9733 356.083Z" style="animation-delay:-15s"/>
-      <path class="svg-blob blob-orange" d="M523.513 17.6602C504.626 20.106 490.836 36.7246 491.916 55.7381C492.309 62.651 494.669 69.3076 498.72 74.9235L502.925 80.7545C508.671 88.7221 517.029 94.4234 526.544 96.8668L593.207 113.985C599.644 115.638 605.596 118.795 610.576 123.196L723.619 223.115C728.907 227.789 735.286 231.054 742.169 232.611L798.735 245.405C825.005 251.347 850 231.374 850 204.44V191.954C850 177.65 842.72 164.329 830.68 156.605L734.231 94.7234C732.532 93.6328 730.913 92.4211 729.387 91.0976L643.232 16.348C634.179 8.49311 622.201 4.88049 610.314 6.41978L523.513 17.6602Z" style="animation-delay:-5s"/>
-      <path class="svg-blob blob-teal" d="M56.8856 72.823C56.3052 80.8039 57.8088 88.7985 61.2491 96.0231L61.4256 96.3938C64.4382 102.72 68.807 108.306 74.2216 112.753L84.1844 120.937C90.7046 126.293 97.8435 130.848 105.448 134.504L130.045 146.329C140.508 151.36 152.083 153.631 163.67 152.929C173.763 152.317 183.593 149.466 192.447 144.581L279.772 96.4014C289.701 90.9234 297.786 82.6277 303.006 72.5607L306.429 65.9584C308.121 62.6943 309.062 59.0925 309.18 55.4176C309.629 41.5144 298.48 30 284.569 30H102.936C78.7354 30 58.641 48.686 56.8856 72.823Z" style="animation-delay:-3s"/>
-      <path class="svg-blob blob-lavender" d="M829 494.524C829 464.196 808.474 437.713 779.105 430.148L777.932 429.846C768.102 427.314 757.83 427.014 747.869 428.967L737.843 430.933C720.842 434.266 704.833 441.46 691.052 451.96L688.031 454.262C676.101 463.351 665.842 474.445 657.711 487.048L631.417 527.804C630.478 529.259 629.317 530.558 627.975 531.652C615.925 541.483 622.876 561 638.427 561H766.759C801.134 561 829 533.134 829 498.759V494.524Z" style="animation-delay:-10s"/>
-      <path class="svg-blob blob-orange" d="M294.466 296.084C284.051 296.277 281.571 310.714 291.324 314.372L355.241 338.34C356.411 338.779 357.544 339.315 358.626 339.943L439.608 386.912C450.45 393.201 457.36 404.563 457.956 417.083L458.771 434.183C458.912 437.152 457.418 439.96 454.878 441.503C447.935 445.718 450.808 456.388 458.929 456.548L475.799 456.878C479.722 456.955 483.47 455.258 486 452.26L502.868 432.268C506.809 427.596 508.838 421.607 508.548 415.501C508.201 408.224 504.596 401.49 498.733 397.166L458.23 367.294C438.829 352.987 425.702 331.742 421.585 307.99L418.898 292.488C416.401 278.084 408.309 265.252 396.387 256.791C372.15 239.591 338.657 244.593 320.503 268.125L301.77 292.409C300.019 294.679 297.332 296.031 294.466 296.084Z" style="animation-delay:-8s"/>
-      <path class="svg-blob blob-lavender" d="M534.266 411.24C532.793 407.833 530.288 404.973 527.104 403.063C515.674 396.205 501.045 403.918 500.247 417.224L499.582 428.299C499.208 434.53 496.468 440.383 491.923 444.661L490.496 446.004C485.039 451.14 477.827 454 470.333 454H449.333C443.165 454 437.052 455.153 431.309 457.401C421.989 461.048 413.995 467.436 408.382 475.721L400.614 487.189C397.607 491.628 396 496.866 396 502.227V503.269C396 509.514 393.588 515.517 389.267 520.026C374.51 535.424 385.424 561 406.752 561H452.81C459.542 561 465 555.542 465 548.81C465 544.05 467.771 539.725 472.096 537.736L500.937 524.469C510.17 520.222 518.211 513.762 524.347 505.662L528.835 499.738C536.179 490.044 541.184 478.784 543.46 466.836L544.314 462.352C546.716 449.742 545.276 436.701 540.181 424.918L534.266 411.24Z" style="animation-delay:-13s"/>
-      <path class="svg-blob blob-yellow" d="M318.603 30C308.39 30 300.168 38.388 300.372 48.5994L300.618 60.8751C300.851 72.5566 294.341 83.3295 283.891 88.5546L261.804 99.5981C252.4 104.3 245.496 112.847 242.878 123.03L241.005 130.314C239.129 137.608 241.051 145.356 246.116 150.928C253.083 158.591 264.4 160.469 273.468 155.466L279.869 151.934C284.547 149.353 289.812 148 295.154 148C312.721 148 327 162.241 327 179.808V204.301C327 205.97 327.894 207.511 329.344 208.339C331.801 209.744 334.933 208.646 335.976 206.014L351.611 166.554C353.843 160.92 357.283 155.844 361.689 151.683L389.054 125.838C390.341 124.622 391.835 123.647 393.465 122.957L403.315 118.79C409.418 116.208 410.46 107.999 405.196 103.974C402.123 101.623 397.862 101.604 394.767 103.925L386.113 110.416C382.145 113.391 377.319 115 372.359 115H369.643C353.051 115 339.387 101.963 338.607 85.3897L336.818 47.3776C336.36 37.6509 328.341 30 318.603 30Z" style="animation-delay:-18s"/>
-      <path class="svg-blob blob-orange" d="M80.3927 174.064C71.863 179.118 65.4822 187.312 62.7584 196.846L61.608 200.872C59.9066 206.827 59.9843 213.15 61.8316 219.061C63.2587 223.628 65.6997 227.813 68.9721 231.304L71.0766 233.548C76.2748 239.093 82.7878 243.237 90.0127 245.596L115.545 253.933C123.833 256.639 131.868 260.063 139.561 264.166L166.454 278.509C170.781 280.817 175.495 282.312 180.362 282.92L185.722 283.59C187.882 283.86 190.075 283.664 192.153 283.015C199.49 280.722 203.967 273.32 202.592 265.757L200.947 256.707C199.703 249.864 195.732 243.821 189.946 239.964L168.615 225.743C160.922 220.615 154.106 214.279 148.43 206.981L130.089 183.4C124.848 176.662 117.5 171.875 109.219 169.805C99.4686 167.367 89.0387 168.94 80.3927 174.064Z" style="animation-delay:-11s"/>
-      <path class="svg-blob blob-lavender" d="M676 14L733 44L763 70L793 90.5L829 119L797.5 32L676 14Z" style="animation-delay:-16s"/>
-      <path class="svg-blob blob-yellow" d="M711.517 284.903C706.677 286.663 703.949 291.795 705.198 296.792L713.138 328.551C715.002 336.008 719.086 342.723 724.849 347.808L725.533 348.411C730.413 352.717 736.403 355.567 742.823 356.637C748.199 357.533 753.71 357.153 758.912 355.527L759.551 355.328C764.465 353.792 769.01 351.264 772.906 347.899L784.7 337.714C787.521 335.277 789.686 332.171 790.995 328.68L793.549 321.869C794.46 319.44 794.147 316.72 792.708 314.562C791.608 312.912 789.939 311.725 788.02 311.227L770.864 306.78C766.307 305.598 761.923 303.831 757.82 301.524L738.366 290.581C734.154 288.212 729.562 286.594 724.795 285.799L716.606 284.434C714.898 284.15 713.145 284.311 711.517 284.903Z" style="animation-delay:-21s"/>
-      <path class="svg-blob blob-yellow" d="M548.223 133.469C543.793 130.438 538.319 135.495 540.991 140.151L592.98 230.738C594.972 234.208 597.661 237.228 600.879 239.606L617.553 251.931C618.512 252.64 619.572 253.202 620.696 253.599C632.725 257.844 642.208 242.892 633.239 233.821L583.763 183.783C582.59 182.597 581.525 181.309 580.579 179.934L549.533 134.776C549.181 134.263 548.737 133.82 548.223 133.469Z" style="animation-delay:-24s"/>
-      <path class="svg-blob blob-teal" d="M341.309 559.409C341.138 561.164 342.422 562.725 344.177 562.895L347.008 563.171C348.278 563.295 349.555 563.013 350.654 562.366L357.3 558.456C359.547 557.134 361.611 555.522 363.438 553.662L377.495 539.351C381.891 534.876 385.825 529.969 389.239 524.706L398.042 511.133C399.763 508.48 400.874 505.479 401.297 502.345L403.449 486.384C403.895 483.076 401.506 480.059 398.184 479.736C394.946 479.421 392.067 481.79 391.752 485.027L390.724 495.587C390.5 497.884 389.797 500.109 388.66 502.118L387.797 503.642C386.3 506.286 384.329 508.631 381.982 510.561L377.984 513.85C374.296 516.884 371.037 520.406 368.299 524.319L347.815 553.588C347.118 554.584 346.174 555.382 345.075 555.904L343.117 556.834C342.104 557.315 341.418 558.293 341.309 559.409Z" style="animation-delay:-6s"/>
-      <path class="svg-blob blob-pink" d="M775.05 429.475C773.405 430.298 772.808 432.347 773.754 433.924L774.483 435.138C774.823 435.706 775.286 436.19 775.836 436.557L782.937 441.291C785.637 443.091 788.534 444.575 791.572 445.715L792.552 446.082C799.438 448.664 805.69 452.69 810.89 457.89L818.463 465.463C818.82 465.82 819.219 466.131 819.652 466.391C823.766 468.859 829 465.896 829 461.098V452.207C829 446.017 823.983 441 817.793 441H812.979C810.366 441 807.793 440.361 805.483 439.138L796.476 434.37C793.509 432.799 790.322 431.685 787.022 431.067L777.044 429.196C776.367 429.069 775.666 429.167 775.05 429.475Z" style="animation-delay:-7s"/>
-      <path class="svg-blob blob-lavender" d="M231.385 140.462C230.536 140.179 229.6 140.4 228.968 141.032L221.332 148.668C217.897 152.103 215.842 156.679 215.557 161.528L215.329 165.399C215.113 169.087 215.712 172.779 217.084 176.21C218.348 179.37 220.241 182.241 222.648 184.648L223.424 185.424C225.13 187.13 227.1 188.55 229.259 189.63L231.775 190.888C233.238 191.619 234.852 192 236.488 192H237.419C239.094 192 240.725 191.457 242.065 190.451L243.178 189.617C243.713 189.215 244.113 188.66 244.325 188.025C244.736 186.793 244.384 185.435 243.427 184.558L237.85 179.446C234.76 176.613 233 172.613 233 168.42V142.702C233 141.686 232.349 140.783 231.385 140.462Z" style="animation-delay:-19s"/>
-      <path class="svg-blob blob-pink" d="M356.744 423.878C354.937 420.665 352.445 417.889 349.446 415.747L341.894 410.353C340.692 409.495 339.175 409.206 337.742 409.565C334.731 410.317 333.109 413.587 334.331 416.44L334.554 416.958C334.848 417.646 335 418.386 335 419.133V452.081C335 455.941 333.858 459.714 331.717 462.925C328.708 467.437 323.961 470.497 318.608 471.373L274.789 478.544C273.025 478.832 271.485 479.902 270.598 481.454L269.835 482.788C268.787 484.623 269.269 486.952 270.96 488.22C271.637 488.728 272.453 489.019 273.299 489.054L316.15 490.84C318.711 490.946 321.275 490.804 323.808 490.414C329.854 489.484 335.601 487.164 340.598 483.637L341.498 483.001C347.09 479.054 351.689 473.864 354.934 467.837L359.781 458.836C362.538 453.714 363.808 447.923 363.445 442.118C363.152 437.433 361.805 432.875 359.504 428.784L356.744 423.878Z" style="animation-delay:-10s"/>
-    </svg>
-  </div>
-</div>
-
-<nav>
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo">VISAP <span>2026</span></a>
-    <ul>
+<body>
+  <nav>
+    <a href="#" class="logo">
+      <span><strong>VISAP</strong> 2026</span>
+    </a>
+    <button id="soundToggle" type="button" aria-label="Toggle sound" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linejoin="round">
+        <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="currentColor" stroke="none" />
+        <g id="soundOff">
+          <line x1="16" y1="9.5" x2="21" y2="14.5" />
+          <line x1="21" y1="9.5" x2="16" y2="14.5" />
+        </g>
+        <g id="soundOn">
+          <path d="M16 9a4 4 0 0 1 0 6" />
+          <path d="M18.7 7a7 7 0 0 1 0 10" />
+        </g>
+      </svg>
+    </button>
+    <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <g id="bars">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </g>
+        <g id="cross">
+          <line x1="5" y1="5" x2="19" y2="19" />
+          <line x1="19" y1="5" x2="5" y2="19" />
+        </g>
+      </svg>
+    </button>
+    <ul id="menu">
       <li><a href="#about">About</a></li>
-      <li><a href="#submissions">Submit</a></li>
+      <li><a href="#submissions">Submissions</a></li>
       <li><a href="#organizers">Organizers</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="nav-sound-toggle" id="soundToggle" style="margin-left: auto;">Turn sound on</button>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- ── MOBILE MENU ── -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-bg" aria-hidden="true">
-    <div class="mobile-menu-mesh">
-      <svg class="hero-svg" viewBox="0 0 860 592" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <path class="svg-blob blob-teal" d="M448.799 121.936C423.275 120.053 398.02 128.183 378.388 144.603L366.885 154.223C358.508 161.23 352.548 170.695 349.851 181.278C344.521 202.186 352.652 224.214 370.287 236.645L382.436 245.209C395.151 254.172 404.699 266.933 409.709 281.66L422.928 320.515C430.773 343.575 445.737 363.548 465.664 377.556L512.685 410.61C527.344 420.915 536.225 437.579 536.606 455.493L536.666 458.325C536.883 468.507 533.836 478.491 527.97 486.817C505.703 518.422 528.307 562 566.969 562H587.862C607.879 562 626.508 551.774 637.254 534.887L675.348 475.025C684.982 459.885 698.026 447.21 713.436 438.014L738.638 422.974C747.383 417.755 757.377 415 767.561 415H797.355C812.071 415 824 403.071 824 388.355C824 374.565 813.478 363.053 799.743 361.817L762.861 358.497C739.362 356.383 719.481 340.253 712.568 317.694C707.75 301.975 696.492 289.035 681.589 282.09L633.632 259.741C613.008 250.13 595.699 234.617 583.895 215.165L561.747 178.667C542.455 146.876 508.98 126.376 471.894 123.64L448.799 121.936Z" style="animation-delay:0s"/>
-        <path class="svg-blob blob-yellow" d="M58.9733 356.083C41.3879 363.675 30 380.996 30 400.151V446.639C30 465.733 41.3178 483.012 58.8221 490.641L82.0392 500.76C89.1107 503.842 95.3352 508.583 100.186 514.581L120.548 539.763C122.4 542.053 123.471 544.876 123.605 547.818C123.94 555.193 130.017 561 137.399 561H252.252C272.912 561 291.255 547.78 297.789 528.181L299.456 523.18C302.267 514.747 307.365 507.26 314.182 501.554L347.105 473.994C360.908 462.44 361.58 441.443 348.544 429.029L343.906 424.613C340.89 421.741 339.183 417.759 339.183 413.594C339.183 405.191 332.371 398.379 323.968 398.379H315.948C313.209 398.379 310.492 397.895 307.922 396.949L157.617 341.62C152.555 339.757 147.215 338.76 141.822 338.672L111.184 338.169C104.375 338.058 97.6215 339.396 91.3702 342.095L58.9733 356.083Z" style="animation-delay:-15s"/>
-        <path class="svg-blob blob-orange" d="M523.513 17.6602C504.626 20.106 490.836 36.7246 491.916 55.7381C492.309 62.651 494.669 69.3076 498.72 74.9235L502.925 80.7545C508.671 88.7221 517.029 94.4234 526.544 96.8668L593.207 113.985C599.644 115.638 605.596 118.795 610.576 123.196L723.619 223.115C728.907 227.789 735.286 231.054 742.169 232.611L798.735 245.405C825.005 251.347 850 231.374 850 204.44V191.954C850 177.65 842.72 164.329 830.68 156.605L734.231 94.7234C732.532 93.6328 730.913 92.4211 729.387 91.0976L643.232 16.348C634.179 8.49311 622.201 4.88049 610.314 6.41978L523.513 17.6602Z" style="animation-delay:-5s"/>
-        <path class="svg-blob blob-teal" d="M56.8856 72.823C56.3052 80.8039 57.8088 88.7985 61.2491 96.0231L61.4256 96.3938C64.4382 102.72 68.807 108.306 74.2216 112.753L84.1844 120.937C90.7046 126.293 97.8435 130.848 105.448 134.504L130.045 146.329C140.508 151.36 152.083 153.631 163.67 152.929C173.763 152.317 183.593 149.466 192.447 144.581L279.772 96.4014C289.701 90.9234 297.786 82.6277 303.006 72.5607L306.429 65.9584C308.121 62.6943 309.062 59.0925 309.18 55.4176C309.629 41.5144 298.48 30 284.569 30H102.936C78.7354 30 58.641 48.686 56.8856 72.823Z" style="animation-delay:-3s"/>
-        <path class="svg-blob blob-lavender" d="M829 494.524C829 464.196 808.474 437.713 779.105 430.148L777.932 429.846C768.102 427.314 757.83 427.014 747.869 428.967L737.843 430.933C720.842 434.266 704.833 441.46 691.052 451.96L688.031 454.262C676.101 463.351 665.842 474.445 657.711 487.048L631.417 527.804C630.478 529.259 629.317 530.558 627.975 531.652C615.925 541.483 622.876 561 638.427 561H766.759C801.134 561 829 533.134 829 498.759V494.524Z" style="animation-delay:-10s"/>
-        <path class="svg-blob blob-orange" d="M294.466 296.084C284.051 296.277 281.571 310.714 291.324 314.372L355.241 338.34C356.411 338.779 357.544 339.315 358.626 339.943L439.608 386.912C450.45 393.201 457.36 404.563 457.956 417.083L458.771 434.183C458.912 437.152 457.418 439.96 454.878 441.503C447.935 445.718 450.808 456.388 458.929 456.548L475.799 456.878C479.722 456.955 483.47 455.258 486 452.26L502.868 432.268C506.809 427.596 508.838 421.607 508.548 415.501C508.201 408.224 504.596 401.49 498.733 397.166L458.23 367.294C438.829 352.987 425.702 331.742 421.585 307.99L418.898 292.488C416.401 278.084 408.309 265.252 396.387 256.791C372.15 239.591 338.657 244.593 320.503 268.125L301.77 292.409C300.019 294.679 297.332 296.031 294.466 296.084Z" style="animation-delay:-8s"/>
-        <path class="svg-blob blob-lavender" d="M534.266 411.24C532.793 407.833 530.288 404.973 527.104 403.063C515.674 396.205 501.045 403.918 500.247 417.224L499.582 428.299C499.208 434.53 496.468 440.383 491.923 444.661L490.496 446.004C485.039 451.14 477.827 454 470.333 454H449.333C443.165 454 437.052 455.153 431.309 457.401C421.989 461.048 413.995 467.436 408.382 475.721L400.614 487.189C397.607 491.628 396 496.866 396 502.227V503.269C396 509.514 393.588 515.517 389.267 520.026C374.51 535.424 385.424 561 406.752 561H452.81C459.542 561 465 555.542 465 548.81C465 544.05 467.771 539.725 472.096 537.736L500.937 524.469C510.17 520.222 518.211 513.762 524.347 505.662L528.835 499.738C536.179 490.044 541.184 478.784 543.46 466.836L544.314 462.352C546.716 449.742 545.276 436.701 540.181 424.918L534.266 411.24Z" style="animation-delay:-13s"/>
-        <path class="svg-blob blob-yellow" d="M318.603 30C308.39 30 300.168 38.388 300.372 48.5994L300.618 60.8751C300.851 72.5566 294.341 83.3295 283.891 88.5546L261.804 99.5981C252.4 104.3 245.496 112.847 242.878 123.03L241.005 130.314C239.129 137.608 241.051 145.356 246.116 150.928C253.083 158.591 264.4 160.469 273.468 155.466L279.869 151.934C284.547 149.353 289.812 148 295.154 148C312.721 148 327 162.241 327 179.808V204.301C327 205.97 327.894 207.511 329.344 208.339C331.801 209.744 334.933 208.646 335.976 206.014L351.611 166.554C353.843 160.92 357.283 155.844 361.689 151.683L389.054 125.838C390.341 124.622 391.835 123.647 393.465 122.957L403.315 118.79C409.418 116.208 410.46 107.999 405.196 103.974C402.123 101.623 397.862 101.604 394.767 103.925L386.113 110.416C382.145 113.391 377.319 115 372.359 115H369.643C353.051 115 339.387 101.963 338.607 85.3897L336.818 47.3776C336.36 37.6509 328.341 30 318.603 30Z" style="animation-delay:-18s"/>
-        <path class="svg-blob blob-orange" d="M80.3927 174.064C71.863 179.118 65.4822 187.312 62.7584 196.846L61.608 200.872C59.9066 206.827 59.9843 213.15 61.8316 219.061C63.2587 223.628 65.6997 227.813 68.9721 231.304L71.0766 233.548C76.2748 239.093 82.7878 243.237 90.0127 245.596L115.545 253.933C123.833 256.639 131.868 260.063 139.561 264.166L166.454 278.509C170.781 280.817 175.495 282.312 180.362 282.92L185.722 283.59C187.882 283.86 190.075 283.664 192.153 283.015C199.49 280.722 203.967 273.32 202.592 265.757L200.947 256.707C199.703 249.864 195.732 243.821 189.946 239.964L168.615 225.743C160.922 220.615 154.106 214.279 148.43 206.981L130.089 183.4C124.848 176.662 117.5 171.875 109.219 169.805C99.4686 167.367 89.0387 168.94 80.3927 174.064Z" style="animation-delay:-11s"/>
-        <path class="svg-blob blob-lavender" d="M676 14L733 44L763 70L793 90.5L829 119L797.5 32L676 14Z" style="animation-delay:-16s"/>
-      </svg>
-    </div>
-  </div>
-  <nav class="mobile-menu-nav">
-    <a href="#about"        class="mobile-menu-link">About</a>
-    <a href="#submissions"  class="mobile-menu-link">Submit</a>
-    <a href="#organizers"   class="mobile-menu-link">Organizers</a>
-    <a href="#contact"      class="mobile-menu-link">Contact</a>
   </nav>
-  <div class="mobile-menu-footer">
-    <button class="nav-sound-toggle" id="soundToggleMobile">Turn sound on</button>
-  </div>
-</div>
 
-<!-- ── HERO ── -->
-<section id="home" class="hero">
-  <div class="hero-mesh">
-    <svg class="hero-svg" viewBox="0 0 860 592" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path class="svg-blob blob-teal" d="M448.799 121.936C423.275 120.053 398.02 128.183 378.388 144.603L366.885 154.223C358.508 161.23 352.548 170.695 349.851 181.278C344.521 202.186 352.652 224.214 370.287 236.645L382.436 245.209C395.151 254.172 404.699 266.933 409.709 281.66L422.928 320.515C430.773 343.575 445.737 363.548 465.664 377.556L512.685 410.61C527.344 420.915 536.225 437.579 536.606 455.493L536.666 458.325C536.883 468.507 533.836 478.491 527.97 486.817C505.703 518.422 528.307 562 566.969 562H587.862C607.879 562 626.508 551.774 637.254 534.887L675.348 475.025C684.982 459.885 698.026 447.21 713.436 438.014L738.638 422.974C747.383 417.755 757.377 415 767.561 415H797.355C812.071 415 824 403.071 824 388.355C824 374.565 813.478 363.053 799.743 361.817L762.861 358.497C739.362 356.383 719.481 340.253 712.568 317.694C707.75 301.975 696.492 289.035 681.589 282.09L633.632 259.741C613.008 250.13 595.699 234.617 583.895 215.165L561.747 178.667C542.455 146.876 508.98 126.376 471.894 123.64L448.799 121.936Z" style="animation-delay:0s"/>
-      <path class="svg-blob blob-yellow" d="M58.9733 356.083C41.3879 363.675 30 380.996 30 400.151V446.639C30 465.733 41.3178 483.012 58.8221 490.641L82.0392 500.76C89.1107 503.842 95.3352 508.583 100.186 514.581L120.548 539.763C122.4 542.053 123.471 544.876 123.605 547.818C123.94 555.193 130.017 561 137.399 561H252.252C272.912 561 291.255 547.78 297.789 528.181L299.456 523.18C302.267 514.747 307.365 507.26 314.182 501.554L347.105 473.994C360.908 462.44 361.58 441.443 348.544 429.029L343.906 424.613C340.89 421.741 339.183 417.759 339.183 413.594C339.183 405.191 332.371 398.379 323.968 398.379H315.948C313.209 398.379 310.492 397.895 307.922 396.949L157.617 341.62C152.555 339.757 147.215 338.76 141.822 338.672L111.184 338.169C104.375 338.058 97.6215 339.396 91.3702 342.095L58.9733 356.083Z" style="animation-delay:-15s"/>
-      <path class="svg-blob blob-orange" d="M523.513 17.6602C504.626 20.106 490.836 36.7246 491.916 55.7381C492.309 62.651 494.669 69.3076 498.72 74.9235L502.925 80.7545C508.671 88.7221 517.029 94.4234 526.544 96.8668L593.207 113.985C599.644 115.638 605.596 118.795 610.576 123.196L723.619 223.115C728.907 227.789 735.286 231.054 742.169 232.611L798.735 245.405C825.005 251.347 850 231.374 850 204.44V191.954C850 177.65 842.72 164.329 830.68 156.605L734.231 94.7234C732.532 93.6328 730.913 92.4211 729.387 91.0976L643.232 16.348C634.179 8.49311 622.201 4.88049 610.314 6.41978L523.513 17.6602Z" style="animation-delay:-5s"/>
-      <path class="svg-blob blob-teal" d="M56.8856 72.823C56.3052 80.8039 57.8088 88.7985 61.2491 96.0231L61.4256 96.3938C64.4382 102.72 68.807 108.306 74.2216 112.753L84.1844 120.937C90.7046 126.293 97.8435 130.848 105.448 134.504L130.045 146.329C140.508 151.36 152.083 153.631 163.67 152.929C173.763 152.317 183.593 149.466 192.447 144.581L279.772 96.4014C289.701 90.9234 297.786 82.6277 303.006 72.5607L306.429 65.9584C308.121 62.6943 309.062 59.0925 309.18 55.4176C309.629 41.5144 298.48 30 284.569 30H102.936C78.7354 30 58.641 48.686 56.8856 72.823Z" style="animation-delay:-3s"/>
-      <path class="svg-blob blob-lavender" d="M829 494.524C829 464.196 808.474 437.713 779.105 430.148L777.932 429.846C768.102 427.314 757.83 427.014 747.869 428.967L737.843 430.933C720.842 434.266 704.833 441.46 691.052 451.96L688.031 454.262C676.101 463.351 665.842 474.445 657.711 487.048L631.417 527.804C630.478 529.259 629.317 530.558 627.975 531.652C615.925 541.483 622.876 561 638.427 561H766.759C801.134 561 829 533.134 829 498.759V494.524Z" style="animation-delay:-10s"/>
-      <path class="svg-blob blob-orange" d="M294.466 296.084C284.051 296.277 281.571 310.714 291.324 314.372L355.241 338.34C356.411 338.779 357.544 339.315 358.626 339.943L439.608 386.912C450.45 393.201 457.36 404.563 457.956 417.083L458.771 434.183C458.912 437.152 457.418 439.96 454.878 441.503C447.935 445.718 450.808 456.388 458.929 456.548L475.799 456.878C479.722 456.955 483.47 455.258 486 452.26L502.868 432.268C506.809 427.596 508.838 421.607 508.548 415.501C508.201 408.224 504.596 401.49 498.733 397.166L458.23 367.294C438.829 352.987 425.702 331.742 421.585 307.99L418.898 292.488C416.401 278.084 408.309 265.252 396.387 256.791C372.15 239.591 338.657 244.593 320.503 268.125L301.77 292.409C300.019 294.679 297.332 296.031 294.466 296.084Z" style="animation-delay:-8s"/>
-      <path class="svg-blob blob-lavender" d="M534.266 411.24C532.793 407.833 530.288 404.973 527.104 403.063C515.674 396.205 501.045 403.918 500.247 417.224L499.582 428.299C499.208 434.53 496.468 440.383 491.923 444.661L490.496 446.004C485.039 451.14 477.827 454 470.333 454H449.333C443.165 454 437.052 455.153 431.309 457.401C421.989 461.048 413.995 467.436 408.382 475.721L400.614 487.189C397.607 491.628 396 496.866 396 502.227V503.269C396 509.514 393.588 515.517 389.267 520.026C374.51 535.424 385.424 561 406.752 561H452.81C459.542 561 465 555.542 465 548.81C465 544.05 467.771 539.725 472.096 537.736L500.937 524.469C510.17 520.222 518.211 513.762 524.347 505.662L528.835 499.738C536.179 490.044 541.184 478.784 543.46 466.836L544.314 462.352C546.716 449.742 545.276 436.701 540.181 424.918L534.266 411.24Z" style="animation-delay:-13s"/>
-      <path class="svg-blob blob-yellow" d="M318.603 30C308.39 30 300.168 38.388 300.372 48.5994L300.618 60.8751C300.851 72.5566 294.341 83.3295 283.891 88.5546L261.804 99.5981C252.4 104.3 245.496 112.847 242.878 123.03L241.005 130.314C239.129 137.608 241.051 145.356 246.116 150.928C253.083 158.591 264.4 160.469 273.468 155.466L279.869 151.934C284.547 149.353 289.812 148 295.154 148C312.721 148 327 162.241 327 179.808V204.301C327 205.97 327.894 207.511 329.344 208.339C331.801 209.744 334.933 208.646 335.976 206.014L351.611 166.554C353.843 160.92 357.283 155.844 361.689 151.683L389.054 125.838C390.341 124.622 391.835 123.647 393.465 122.957L403.315 118.79C409.418 116.208 410.46 107.999 405.196 103.974C402.123 101.623 397.862 101.604 394.767 103.925L386.113 110.416C382.145 113.391 377.319 115 372.359 115H369.643C353.051 115 339.387 101.963 338.607 85.3897L336.818 47.3776C336.36 37.6509 328.341 30 318.603 30Z" style="animation-delay:-18s"/>
-      <path class="svg-blob blob-orange" d="M80.3927 174.064C71.863 179.118 65.4822 187.312 62.7584 196.846L61.608 200.872C59.9066 206.827 59.9843 213.15 61.8316 219.061C63.2587 223.628 65.6997 227.813 68.9721 231.304L71.0766 233.548C76.2748 239.093 82.7878 243.237 90.0127 245.596L115.545 253.933C123.833 256.639 131.868 260.063 139.561 264.166L166.454 278.509C170.781 280.817 175.495 282.312 180.362 282.92L185.722 283.59C187.882 283.86 190.075 283.664 192.153 283.015C199.49 280.722 203.967 273.32 202.592 265.757L200.947 256.707C199.703 249.864 195.732 243.821 189.946 239.964L168.615 225.743C160.922 220.615 154.106 214.279 148.43 206.981L130.089 183.4C124.848 176.662 117.5 171.875 109.219 169.805C99.4686 167.367 89.0387 168.94 80.3927 174.064Z" style="animation-delay:-11s"/>
-      <path class="svg-blob blob-lavender" d="M676 14L733 44L763 70L793 90.5L829 119L797.5 32L676 14Z" style="animation-delay:-16s"/>
-      <path class="svg-blob blob-yellow" d="M711.517 284.903C706.677 286.663 703.949 291.795 705.198 296.792L713.138 328.551C715.002 336.008 719.086 342.723 724.849 347.808L725.533 348.411C730.413 352.717 736.403 355.567 742.823 356.637C748.199 357.533 753.71 357.153 758.912 355.527L759.551 355.328C764.465 353.792 769.01 351.264 772.906 347.899L784.7 337.714C787.521 335.277 789.686 332.171 790.995 328.68L793.549 321.869C794.46 319.44 794.147 316.72 792.708 314.562C791.608 312.912 789.939 311.725 788.02 311.227L770.864 306.78C766.307 305.598 761.923 303.831 757.82 301.524L738.366 290.581C734.154 288.212 729.562 286.594 724.795 285.799L716.606 284.434C714.898 284.15 713.145 284.311 711.517 284.903Z" style="animation-delay:-21s"/>
-      <path class="svg-blob blob-yellow" d="M548.223 133.469C543.793 130.438 538.319 135.495 540.991 140.151L592.98 230.738C594.972 234.208 597.661 237.228 600.879 239.606L617.553 251.931C618.512 252.64 619.572 253.202 620.696 253.599C632.725 257.844 642.208 242.892 633.239 233.821L583.763 183.783C582.59 182.597 581.525 181.309 580.579 179.934L549.533 134.776C549.181 134.263 548.737 133.82 548.223 133.469Z" style="animation-delay:-24s"/>
-      <path class="svg-blob blob-teal" d="M341.309 559.409C341.138 561.164 342.422 562.725 344.177 562.895L347.008 563.171C348.278 563.295 349.555 563.013 350.654 562.366L357.3 558.456C359.547 557.134 361.611 555.522 363.438 553.662L377.495 539.351C381.891 534.876 385.825 529.969 389.239 524.706L398.042 511.133C399.763 508.48 400.874 505.479 401.297 502.345L403.449 486.384C403.895 483.076 401.506 480.059 398.184 479.736C394.946 479.421 392.067 481.79 391.752 485.027L390.724 495.587C390.5 497.884 389.797 500.109 388.66 502.118L387.797 503.642C386.3 506.286 384.329 508.631 381.982 510.561L377.984 513.85C374.296 516.884 371.037 520.406 368.299 524.319L347.815 553.588C347.118 554.584 346.174 555.382 345.075 555.904L343.117 556.834C342.104 557.315 341.418 558.293 341.309 559.409Z" style="animation-delay:-6s"/>
-      <path class="svg-blob blob-pink" d="M775.05 429.475C773.405 430.298 772.808 432.347 773.754 433.924L774.483 435.138C774.823 435.706 775.286 436.19 775.836 436.557L782.937 441.291C785.637 443.091 788.534 444.575 791.572 445.715L792.552 446.082C799.438 448.664 805.69 452.69 810.89 457.89L818.463 465.463C818.82 465.82 819.219 466.131 819.652 466.391C823.766 468.859 829 465.896 829 461.098V452.207C829 446.017 823.983 441 817.793 441H812.979C810.366 441 807.793 440.361 805.483 439.138L796.476 434.37C793.509 432.799 790.322 431.685 787.022 431.067L777.044 429.196C776.367 429.069 775.666 429.167 775.05 429.475Z" style="animation-delay:-7s"/>
-      <path class="svg-blob blob-lavender" d="M231.385 140.462C230.536 140.179 229.6 140.4 228.968 141.032L221.332 148.668C217.897 152.103 215.842 156.679 215.557 161.528L215.329 165.399C215.113 169.087 215.712 172.779 217.084 176.21C218.348 179.37 220.241 182.241 222.648 184.648L223.424 185.424C225.13 187.13 227.1 188.55 229.259 189.63L231.775 190.888C233.238 191.619 234.852 192 236.488 192H237.419C239.094 192 240.725 191.457 242.065 190.451L243.178 189.617C243.713 189.215 244.113 188.66 244.325 188.025C244.736 186.793 244.384 185.435 243.427 184.558L237.85 179.446C234.76 176.613 233 172.613 233 168.42V142.702C233 141.686 232.349 140.783 231.385 140.462Z" style="animation-delay:-19s"/>
-      <path class="svg-blob blob-pink" d="M356.744 423.878C354.937 420.665 352.445 417.889 349.446 415.747L341.894 410.353C340.692 409.495 339.175 409.206 337.742 409.565C334.731 410.317 333.109 413.587 334.331 416.44L334.554 416.958C334.848 417.646 335 418.386 335 419.133V452.081C335 455.941 333.858 459.714 331.717 462.925C328.708 467.437 323.961 470.497 318.608 471.373L274.789 478.544C273.025 478.832 271.485 479.902 270.598 481.454L269.835 482.788C268.787 484.623 269.269 486.952 270.96 488.22C271.637 488.728 272.453 489.019 273.299 489.054L316.15 490.84C318.711 490.946 321.275 490.804 323.808 490.414C329.854 489.484 335.601 487.164 340.598 483.637L341.498 483.001C347.09 479.054 351.689 473.864 354.934 467.837L359.781 458.836C362.538 453.714 363.808 447.923 363.445 442.118C363.152 437.433 361.805 432.875 359.504 428.784L356.744 423.878Z" style="animation-delay:-10s"/>
-    </svg>
-  </div>
-  <canvas id="ripple-canvas"></canvas>
-  <div class="noise-overlay"></div>
+  <header id="hero">
+    <canvas id="bg" aria-hidden="true"></canvas>
 
-  <div class="hero-content">
-    <div class="title-wrapper">
-      <h1>Amplification</h1>
+    <h1>Amplification</h1>
+
+    <p id="info">
+      <time datetime="2026-11-09/2026-11-13">November 9–13, 2026</time>
+      <br />
+      Boston
+    </p>
+
+    <div id="opening">
+      <p>Keynote and exhibition opening</p>
+      <time datetime="2026-11-11">November 11, 2026</time>
     </div>
-    <div class="hero-desc">
-      <span class="hero-info-date">November 9–13, 2026 - Boston</span>
-      
-    </div>
-    <div class="hero-top-info">
- 
-     <span class="conf-name">
-      <p>Keynote and exhibiton opening</p>
-      <p>November 11, 2026</p>
-    </span>
 
-    <span class="conf-name">
-      <p>Event hold alongside <a href="https://ieeevis.org/year/2026/welcome/" target="_blank" class="conf-vis-link">IEEE VIS</a></p>
-      <p>November 9–13, 2026 - Boston</p>
-    </span>
- 
-     </div>
-    
-    
-  </div>
-
-  <div class="scroll-line"><span class="scroll-text-desktop">Scroll</span><span class="scroll-text-mobile">Tap and scroll to play sound</span></div>
-</section>
-
-<!-- ── THEME INTRO ── -->
-<section id="theme-intro">
-  <div class="section-wrap">
-    <blockquote class="theme-quote">Amplification — visualizations as instruments that make the quiet legible and the overlooked visible. What does it mean to turn up the signal on data, stories, and communities that the world tends not to hear?</blockquote>
-    <!-- <div class="theme-body">
-      <h2 class="theme-body-label">This year's theme</h2>
+    <div id="alongside">
       <p>
-        As the world becomes increasingly shaped by algorithmic systems and automated decision-making, visualization must evolve beyond a purely technical act. It becomes an ethical, cultural, and emotional process. How can data visualization embody collective care? What practices emerge when we approach visualizing data as a responsible, thoughtful, and caring act?
-      </p> <p>  VISAP 2025 invites participants to reimagine data not as static or neutral, but as a living archive, a vessel for memory, identity, and shared histories. In this context, care is not sentimentality; it is relational and collective. It acknowledges the responsibilities we bear toward the data we use and the lives it represents. We are called to visualize with empathy to illuminate environmental issues, uncover hidden collective stories, surface silenced narratives, and expose systemic biases.
-       </p> <p> VISAP 2025: Collective Care seeks works that explore data through frameworks of reciprocity, solidarity, and ethical collaboration. We welcome projects that resist extractive or exploitative data practices and instead propose alternative aesthetics and methodologies rooted in care, as data is never neutral. From speculative design to AI co-authorship, from community-centered storytelling to environmental data engagement, we are looking for work that reimagines the relationship between data, technology, and humanity.
-In embracing collective care, we advocate for a future in which data visualization becomes a process not only for insight, but for restoration, connection, and long-term social resilience. We ask:                                        
-       </p><p> What becomes possible when data is treated as a space for healing, resistance, and belonging? How can we co-author meaning with algorithms with care, and engage AI as a collaborator in envisioning critical, thoughtful, future-oriented ideations? How might we take care of our environment and close-related communities by making use of data visualization? And when we give data physical form, how might the materials we choose and their environmental impact reflect the values of care we uphold?
+        Event held alongside
+        <a href="https://ieeevis.org/year/2026/welcome/">IEEE VIS</a>
       </p>
-    </div> -->
-  </div>
-</section>
-
-<!-- ── ABOUT ── -->
-<section id="about" class="alt">
-  <div class="section-wrap">
-    <div class="theme-body">
-      <h2 class="theme-body-label">About VISAP</h2>
-      <p>The IEEE VIS Arts Program (VISAP) is a dedicated venue for visualization researchers, designers, and artists exploring innovative approaches at the intersection of visualization and the arts.</p>
-      <p>VISAP brings together practitioners who push the boundaries of what data visualization can be — from scientific rigor to artistic expression, from community storytelling to critical speculation.</p>
-      <p>Held annually as part of IEEE VIS, the premier forum for visualization and visual analytics, VISAP provides a unique platform where technical and artistic communities meet.</p>
+      <time datetime="2026-11-09/2026-11-13">November 9–13, 2026</time>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ── SUBMISSIONS ── -->
-<section id="submissions">
-  <div class="section-wrap">
-    <div class="theme-body">
-      <h2 class="theme-body-label">Call for Submissions</h2>
-      <p>We welcome contributions across three tracks, all engaging with the theme of Amplification. All submissions are made via the IEEE VGTC Electronic Conference System (PCS). VISAP uses a single-blind review process.</p>
-    </div>
+  <main>
+    <section id="theme">
+      <blockquote>
+        Visualizations as instruments that make the quiet legible and the
+        overlooked visible. What does it mean to turn up the signal on data, stories, and
+        communities that the world tends not to hear?
+      </blockquote>
+    </section>
 
-    <div class="sub-types">
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="100%" height="100%" viewBox="0 0 491 515" fill="none" preserveAspectRatio="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="blobYellow" x="-80" y="-80" width="651" height="675" filterUnits="userSpaceOnUse">
-                <feGaussianBlur stdDeviation="18"/>
-              </filter>
-            </defs>
-            <path d="M114.381 47.2447C81.9812 61.2334 61 93.1455 61 128.436V161.684C61 173.697 59.4427 185.66 56.367 197.272L49.5 223.2L41.9349 272.572C40.6468 280.979 40 289.471 40 297.976V324.731C40 402.586 103.114 465.7 180.969 465.7L317.847 473.7C377.538 479.017 430.87 436.485 438.967 377.107L448.769 305.226C450.585 291.914 450.969 278.445 449.916 265.051L437.403 105.822C437.135 102.413 436.587 99.0323 435.766 95.7133C429.092 68.7502 405.405 49.44 377.65 48.3351L180.969 40.5052L150.885 40.0121C138.342 39.8065 125.898 42.272 114.381 47.2447Z" fill="#E4DC35" fill-opacity="0.65" filter="url(#blobYellow)"/>
-          </svg>
-        </div>
+    <section id="about">
+      <h2>About VISAP</h2>
+      <p>
+        The IEEE VIS Arts Program (VISAP) is a dedicated venue for
+        visualization researchers, designers, and artists exploring innovative
+        approaches at the intersection of visualization and the arts.
+      </p>
+      <p>
+        VISAP brings together practitioners who push the boundaries of what
+        data visualization can be — from scientific rigor to artistic
+        expression, from community storytelling to critical speculation.
+      </p>
+      <p>
+        Held annually as part of IEEE VIS, the premier forum for visualization
+        and visual analytics, VISAP provides a unique platform where technical
+        and artistic communities meet.
+      </p>
+    </section>
 
-        <div class="sub-blob-noise"></div>
+    <section id="submissions">
+      <h2>Call for Submissions</h2>
+      <p>
+        We welcome contributions across three tracks, all engaging with the
+        theme of Amplification. All submissions are made via the IEEE VGTC
+        Electronic Conference System (PCS). VISAP uses a single-blind review
+        process.
+      </p>
+
+      <article>
         <h3>Paper</h3>
-        <p>Research, reflections, and critical writing on creative visualization practice. Technical descriptions, philosophical meditations, design case studies, and interpretations of visualization approaches. Up to 10 pages, IEEE Conference format.</p>
-      </div>
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="100%" height="100%" viewBox="0 0 471 515" fill="none" preserveAspectRatio="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="blobOrange" x="-80" y="-80" width="631" height="675" filterUnits="userSpaceOnUse">
-                <feGaussianBlur stdDeviation="18"/>
-              </filter>
-            </defs>
-            <path d="M93.0187 48.8841C61.585 63.9397 41.5819 95.6996 41.5819 130.553V194.83V245.71V311.634L40.7906 319.179C30.8367 414.089 116.491 491.03 209.793 470.989C219.477 468.909 229.354 467.86 239.258 467.86H320.634C330.315 467.86 339.948 466.518 349.26 463.872C390.284 452.217 420.146 416.853 424.765 374.456L429.903 327.284C431.037 316.872 431.235 306.379 430.495 295.932L421.221 165.034C418.608 128.138 400.858 93.9646 372.176 70.6082C348.275 51.1446 318.394 40.517 287.571 40.517H161.406L133.781 40.0147C119.689 39.7584 105.731 42.7955 93.0187 48.8841Z" fill="#F6836E" fill-opacity="0.6" filter="url(#blobOrange)"/>
-          </svg>
-        </div>
+        <p class="text-smaller">
+          Research, reflections, and critical writing on creative
+          visualization practice. Technical descriptions, philosophical
+          meditations, design case studies, and interpretations of
+          visualization approaches. Up to 10 pages, IEEE Conference format.
+        </p>
+      </article>
 
-        <div class="sub-blob-noise"></div>
+      <article>
         <h3>Pictorial</h3>
-        <p>Visual descriptions and reflections on the design process of visualization works. Pictorials and annotated portfolios that communicate practice in rich, heavily visual ways. Up to 16 pages, VISAP Pictorial format.</p>
-      </div>
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="100%" height="100%" viewBox="0 0 470 497" fill="none" preserveAspectRatio="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="blobLavender" x="-80" y="-80" width="630" height="657" filterUnits="userSpaceOnUse">
-                <feGaussianBlur stdDeviation="18"/>
-              </filter>
-            </defs>
-            <path d="M53.6461 59.6484C44.8416 69.8888 40 82.9464 40 96.4513V206.08V256.665V337.536C40 349.146 41.6923 360.693 45.0235 371.815C60.1665 422.371 106.688 457 159.464 457H175.673H310.379C324.909 457 339.306 454.23 352.798 448.838C386.824 435.239 412.268 406.151 421.219 370.618L425.33 354.3C429.087 339.386 430.484 323.975 429.472 308.628L417.417 125.961C416.797 116.563 414.738 107.316 411.311 98.5425C397.522 63.2384 363.498 40 325.596 40H160.123L96.4508 40.0003C80.0014 40.0004 64.3702 47.1754 53.6461 59.6484Z" fill="#B48CBE" fill-opacity="0.6" filter="url(#blobLavender)"/>
-          </svg>
-        </div>
+        <p class="text-smaller">
+          Visual descriptions and reflections on the design process of
+          visualization works. Pictorials and annotated portfolios that
+          communicate practice in rich, heavily visual ways. Up to 16 pages,
+          VISAP Pictorial format.
+        </p>
+      </article>
 
-        <div class="sub-blob-noise"></div>
+      <article>
         <h3>Artwork</h3>
-        <p>Data-driven artworks in any medium — interactive projections, sculptures, digital prints, video, VR/AR, sonification, and more. Free-form 2-page proposal with supporting images or video.</p>
-      </div>
-    </div>
+        <p class="text-smaller">
+          Data-driven artworks in any medium — interactive projections,
+          sculptures, digital prints, video, VR/AR, sonification, and more.
+          Free-form 2-page proposal with supporting images or video.
+        </p>
+      </article>
 
-    <div class="sub-deadline-row">
-      <div class="deadline-cell">
-        <p class="deadline-label">Call Opens</p>
-        <p class="deadline-value">May 2026</p>
-      </div>
-      <div class="deadline-cell">
-        <p class="deadline-label">Submission Deadline</p>
-        <p class="deadline-value">TBD — June 2026</p>
-      </div>
-      <div class="deadline-cell">
-        <p class="deadline-label">Notifications</p>
-        <p class="deadline-value">TBD — July 2026</p>
-      </div>
-      <div class="deadline-cell">
-        <p class="deadline-label">Camera Ready</p>
-        <p class="deadline-value">TBD — August 2026</p>
-      </div>
-    </div>
+      <div id="dates">
+        <dl>
+          <div>
+            <dt>Call Opens</dt>
+            <dd><time datetime="2026-05">May 2026</time></dd>
+          </div>
 
-   <div class="theme-body">
-      <br><br><p>All deadlines at 11:59 pm AoE. Detailed submission guidelines will be published when the call opens.</p>
-    </div>
-    
-  </div>
-</section>
+          <div>
+            <dt>Submission Deadline</dt>
+            <dd><time datetime="2026-06">TBD — June 2026</time></dd>
+          </div>
 
-<!-- ── ORGANIZERS ── -->
-<section id="organizers" class="alt">
-  <div class="section-wrap">
-    <div class="theme-body" style="margin-bottom: 0;">
-      <h2 class="theme-body-label">Organisers</h2>
-    </div>
+          <div>
+            <dt>Notifications</dt>
+            <dd><time datetime="2026-07">TBD — July 2026</time></dd>
+          </div>
 
-    <div class="sub-types" style="margin-top: 1.75rem;">
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="491" height="515" viewBox="0 0 491 515" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobYellow)">
-              <path d="M114.381 47.2447C81.9812 61.2334 61 93.1455 61 128.436V161.684C61 173.697 59.4427 185.66 56.367 197.272L49.5 223.2L41.9349 272.572C40.6468 280.979 40 289.471 40 297.976V324.731C40 402.586 103.114 465.7 180.969 465.7L317.847 473.7C377.538 479.017 430.87 436.485 438.967 377.107L448.769 305.226C450.585 291.914 450.969 278.445 449.916 265.051L437.403 105.822C437.135 102.413 436.587 99.0323 435.766 95.7133C429.092 68.7502 405.405 49.44 377.65 48.3351L180.969 40.5052L150.885 40.0121C138.342 39.8065 125.898 42.272 114.381 47.2447Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobYellow" x="0" y="0" width="490.495" height="514.148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
+          <div>
+            <dt>Camera Ready</dt>
+            <dd><time datetime="2026-08">TBD — August 2026</time></dd>
+          </div>
+        </dl>
+        <p>
+          <br />
+          All deadlines at 11:59pm AoE.
+          <br />
+          Detailed submission guidelines will be published when the call
+          opens.
+        </p>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <h2>Organizers</h2>
+
+      <article>
+        <h3>
+          <a href="https://dariorodighiero.com" target="_blank">Dario Rodighiero</a>
+        </h3>
+        <p class="affiliation">University of Groningen</p>
+        <p class="text-smaller">
+          Assistant Professor of STS at Campus Fryslân, Faculty Associate at
+          the Berkman Klein Center and Principal at metaLAB (at) Harvard /
+          Berlin / Basel. His research investigates how complex information
+          can be revealed through the combination of computational techniques
+          and design, with a focus on the mapping of science and digital
+          cultural archives. He is the author of Mapping Affinities:
+          Democratizing Data Visualization (Métis Presses, 2021), holds a PhD
+          from EPFL, and has held research positions at MIT, Sciences Po, and
+          the European Commission.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          <a href="https://civicdatadesignlab.mit.edu/Sarah-Williams" target="_blank">Sarah Williams</a>
+        </h3>
+        <p class="affiliation">MIT</p>
+        <p class="text-smaller">
+          Director of the Civic Data Design Lab and Associate Professor of
+          Technology and Urban Planning at MIT. Her research uses data
+          collection, mapping, and visualization to address issues of equity
+          and urban development in cities around the world. She has led
+          projects across sub-Saharan Africa, China, and the Americas,
+          developing open-source tools that put data analysis in the hands of
+          communities and policymakers. Her work bridges design and policy,
+          and has been recognized for its impact on urban planning practice
+          and civic technology.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          <a href="https://www.zhangweidi.com" target="_blank">Weidi Zhang</a>
+        </h3>
+        <p class="affiliation">Arizona State University</p>
+        <p class="text-smaller">
+          Tenure-track Assistant Professor of Immersive Experience Design at
+          the MIX Center, Arizona State University. Her research explores a
+          speculative assemblage of artificial memories and language at the
+          intersection of immersive media design, experimental data
+          visualization, and interactive AI art. Her work has earned
+          distinctions including Best in Show at ACM SIGGRAPH and Honorary
+          Mention at Prix Ars Electronica. She holds a PhD from UC Santa
+          Barbara and has exhibited at CCCB, V2_ Lab, Artechouse NYC, and
+          festivals across Europe, Asia, and the Americas.
+        </p>
+      </article>
+
+      <h2 class="design-chair">Design Chair</h2>
+
+      <article>
+        <h3>
+          <a href="https://www.supsi.ch/ginevra-terenghi" target="_blank">Ginevra Terenghi</a>
+        </h3>
+        <p class="affiliation">SUPSI</p>
+        <p class="text-smaller">
+          Design collaborator at the University of Applied Sciences and Arts
+          of Southern Switzerland (SUPSI), she recently completed her PhD at
+          Brunel University London. Her work explores participatory approaches
+          to data physicalization to improve self-awareness, collective
+          meaning-making, and critical reflection. While her PhD focused on
+          healthcare, examining how physical variables can support the
+          perception and communication of symptoms, her broader research
+          considers materiality for interpretation.
+        </p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <dl>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:art@ieeevis.org">art@ieeevis.org</a>
+            <p>
+              For questions about submissions, sponsorship, or the program.
+            </p>
+          </dd>
         </div>
 
-        <h3><a href="https://dariorodighiero.com" target="_blank" class="org-link">Dario Rodighiero</a></h3>
-        <p class="org-affil-tag">University of Groningen</p>
-        <p>Assistant Professor of STS at Campus Fryslân, Faculty Associate at the Berkman Klein Center and Principal at metaLAB (at) Harvard / Berlin / Basel. His research investigates how complex information can be revealed through the combination of computational techniques and design, with a focus on the mapping of science and digital cultural archives. He is the author of <em>Mapping Affinities: Democratizing Data Visualization</em> (Métis Presses, 2021), holds a PhD from EPFL, and has held research positions at MIT, Sciences Po, and the European Commission.</p>
-      </div>
-
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="471" height="515" viewBox="0 0 471 515" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobOrange)">
-              <path d="M93.0187 48.8841C61.585 63.9397 41.5819 95.6996 41.5819 130.553V194.83V245.71V311.634L40.7906 319.179C30.8367 414.089 116.491 491.03 209.793 470.989C219.477 468.909 229.354 467.86 239.258 467.86H320.634C330.315 467.86 339.948 466.518 349.26 463.872C390.284 452.217 420.146 416.853 424.765 374.456L429.903 327.284C431.037 316.872 431.235 306.379 430.495 295.932L421.221 165.034C418.608 128.138 400.858 93.9646 372.176 70.6082C348.275 51.1446 318.394 40.517 287.571 40.517H161.406L133.781 40.0147C119.689 39.7584 105.731 42.7955 93.0187 48.8841Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobOrange" x="0" y="0" width="470.933" height="514.188" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
+        <div>
+          <dt>Part of</dt>
+          <dd>
+            <a href="https://ieeevis.org" target="_blank">ieeevis.org</a>
+            <p>
+              The premier forum for advances in visualization and visual
+              analytics.
+            </p>
+          </dd>
         </div>
 
-        <h3><a href="https://civicdatadesignlab.mit.edu/Sarah-Williams" target="_blank" class="org-link">Sarah Williams</a></h3>
-        <p class="org-affil-tag">MIT</p>
-        <p>Director of the Civic Data Design Lab and Associate Professor of Technology and Urban Planning at MIT. Her research uses data collection, mapping, and visualization to address issues of equity and urban development in cities around the world. She has led projects across sub-Saharan Africa, China, and the Americas, developing open-source tools that put data analysis in the hands of communities and policymakers. Her work bridges design and policy, and has been recognized for its impact on urban planning practice and civic technology.</p>
-      </div>
-
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="470" height="497" viewBox="0 0 470 497" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobLavender)">
-              <path d="M53.6461 59.6484C44.8416 69.8888 40 82.9464 40 96.4513V206.08V256.665V337.536C40 349.146 41.6923 360.693 45.0235 371.815C60.1665 422.371 106.688 457 159.464 457H175.673H310.379C324.909 457 339.306 454.23 352.798 448.838C386.824 435.239 412.268 406.151 421.219 370.618L425.33 354.3C429.087 339.386 430.484 323.975 429.472 308.628L417.417 125.961C416.797 116.563 414.738 107.316 411.311 98.5425C397.522 63.2384 363.498 40 325.596 40H160.123L96.4508 40.0003C80.0014 40.0004 64.3702 47.1754 53.6461 59.6484Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobLavender" x="0" y="0" width="469.791" height="497" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
+        <div>
+          <dt>Instagram</dt>
+          <dd>
+            <a href="https://www.instagram.com/visapnet/" target="_blank">@visapnet</a>
+            <p>
+              Updates on the program, accepted works, and the annual event.
+            </p>
+          </dd>
         </div>
 
-        <h3><a href="https://www.zhangweidi.com" target="_blank" class="org-link">Weidi Zhang</a></h3>
-        <p class="org-affil-tag">Arizona State University</p>
-        <p>Tenure-track Assistant Professor of Immersive Experience Design at the MIX Center, Arizona State University. Her research explores a speculative assemblage of artificial memories and language at the intersection of immersive media design, experimental data visualization, and interactive AI art. Her work has earned distinctions including Best in Show at ACM SIGGRAPH and Honorary Mention at Prix Ars Electronica. She holds a PhD from UC Santa Barbara and has exhibited at CCCB, V2_ Lab, Artechouse NYC, and festivals across Europe, Asia, and the Americas.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-wrap">
-    <div class="theme-body" style="margin-bottom: 0;">
-      <h2 class="theme-body-label">Design Chair</h2>
-    </div>
-
-    <div class="sub-types" style="margin-top: 1.75rem;">
-      <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="491" height="515" viewBox="0 0 491 515" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobYellow)">
-              <path d="M114.381 47.2447C81.9812 61.2334 61 93.1455 61 128.436V161.684C61 173.697 59.4427 185.66 56.367 197.272L49.5 223.2L41.9349 272.572C40.6468 280.979 40 289.471 40 297.976V324.731C40 402.586 103.114 465.7 180.969 465.7L317.847 473.7C377.538 479.017 430.87 436.485 438.967 377.107L448.769 305.226C450.585 291.914 450.969 278.445 449.916 265.051L437.403 105.822C437.135 102.413 436.587 99.0323 435.766 95.7133C429.092 68.7502 405.405 49.44 377.65 48.3351L180.969 40.5052L150.885 40.0121C138.342 39.8065 125.898 42.272 114.381 47.2447Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobYellow" x="0" y="0" width="490.495" height="514.148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd>
+            <a href="https://www.linkedin.com/company/ieeevisap/" target="_blank">VISAP Program</a>
+            <p>
+              Connect with the VISAP community and stay informed on open
+              calls.
+            </p>
+          </dd>
         </div>
+      </dl>
+    </section>
+  </main>
 
-        <h3><a href="https://www.supsi.ch/ginevra-terenghi" target="_blank" class="org-link">Ginevra Terenghi</a></h3>
-        <p class="org-affil-tag">SUPSI</p>
-        <p>Design collaborator at the University of Applied Sciences and Arts of Southern Switzerland (SUPSI), she recently completed her PhD at Brunel University London. Her work explores participatory approaches to data physicalization to improve self-awareness, collective meaning-making, and critical reflection. While her PhD focused on healthcare, examining how physical variables can support the perception and communication of symptoms, her broader research considers materiality for interpretation.</p>
-      </div>
+  <footer>
+    <p>© 2026 IEEE VIS Arts Program</p>
+    <nav aria-label="Previous editions">
+      <span>Previous editions:</span>
+      <ul>
+        <li><a href="https://visap.net/2025" target="_blank">2025</a></li>
+        <li><a href="https://visap.net/2024" target="_blank">2024</a></li>
+        <li><a href="https://visap.net/2023" target="_blank">2023</a></li>
+        <li><a href="https://visap.net/2022" target="_blank">2022</a></li>
+        <li><a href="https://visap.net/2021" target="_blank">2021</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
 
-      <!-- <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="471" height="515" viewBox="0 0 471 515" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobOrange)">
-              <path d="M93.0187 48.8841C61.585 63.9397 41.5819 95.6996 41.5819 130.553V194.83V245.71V311.634L40.7906 319.179C30.8367 414.089 116.491 491.03 209.793 470.989C219.477 468.909 229.354 467.86 239.258 467.86H320.634C330.315 467.86 339.948 466.518 349.26 463.872C390.284 452.217 420.146 416.853 424.765 374.456L429.903 327.284C431.037 316.872 431.235 306.379 430.495 295.932L421.221 165.034C418.608 128.138 400.858 93.9646 372.176 70.6082C348.275 51.1446 318.394 40.517 287.571 40.517H161.406L133.781 40.0147C119.689 39.7584 105.731 42.7955 93.0187 48.8841Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobOrange" x="0" y="0" width="470.933" height="514.188" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
-        </div>
-
-        <h3><a href="https://civicdatadesignlab.mit.edu/Sarah-Williams" target="_blank" class="org-link">Sarah Williams</a></h3>
-        <p class="org-affil-tag">MIT</p>
-        <p>Director of the Civic Data Design Lab and Associate Professor of Technology and Urban Planning at MIT. Her research uses data collection, mapping, and visualization to address issues of equity and urban development in cities around the world. She has led projects across sub-Saharan Africa, China, and the Americas, developing open-source tools that put data analysis in the hands of communities and policymakers. Her work bridges design and policy, and has been recognized for its impact on urban planning practice and civic technology.</p>
-      </div> -->
-
-      <!-- <div class="sub-type">
-        <div class="sub-blob-svg">
-          <svg width="470" height="497" viewBox="0 0 470 497" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <g filter="url(#orgBlobLavender)">
-              <path d="M53.6461 59.6484C44.8416 69.8888 40 82.9464 40 96.4513V206.08V256.665V337.536C40 349.146 41.6923 360.693 45.0235 371.815C60.1665 422.371 106.688 457 159.464 457H175.673H310.379C324.909 457 339.306 454.23 352.798 448.838C386.824 435.239 412.268 406.151 421.219 370.618L425.33 354.3C429.087 339.386 430.484 323.975 429.472 308.628L417.417 125.961C416.797 116.563 414.738 107.316 411.311 98.5425C397.522 63.2384 363.498 40 325.596 40H160.123L96.4508 40.0003C80.0014 40.0004 64.3702 47.1754 53.6461 59.6484Z" fill="#FAFAF8"/>
-            </g>
-            <defs>
-              <filter id="orgBlobLavender" x="0" y="0" width="469.791" height="497" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur"/>
-              </filter>
-            </defs>
-          </svg>
-        </div>
-
-        <h3><a href="https://www.zhangweidi.com" target="_blank" class="org-link">Weidi Zhang</a></h3>
-        <p class="org-affil-tag">Arizona State University</p>
-        <p>Tenure-track Assistant Professor of Immersive Experience Design at the MIX Center, Arizona State University. Her research explores a speculative assemblage of artificial memories and language at the intersection of immersive media design, experimental data visualization, and interactive AI art. Her work has earned distinctions including Best in Show at ACM SIGGRAPH and Honorary Mention at Prix Ars Electronica. She holds a PhD from UC Santa Barbara and has exhibited at CCCB, V2_ Lab, Artechouse NYC, and festivals across Europe, Asia, and the Americas.</p>
-      </div> -->
-    </div>
-
-
-
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="section-wrap">
-    <div class="theme-body" style="margin-bottom: 0;">
-      <h2 class="theme-body-label">Get in Touch</h2>
-    </div>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-label">Email</p>
-        <a href="mailto:art@ieeevis.org" class="contact-email">art@ieeevis.org →</a>
-        <p class="contact-context">For questions about submissions, sponsorship, or the program.</p>
-      </div>
-      <div>
-        <p class="contact-label">Part of</p>
-        <a href="https://ieeevis.org" target="_blank" class="contact-email">ieeevis.org →</a>
-        <p class="contact-context">The premier forum for advances in visualization and visual analytics.</p>
-      </div>
-      <div>
-        <p class="contact-label">Instagram</p>
-        <a href="https://www.instagram.com/visapieeevis/" target="_blank" class="contact-email">@visapieeevis →</a>
-        <p class="contact-context">Updates on the program, accepted works, and the annual event.</p>
-      </div>
-      <div>
-        <p class="contact-label">LinkedIn</p>
-        <a href="https://www.linkedin.com/company/visap-ieee-vis-arts-program/" target="_blank" class="contact-email">VISAP Program →</a>
-        <p class="contact-context">Connect with the VISAP community and stay informed on open calls.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <p class="footer-copy">© 2026 IEEE VIS Arts Program</p>
-    <div class="footer-links">
-      <span class="footer-copy">Previous editions:</span>
-      <a href="https://visap.net/2025" target="_blank">VISAP 2025</a>
-      <a href="https://visap.net/2024" target="_blank">VISAP 2024</a>
-      <a href="https://visap.net/2023" target="_blank">VISAP 2023</a>
-      <a href="https://visap.net/2022" target="_blank">VISAP 2022</a>
-      <a href="https://visap.net/2021" target="_blank">VISAP 2021</a>
-    </div>
-  </div>
-</footer>
-
-<!-- ── TWEAKS ── -->
-<div id="tweaks-panel">
-  <h4>Tweaks</h4>
-  <div class="tweak-row">
-    <div class="tweak-label">Color accent</div>
-    <div class="tweak-btns">
-      <button class="tweak-btn active" onclick="setAccent('coral',this)">Coral–Violet</button>
-      <button class="tweak-btn" onclick="setAccent('teal',this)">Teal–Cobalt</button>
-      <button class="tweak-btn" onclick="setAccent('mono',this)">Mono</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // ── ACCENT PALETTE SWITCHER ──
-  function setAccent(name, btn) {
-    const palettes = {
-      coral: { a: '#E84545', b: '#8B3FC8' },
-      teal:  { a: '#0EA89E', b: '#2563EB' },
-      mono:  { a: '#3A3A3A', b: '#888888' },
-    };
-    const p = palettes[name];
-    document.documentElement.style.setProperty('--accent-a', p.a);
-    document.documentElement.style.setProperty('--accent-b', p.b);
-    document.querySelectorAll('.tweak-btn').forEach(b => {
-      if (b.onclick && b.onclick.toString().includes('setAccent')) b.classList.remove('active');
-    });
-    btn.classList.add('active');
-  }
-
-  // ── TWEAKS PANEL TOGGLE (edit mode) ──
-  window.addEventListener('message', e => {
-    if (e.data.type === '__activate_edit_mode') document.getElementById('tweaks-panel').style.display = 'block';
-    if (e.data.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
-  });
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-
-  // ── MOBILE MENU ──
-  const mobileMenu = document.getElementById('mobileMenu');
-  const hamburger  = document.getElementById('navHamburger');
-  const menuLinks  = document.querySelectorAll('.mobile-menu-link');
-
-  function openMenu() {
-    _menuIsOpen = true;
-    mobileMenu.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    applyNavBg();
-  }
-  function closeMenu() {
-    _menuIsOpen = false;
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-    applyNavBg();
-  }
-
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  menuLinks.forEach(l => l.addEventListener('click', closeMenu));
-
-  // Sync the mobile sound toggle with the main one
-  const soundToggleMobile = document.getElementById('soundToggleMobile');
-  if (soundToggleMobile) {
-    soundToggleMobile.addEventListener('click', e => {
-      e.stopPropagation();
-      document.getElementById('soundToggle').click();
-      soundToggleMobile.innerText = document.getElementById('soundToggle').innerText;
-    });
-  }
-
-  // ── NAV SCROLL BACKGROUND ──
-  const _navBgEl      = document.querySelector('nav');
-  const _navHeroEl    = document.getElementById('home');
-  const _navFrozenBg  = document.getElementById('navFrozenBg');
-  let   _menuIsOpen   = false;
-  function applyNavBg() {
-    if (!_navFrozenBg) return;
-    const heroBottom = _navHeroEl ? _navHeroEl.getBoundingClientRect().bottom : 0;
-    const navH = _navBgEl ? _navBgEl.offsetHeight : 80;
-    if (!_menuIsOpen && heroBottom <= navH) {
-      _navFrozenBg.classList.add('visible');
-    } else {
-      _navFrozenBg.classList.remove('visible');
-    }
-  }
-  window.addEventListener('scroll', applyNavBg, { passive: true });
-  applyNavBg();
-
-  // ── LINK HOVER COLOURS ──
-  (function assignLinkColors() {
-    const palette = ['#063F42', '#E4DC35', '#F6836E', '#B48CBE'];
-    document.querySelectorAll('a:not(.nav-logo)').forEach(function(a) {
-      a.addEventListener('mouseenter', function() {
-        a.style.setProperty('--link-hover-color', palette[Math.floor(Math.random() * palette.length)]);
-      });
-    });
-  })();
-
-  // ── ENTRANCE ANIMATION ──
-  const style = document.createElement('style');
-  style.textContent = `
-    .title-wrapper, .hero-desc, .hero-top-info {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s ease forwards;
-    }
-    .title-wrapper  { animation-delay: 0.1s; }
-    .hero-top-info  { animation-delay: 0.35s; }
-    .hero-desc      { animation-delay: 0.55s; }
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-  `;
-  document.head.appendChild(style);
-</script>
-
-
-
-<script src="audio_logic_v2.js"></script>
-
-<script>
-  // ── RIPPLE EFFECT ──
-  (function () {
-    const canvas = document.getElementById('ripple-canvas');
-    const ctx    = canvas.getContext('2d');
-    const hero   = document.querySelector('.hero');
-
-    const blobColorMap = {
-      'blob-teal':     [6,   63,  66],
-      'blob-orange':   [246, 106, 88],
-      'blob-lavender': [182, 104, 220],
-      'blob-yellow':   [228, 220, 53],
-      'blob-pink':     [240, 108, 120],
-    };
-
-    const ripples = [];
-    let lastRippleTime = 0;
-
-    function resize() {
-      canvas.width  = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // Returns blob centres in canvas-local coords + their colour
-    function getBlobCentres() {
-      const heroRect = hero.getBoundingClientRect();
-      const seen = new Map();
-      document.querySelectorAll('.svg-blob').forEach(el => {
-        const cls = Array.from(el.classList).find(c => blobColorMap[c]);
-        if (!cls || seen.has(cls)) return;
-        const r  = el.getBoundingClientRect();
-        seen.set(cls, {
-          x:   r.left + r.width  / 2 - heroRect.left,
-          y:   r.top  + r.height / 2 - heroRect.top,
-          rgb: blobColorMap[cls],
-        });
-      });
-      return Array.from(seen.values());
-    }
-
-    function nearestBlobInfo(clientX, clientY) {
-      const heroRect = hero.getBoundingClientRect();
-      let minDist = Infinity, rgb = [246, 106, 88], cx = clientX - heroRect.left, cy = clientY - heroRect.top;
-      document.querySelectorAll('.svg-blob').forEach(el => {
-        const r   = el.getBoundingClientRect();
-        const ecx = r.left + r.width  / 2;
-        const ecy = r.top  + r.height / 2;
-        const d   = Math.hypot(clientX - ecx, clientY - ecy);
-        if (d < minDist) {
-          minDist = d;
-          const cls = Array.from(el.classList).find(c => blobColorMap[c]);
-          if (cls) { rgb = blobColorMap[cls]; cx = ecx - heroRect.left; cy = ecy - heroRect.top; }
-        }
-      });
-      return { rgb, cx, cy };
-    }
-
-    function lerpRgb(a, b, t) {
-      return [
-        Math.round(a[0] + (b[0] - a[0]) * t),
-        Math.round(a[1] + (b[1] - a[1]) * t),
-        Math.round(a[2] + (b[2] - a[2]) * t),
-      ];
-    }
-
-    // Smooth organic ring using quadratic bezier through jittered radii
-    function drawOrganicRing(cx, cy, radius, alpha, rgb, phase) {
-      const N      = 20;
-      const irreg  = radius * 0.22;
-      const pts    = [];
-
-      for (let i = 0; i < N; i++) {
-        const a = (i / N) * Math.PI * 2;
-        const r = radius
-          + irreg * Math.sin(3 * a + phase)
-          + irreg * 0.45 * Math.sin(7 * a - phase * 1.4)
-          + irreg * 0.2  * Math.sin(2 * a + phase * 0.6)
-          + irreg * 0.12 * Math.sin(11 * a + phase * 2.1);
-        pts.push({ x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) });
-      }
-
-      ctx.beginPath();
-      for (let i = 0; i < N; i++) {
-        const p  = pts[i];
-        const n  = pts[(i + 1) % N];
-        const mx = (p.x + n.x) / 2;
-        const my = (p.y + n.y) / 2;
-        if (i === 0) ctx.moveTo(mx, my);
-        ctx.quadraticCurveTo(p.x, p.y, mx, my);
-      }
-      ctx.closePath();
-
-      const [r, g, b] = rgb;
-      // Radial gradient approximates ring fade even on non-circular path
-      const grad = ctx.createRadialGradient(cx, cy, radius * 0.4, cx, cy, radius * 1.3);
-      grad.addColorStop(0,    `rgba(${r},${g},${b},0)`);
-      grad.addColorStop(0.42, `rgba(${r},${g},${b},${(alpha * 0.9).toFixed(3)})`);
-      grad.addColorStop(0.58, `rgba(${r},${g},${b},${alpha.toFixed(3)})`);
-      grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
-
-      ctx.fillStyle = grad;
-      ctx.fill();
-    }
-
-    document.addEventListener('mousemove', e => {
-      const rect = hero.getBoundingClientRect();
-      if (e.clientY < rect.top || e.clientY > rect.bottom) return;
-
-      const now = Date.now();
-      if (now - lastRippleTime < 32) return;
-      lastRippleTime = now;
-
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const { rgb } = nearestBlobInfo(e.clientX, e.clientY);
-
-      // Pick a different-coloured blob to drift toward for exchange
-      const centres     = getBlobCentres();
-      const diffCentres = centres.filter(c => c.rgb.join() !== rgb.join());
-
-      // Spawn two ripples per tick: one tight & fast, one wide & slow — builds a rich tail
-      const spawnCount = 2;
-      for (let s = 0; s < spawnCount; s++) {
-        const target = diffCentres.length
-          ? diffCentres[Math.floor(Math.random() * diffCentres.length)]
-          : null;
-
-        const driftAngle = target
-          ? Math.atan2(target.y - y, target.x - x) + (Math.random() - 0.5) * 0.7
-          : Math.random() * Math.PI * 2;
-        const driftSpeed = 0.3 + Math.random() * 0.35;
-
-        ripples.push({
-          x: x + (Math.random() - 0.5) * 8,
-          y: y + (Math.random() - 0.5) * 8,
-          rgb,
-          targetRgb:  target ? target.rgb : rgb,
-          radius:     4,
-          maxRadius:  200 + Math.random() * 160,   // much further reach
-          opacity:    s === 0 ? 0.62 : 0.45,        // first ring stronger
-          speed:      s === 0 ? 0.75 + Math.random() * 0.5 : 0.5 + Math.random() * 0.4,
-          vx:         Math.cos(driftAngle) * driftSpeed,
-          vy:         Math.sin(driftAngle) * driftSpeed,
-          phase:      Math.random() * Math.PI * 2,
-        });
-      }
-    });
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const r        = ripples[i];
-        r.radius      += r.speed;
-        r.x           += r.vx;
-        r.y           += r.vy;
-        r.phase       += 0.028;  // shape morphs as ring expands
-
-        const progress = r.radius / r.maxRadius;
-        const alpha    = r.opacity * (1 - progress);
-
-        if (alpha <= 0.008) { ripples.splice(i, 1); continue; }
-
-        // Colour walks from origin blob toward target blob
-        const blendRgb = lerpRgb(r.rgb, r.targetRgb, progress * 0.75);
-        drawOrganicRing(r.x, r.y, r.radius, alpha, blendRgb, r.phase);
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    // Don't run the loop on touch-only devices — ripples only trigger on mousemove
-    const _isTouchOnly = 'ontouchstart' in window && navigator.maxTouchPoints > 0;
-    if (!_isTouchOnly) draw();
-  })();
-</script>
-</body></html>
+</html>

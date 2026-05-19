@@ -1,0 +1,562 @@
+:root {
+  --bg: #f6f1e9;
+  --bg-dark: #ede3d4;
+  --bg-light: #fdfaf7;
+  --teal: #063f42;
+  --yellow: #e4dc35;
+  --orange: #f6836e;
+  --purple: #b668dc;
+
+  /* Shared page grid: one 12-col system, one edge gutter. */
+  --pad: 1rem;
+  --gutter: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Funnel Sans", sans-serif;
+  background-color: var(--teal);
+}
+
+h1,
+h2,
+h3,
+h4,
+.logo {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+}
+
+.logo {
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.0801em;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.4422em;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+p {
+  font-size: 1em;
+  font-weight: 100;
+
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.2em;
+  }
+}
+
+small {
+  font-size: 0.6934em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
+h2 {
+  margin-top: 1.5rem;
+}
+
+body>nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  min-height: 32px;
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: max-content auto;
+  background: var(--bg-dark);
+  z-index: 10;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 var(--pad);
+}
+
+.logo {
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.design-chair {
+  margin-top: 3rem;
+}
+
+#organizers article h3 {
+  margin-bottom: 0;
+}
+
+.affiliation {
+  margin-bottom: 0.5rem;
+}
+
+#soundToggle {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  color: var(--teal);
+}
+
+#soundToggle svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  pointer-events: none;
+}
+
+#soundOn {
+  display: none;
+}
+
+#soundToggle.on #soundOff {
+  display: none;
+}
+
+#soundToggle.on #soundOn {
+  display: inline;
+}
+
+#toggle {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  color: var(--teal);
+}
+
+#toggle svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  pointer-events: none;
+}
+
+#cross {
+  display: none;
+}
+
+nav.open #bars {
+  display: none;
+}
+
+nav.open #cross {
+  display: inline;
+}
+
+#menu {
+  display: none;
+  list-style: none;
+  align-self: start;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  gap: 1rem;
+  padding: 2rem 0 2rem;
+}
+
+#menu li a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--teal);
+  font-size: 2.0801em;
+}
+
+nav.open #menu {
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  #toggle {
+    display: none;
+  }
+
+  body>nav {
+    overflow: visible;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto;
+    column-gap: var(--gutter);
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .logo {
+    grid-column: 1 / 4;
+  }
+
+  #menu {
+    display: flex;
+    grid-column: 4 / 12;
+    grid-row: 1;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    overflow: visible;
+    padding: 0;
+  }
+
+  #soundToggle {
+    grid-column: 12 / 13;
+  }
+
+  #menu li a {
+    font-size: 1.3em;
+  }
+}
+
+footer nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+#hero {
+  position: relative;
+  display: grid;
+  background-color: var(--bg);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+  min-height: 100svh;
+  max-height: 100svh;
+  padding: 0 var(--pad);
+}
+
+#hero>h1 {
+  font-size: 3em;
+  grid-row-start: 4;
+  height: min-content;
+  align-self: end;
+  color: #000;
+
+}
+
+@media (min-width: 768px) {
+  #hero {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  #hero>h1 {
+    font-size: 7em;
+  }
+}
+
+#bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+#hero> :not(#bg) {
+  position: relative;
+  z-index: 1;
+}
+
+#hero>h4 {
+  grid-row-start: 5;
+  color: #000;
+}
+
+#info {
+  grid-row-start: 5;
+  font-size: 1.4422em;
+}
+
+section {
+  padding: 2rem var(--pad) 2rem;
+}
+
+#about,
+#organizers {
+  background-color: var(--bg);
+}
+
+footer {
+  background-color: var(--teal);
+  color: var(--bg-dark);
+  padding: 1rem var(--pad);
+}
+
+@media (min-width: 768px) {
+
+  /* Footer rides the same 12-col grid. */
+  footer {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: baseline;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  #info {
+    grid-row-start: 5;
+    font-size: 2.5em;
+  }
+
+  #about,
+  #organizers {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  footer>p {
+    grid-column: 1 / 5;
+    font-size: 1rem;
+  }
+
+  footer>nav {
+    grid-column: 5 / 13;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    row-gap: 1.3rem;
+    align-content: start;
+    align-items: start;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+}
+
+@media (min-width: 768px) {
+  section {
+    column-gap: 1.3rem;
+  }
+
+}
+
+/* Headings and lead prose take the full content width. */
+section>h2,
+section>h3,
+section>p,
+section>blockquote {
+  grid-column: 1 / -1;
+}
+
+section>p {
+  max-width: 70ch;
+}
+
+/* 3-up content: four of the twelve columns each. */
+section>article {
+  grid-column: span 4;
+}
+
+#submissions>article>h3 {
+  margin-top: 0;
+}
+
+/* Dates and contact: full-width bands whose 4 entries
+     snap to the same 12 columns (three columns each). */
+#dates {
+  grid-column: 1 / -1;
+}
+
+#contact>dl {
+  grid-column: 1 / -1;
+}
+
+#dates>dl>div,
+#contact>dl>div {
+  grid-column: span 3;
+}
+
+footer a {
+  color: var(--bg-dark);
+}
+
+body>footer>nav>ul>li>a {
+  color: var(--bg-dark);
+  text-decoration: underline;
+}
+
+#opening {
+  grid-row-start: 10;
+}
+
+#alongside {
+  grid-row-start: 11;
+}
+
+#alongside a {
+  color: antiquewhite;
+}
+
+@media (min-width: 768px) {
+  #opening {
+    font-size: 1.1em;
+  }
+
+  #alongside {
+    font-size: 1.1em;
+  }
+
+  #alongside a {
+    color: #000;
+  }
+}
+
+#theme {
+  background-color: var(--teal);
+  color: var(--bg);
+  font-family: "Funnel Display", sans-serif;
+  font-size: 2.0801em;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  #theme {
+    font-size: 3em;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.text-smaller {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+#organizers a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#dates {
+  margin-top: 2rem;
+}
+
+#dates p {
+  margin-top: 0.5rem;
+}
+
+#dates dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem 0.5rem;
+}
+
+#dates dl dt {
+  margin-top: 0;
+}
+
+#submissions {
+  background-color: var(--bg-light);
+}
+
+#submissions article h3 {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+dl dt {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #063f42;
+}
+
+#contact {
+  background-color: var(--teal);
+  color: var(--bg-dark);
+}
+
+#contact dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+
+  #dates dl,
+  #contact dl {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  #dates p {
+    margin-top: 3.3rem;
+    line-height: 1.2;
+  }
+
+  #dates p>br:first-child {
+    display: none;
+  }
+
+  #organizers article h3 {
+    margin-top: 0.25rem;
+  }
+}
+
+#contact dl div dt {
+  margin-top: 0;
+}
+
+#contact h2 {
+  color: var(--bg-dark);
+}
+
+#contact a {
+  color: var(--bg-dark);
+}
