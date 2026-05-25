@@ -454,6 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sectionSynth = {
     theme: "teal",
     about: "lavender",
+    "open-call-2": "lavender",
     submissions: "orange",
     organizers: "yellow",
     contact: "teal",
