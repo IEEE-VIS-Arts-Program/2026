@@ -492,13 +492,15 @@ section>ol li {
     margin-bottom: 0;
   }
 
-  section>article {
+  section>article,
+  .chair-group article {
     padding-right: 2rem;
   }
 }
 
 /* 3-up content: four of the twelve columns each. */
-section>article {
+section>article,
+.chair-group {
   grid-column: span 4;
 }
 
