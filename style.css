@@ -116,6 +116,7 @@ body>nav {
 
 .design-chair {
   margin-top: 3rem;
+  white-space: nowrap;
 }
 
 #organizers article h3 {
@@ -649,8 +650,24 @@ dl dt {
     display: none;
   }
 
+  #organizers > h2 {
+    margin-bottom: 0.2rem;
+  }
+
   #organizers article h3 {
     margin-top: 0.25rem;
+  }
+
+  #organizers article h3:first-child {
+    margin-top: 0;
+  }
+
+  #organizers .design-chair {
+    margin-bottom: 1.5rem;
+  }
+
+  #organizers article.program-committee {
+    grid-column: 1 / span 4;
   }
 }
 

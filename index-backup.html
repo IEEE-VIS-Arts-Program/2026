@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" type="image/png" href="fav-icon.png" />
+    <link href="style.css?v=4" rel="stylesheet" />
+    <script src="./main.js" defer></script>
+    <script src="./audio.js" defer></script>
+    <title>VISAP 2026</title>
+</head>
+
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <span><strong>VISAP</strong> 2026</span>
+        </a>
+        <button id="soundToggle" type="button" aria-label="Toggle sound" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linejoin="round">
+                <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="currentColor" stroke="none" />
+                <g id="soundOff">
+                    <line x1="16" y1="9.5" x2="21" y2="14.5" />
+                    <line x1="21" y1="9.5" x2="16" y2="14.5" />
+                </g>
+                <g id="soundOn">
+                    <path d="M16 9a4 4 0 0 1 0 6" />
+                    <path d="M18.7 7a7 7 0 0 1 0 10" />
+                </g>
+            </svg>
+        </button>
+        <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <g id="bars">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </g>
+                <g id="cross">
+                    <line x1="5" y1="5" x2="19" y2="19" />
+                    <line x1="19" y1="5" x2="5" y2="19" />
+                </g>
+            </svg>
+        </button>
+        <ul id="menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#submissions">Submissions</a></li>
+            <li><a href="#organizers">Organizers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="hero">
+        <canvas id="bg" aria-hidden="true"></canvas>
+
+        <h1>Amplification</h1>
+
+        <p id="info">
+            <time datetime="2026-11-09/2026-11-13">November 11th, 2026</time>
+            <br />
+            <a href="https://betterworld.mit.edu/met-warehouse/" target="_blank" rel="noopener noreferrer">Met
+                Warehouse</a>,
+            MIT
+            <br />
+            Boston
+        </p>
+
+        <div id="opening">
+            <p>Keynote and exhibition opening</p>
+            <time datetime="2026-11-11">November 11, 2026</time>
+        </div>
+
+        <div id="alongside">
+            <p>
+                Event held alongside
+                <a href="https://ieeevis.org/year/2026/welcome/" target="_blank" rel="noopener noreferrer">IEEE VIS</a>
+            </p>
+            <time datetime="2026-11-09/2026-11-13">November 9–13, 2026</time>
+        </div>
+    </header>
+
+    <main>
+        <section id="theme">
+            <blockquote>
+                Visualizations as instruments that make the quiet legible and the
+                overlooked visible. What does it mean to turn up the signal on data, stories, and
+                communities that the world tends not to hear?
+            </blockquote>
+        </section>
+
+        <section id="about">
+            <p>
+                Data surrounds all life on Earth. From the smallest signal to vast planetary systems, we gather,
+                process, and
+                visualize traces of the world around us. Yet not all signals are heard equally. Some data becomes
+                visible,
+                operative, and powerful, while other stories remain quiet, obscured, fragmented, or deliberately
+                ignored.
+            </p>
+            <p>
+                In this context, visualization is not only a method of representation. It is also an instrument of
+                amplification. It can make the quiet legible, the overlooked visible, and the unheard more present. It
+                can
+                reveal hidden structures, suppressed histories, fragile ecologies, minor gestures, and forms of
+                community
+                knowledge that conventional systems fail to recognize.
+            </p>
+            <p>
+                As data becomes increasingly entangled with social, cultural, political, and environmental life, urgent
+                questions emerge about what is amplified, who is given visibility, and whose experiences remain outside
+                the
+                frame. New technologies have granted us unprecedented access to data streams, but they have also
+                intensified
+                systems of extraction, surveillance, bias, and exclusion. Against this backdrop, we recognize a pressing
+                need
+                for critical, poetic, and equitable approaches to visualization that can turn up the signal on
+                marginalized
+                voices, overlooked communities, and hidden relations.
+            </p>
+        </section>
+
+        <section id="theme">
+            <blockquote>
+                How might amplification serve humanity? What does data make
+                louder, and what does it silence? Who builds the systems behind our datasets, and who is accountable for
+                them?
+                How can artistic and critical practices expand the role of visualization resistance, speculation, and
+                social
+                imagination and expose the socio-technical architecture behind AI? How can visualization help shape new
+                narratives, new solidarities, and new modes of perception?
+            </blockquote>
+        </section>
+
+        <section id="open-call-2">
+            <p>
+                Together, we will explore innovative ways to generate, interpret, and create through amplification.
+                Moving across concepts and contexts, VISAP 2026: Amplification seeks original research work exploring
+                critical
+                methods, algorithmic visual forms, and emerging narratives in data visualization art and design
+                practices. We
+                welcome research papers, artwork submissions, and pictorials for presentation across two interrelated
+                tracks,
+                paper/pictorials and exhibition, running alongside the IEEE VIS conference. We invite innovative and
+                original
+                contributions to the fields of data visualization, aesthetics, and process, including but not limited
+                to:
+            </p>
+            <ul>
+                <li>Original creative work using generative technologies to amplify data, stories, signals, and their
+                    aesthetic
+                    manifestations;</li>
+                <li>Experimental and analog processes that reveal overlooked patterns, quiet gestures, or hidden
+                    relations
+                    within data;</li>
+                <li>Advanced prototypes for eco-critical and sustainable technology in visualization contexts;</li>
+                <li>Critical data interactions that explore amplification from social, cultural, political, or
+                    environmental
+                    standpoints;</li>
+                <li>Creative work that questions what counts as signal, noise, evidence, or visibility;</li>
+                <li>Experimental prototypes that visualize information through AR, XR, VR, immersive media, and spatial
+                    computing;</li>
+                <li>Visualizations of invisible, marginalized, suppressed, or more-than-human worlds;</li>
+                <li>Contributions to the understanding of planetary ecology, climate change, and environmental justice;
+                </li>
+                <li>Projects that build telematic co-presence and amplify connection across physically remote
+                    environments;</li>
+                <li>Culturally safe and inclusive practices supporting social movements, community memory, Indigenous
+                    futures,
+                    Black Lives Matter, 2SLGBTQIA+ communities, migrant justice, disability justice, and beyond;</li>
+                <li>Work that challenges the digital divide and amplifies perspectives from the Global South;</li>
+                <li>Contributions that imagine visualization as a force for building a more equitable world.</li>
+            </ul>
+
+
+        </section>
+
+        <section id="about">
+            <h2>About VISAP</h2>
+            <p>
+                The IEEE VIS Arts Program (VISAP) is a dedicated venue for
+                visualization researchers, designers, and artists exploring innovative
+                approaches at the intersection of visualization and the arts.
+            </p>
+            <p>
+                VISAP brings together practitioners who push the boundaries of what
+                data visualization can be — from scientific rigor to artistic
+                expression, from community storytelling to critical speculation.
+            </p>
+            <p>
+                Held annually as part of IEEE VIS, the premier forum for visualization
+                and visual analytics, VISAP provides a unique platform where technical
+                and artistic communities meet.
+            <p>
+                Contributions responding to this year’s theme, Amplification, may be submitted to either the
+                papers/pictorials
+                track or the exhibition track. VISAP 2026 will be held fully in person, offering participants the
+                opportunity to
+                engage face-to-face.
+            </p>
+            <p>
+                We encourage artists to collaborate with artificial intelligence as a creative partner in the production
+                of
+                data-driven work. However, the VISAP committee will critically assess the role of AI in each submission,
+                considering its relevance, ethical use, and creative intention. If your work involves AI-generated
+                components,
+                please clearly acknowledge them in your submission.
+            </p>
+        </section>
+
+
+        <section id="submissions">
+            <h2>Submissions</h2>
+
+
+            <h4>Call opens</h4>
+            <p>
+                May 2026
+            </p>
+
+            <h4>Submission deadline</h4>
+            <p>
+                June 30, 2026
+            </p>
+
+            <h4>Notifications</h4>
+            <p>
+                July 2026
+            </p>
+
+            <h4>Camera ready</h4>
+            <p>
+                August 2026
+            </p>
+
+
+
+            <h4></h4>
+            <p>All deadlines at 11:59pm AoE.
+                <br>We welcome contributions across three tracks, all engaging with the theme of Amplification. All
+                submissions
+                are
+                made via the <a href="https://tc.computer.org/vgtc/publications/conference/" target="_blank"
+                    rel="noopener noreferrer">IEEE VGTC Electronic Conference
+                    System (PCS)</a>. VISAP uses a single-blind review process.
+            </p>
+
+            <h3>PAPERS</h3>
+            <p>
+                We invite researchers, scholars, and creative practitioners to submit papers related to the theme
+                Amplification.
+                Submissions can include, but are not limited to technical descriptions of creative visualization
+                projects and
+                techniques, reflections on the impact of data visualization techniques on art and design practice,
+                philosophical
+                meditations on art-science methodology, expanded descriptions and discussions of specific (media) art
+                projects
+                (including design case studies), and critical interpretations of visualization approaches and practices.
+                We are
+                open to any submission that relates in some way to art or design and to this year's theme.
+            </p>
+
+            <h4>Paper format</h4>
+            <p>Authors are required to use the <a href="https://tc.computer.org/vgtc/publications/conference/"
+                    target="_blank" rel="noopener noreferrer">IEEE Conference
+                    format</a> for paper submissions. <a
+                    href="https://github.com/ieeevgtc/vgtc_conference_word/releases/tag/2024.02.14" target="_blank"
+                    rel="noopener noreferrer">Word</a> and <a
+                    href="https://github.com/ieeevgtc/vgtc_conference_latex/releases" target="_blank"
+                    rel="noopener noreferrer">LaTeX</a> templates are available. It is
+                mandatory to use this format. However, including keywords and index terms is optional.
+            </p>
+
+            <h4>Acceptance</h4>
+            <p>Accepted authors will present their work in-person in one of the two VISAP Papers sessions during the
+                conference. All accepted papers will be published online in the IEEE VIS 2026 Arts Program proceedings,
+                and
+                indexed in the IEEE Xplore digital library.
+            </p>
+
+            <h4>Previous VISAP Papers</h4>
+            <p>Please see the online proceedings from previous years (<a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/11298684/proceeding" target="_blank"
+                    rel="noopener noreferrer">2025</a>, <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/10749820/proceeding" target="_blank"
+                    rel="noopener noreferrer">2024,</a> <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/10343460/proceeding" target="_blank"
+                    rel="noopener noreferrer">2023</a>, <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/9975351/proceeding" target="_blank"
+                    rel="noopener noreferrer">2022</a>, <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/9622893/proceeding" target="_blank"
+                    rel="noopener noreferrer">2021</a>, <a
+                    href="https://ieeexplore.ieee.org/xpl/conhome/9307976/proceeding" target="_blank"
+                    rel="noopener noreferrer">2020</a>, <a href="https://visap.net/2019/program" target="_blank"
+                    rel="noopener noreferrer">2019</a>, <a href="http://visap.net/2018/program" target="_blank"
+                    rel="noopener noreferrer">2018</a>, 2017, 2016, 2015, 2014, 2013) for examples of accepted
+                submissions.
+                (Selected VISAP papers have also been featured in IEEE Computer Graphics and Applications and Leonardo).
+            </p>
+
+
+            <h3>PICTORIALS</h3>
+            <p>
+                We invite artists and designers to submit pictorials and annotated portfolios related to the theme
+                Amplification. Artists, designers, and researchers all make creative choices based on practical
+                knowledge,
+                generally
+                acquired through experience. Unfortunately, this knowledge is seldom shared in publications. VISAP
+                Pictorials
+                aim to foster discussions about this reflection-in-action when creating visualizations or data-driven
+                art
+                pieces. Pictorial submissions reflect either on shared concepts among a selection of visualizations, or
+                on the
+                design
+                process of a single work. Whether in the case of a single artifact, or, in the case of a series of
+                artifacts,
+                the designer is in a unique position to provide valuable insights into the design intentions, the design
+                space
+                explorations, and the design process (Löwgren 2013). Through pictorials and annotated portfolios, we
+                invite
+                submissions that communicate the visualization practices in rich, heavily visual ways.
+            </p>
+
+            <h4>What to consider</h4>
+            <p> Elements that reviewers will look for include:</p>
+            <ul>
+                <li>The quality of the description of the design process and reflections on this process</li>
+                <li>The appropriateness and richness of the visual style</li>
+                <li>The quality of presentation</li>
+                <li>The production value of images, photos and diagrams</li>
+            </ul>
+
+            <h4>What is a pictorial / annotated portfolio?</h4>
+            <p>A pictorial is a visual description and reflection of the design process of a single visualization
+                project. It
+                is intended to capture the situated and rich nature of design. An annotated portfolio is a collection of
+                design
+                works with brief textual annotations. It has been proposed by
+                Gaver and Bowers (2012) as a "way to communicate design research". The systematic selection and
+                annotation of
+                the artifacts are part of the contribution. Submitters are encouraged to highlight important features,
+                discuss
+                how ideas were developed, and reflect on recurring topics through their series of works.
+            </p>
+
+            <h4>Pictorial format</h4>
+            <p>Artists and designers are required to use the VISAP'26 Pictorials format for pictorial and annotated
+                portfolio
+                submissions. <a href="./downloads/VISAP_pictorial_Indd_2026.zip" download>InDesign</a> and <a
+                    href="./downloads/VISAP_pictorial_master_Word_2026.docx" download>Word</a> templates are available.
+                It is
+                mandatory to use this format.
+                <!-- Pictorials use the <a href="https://github.com/IBM/plex/releases/latest" target="_blank" rel="noopener noreferrer">IBM Plex</a> typeface. -->
+                Pictorials and annotated portfolios must not exceed 16 pages. We encourage submitters to use the space
+                in the
+                most creative and visual way.
+
+                Submitting supplementary material and/or links to external material is encouraged to help reviewers
+                evaluate the
+                submission.
+            </p>
+
+            <h4>Pictorials and Annotated Portfolio from previous years</h4>
+            <p>Please see works <a href="https://visap.net/2025/contributions.html#balaton-borders" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a
+                    href="https://visap.net/2025/contributions.html#winds-through-time" target="_blank"
+                    rel="noopener noreferrer">2</a>, <a
+                    href="https://visap.net/2025/contributions.html#the-fire-we-share" target="_blank"
+                    rel="noopener noreferrer">3</a>, from the <a href="https://visap.net/2025/programme.html"
+                    target="_blank" rel="noopener noreferrer">2025 program</a>;
+
+
+                <a href="https://ieeexplore.ieee.org/document/10749932/" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://ieeexplore.ieee.org/document/10749963"
+                    target="_blank" rel="noopener noreferrer">2</a>, <a
+                    href="https://ieeexplore.ieee.org/document/10749925" target="_blank"
+                    rel="noopener noreferrer">3</a>, from the
+                <a href="https://visap.net/2024/program/" target="_blank" rel="noopener noreferrer">2024 program</a>;
+                works <a href="https://ieeexplore.ieee.org/document/10344076" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://ieeexplore.ieee.org/document/10344278"
+                    target="_blank" rel="noopener noreferrer">2</a>, <a
+                    href="https://ieeexplore.ieee.org/document/10343770" target="_blank"
+                    rel="noopener noreferrer">3</a>, from the
+                <a href="https://visap.net/2023/programme" target="_blank" rel="noopener noreferrer">2023 program</a>;
+                works <a href="https://ieeexplore.ieee.org/document/9975687" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://ieeexplore.ieee.org/document/9975449"
+                    target="_blank" rel="noopener noreferrer">2</a>, <a
+                    href="https://ieeexplore.ieee.org/document/9975443" target="_blank" rel="noopener noreferrer">3</a>,
+                from the
+                <a href="https://visap.net/2022/programme" target="_blank" rel="noopener noreferrer">2022 program</a>;
+                works <a href="https://ieeexplore.ieee.org/document/9623013" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://ieeexplore.ieee.org/document/9622972"
+                    target="_blank" rel="noopener noreferrer">2</a>, <a
+                    href="https://ieeexplore.ieee.org/document/9622946" target="_blank" rel="noopener noreferrer">3</a>,
+                <a href="https://ieeexplore.ieee.org/document/9622987" target="_blank" rel="noopener noreferrer">4</a>,
+                <a href="https://ieeexplore.ieee.org/document/9623000" target="_blank" rel="noopener noreferrer">5</a>,
+                from the
+                <a href="https://visap.net/2021/program.html" target="_blank" rel="noopener noreferrer">2021
+                    program</a>; works
+                <a href="https://visap.net/2020/media/vis20m-sub1033-cam-i7.pdf" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://visap.net/2020/media/vis20m-sub1047-cam-i7.pdf"
+                    target="_blank" rel="noopener noreferrer">2</a>, from the <a
+                    href="https://visap.net/2020/program.html" target="_blank" rel="noopener noreferrer">2020
+                    program</a>; works <a href="https://visap.net/2019/media/Offenhuber-VISAP19.pdf" target="_blank"
+                    rel="noopener noreferrer">1</a>, <a href="https://visap.net/2019/media/Samsel-VISAP19.pdf"
+                    target="_blank" rel="noopener noreferrer">2</a>, from
+                the <a href="https://visap.net/2019/index.html" target="_blank" rel="noopener noreferrer">2019
+                    program</a>; and
+                works <a href="http://visap.net/2018/media/Cruz-VISAP18-AP.pdf" target="_blank"
+                    rel="noopener noreferrer">1</a>,
+                <a href="http://visap.net/2018/media/Bihanic-VISAP18-AP.pdf" target="_blank"
+                    rel="noopener noreferrer">2</a>, <a href="http://visap.net/2018/media/Perin-VISAP18-AP.pdf"
+                    target="_blank" rel="noopener noreferrer">3</a>, <a
+                    href="http://visap.net/2018/media/Glissmann-VISAP18-AP.pdf" target="_blank"
+                    rel="noopener noreferrer">4</a>,
+                <a href="http://visap.net/2018/media/Hunter-VISAP18-AP.pdf" target="_blank"
+                    rel="noopener noreferrer">5</a>,
+                from the <a href="http://visap.net/2018/program" target="_blank" rel="noopener noreferrer">2018
+                    program</a>.
+            </p>
+
+            <h4>Pictorials acceptance</h4>
+            <p> All accepted Pictorials will be published online in the IEEE VIS 2026 Arts Program proceedings, and
+                indexed in
+                the IEEE Xplore digital library. Pictorials will be part of the VISAP 2026 exhibition as printed
+                booklets and
+                showcased in the VISAP 2026 catalog. Selected submissions will be invited to present their work
+                in-person in one
+                of the VISAP Papers sessions during the conference.</p>
+
+
+            <h3>ARTWORKS</h3>
+            <p>
+                We invite artists and designers to submit data-driven artworks related to the theme Amplification. We
+                welcome
+                submissions in any medium, e.g., interactive projections, multimedia sculptures, mobile devices,
+                illustrations,
+                physicalizations, video game art, digital prints, screen-based art, fixed audio-visual pieces, etc.
+            </p>
+
+            <h4>What to include</h4>
+            <p>While the proposal is free-form, the following information must be included (consider structuring your
+                proposal
+                based on these headings):</p>
+            <ol>
+                <li>General Information: Title of the work, Year, Authors (and roles), Medium and Dimensions of the work
+                </li>
+                <li>Description: Description of the work and any interactive elements. Explain how your work relates to
+                    this
+                    year's theme and how it links to information visualization, scientific visualization, and/or visual
+                    analytics.
+                    Discuss the reception of your work at previous exhibitions (if it has been exhibited before)</li>
+                <li>Technical Requirements: Given that VISAP' 26 is an in-person event, describe how the work will be
+                    presented
+                    at the gallery space. Provide technical details of the project. For example, what technical
+                    equipment is
+                    required? Does the project require the audience to interact with it live? Are there any time of day
+                    requirements or specific lighting conditions needed? Does it require any specific space or technical
+                    setup
+                    (e.g. VR gadgets or audiovisual equipment)? Consider how your artwork could be integrated in both a
+                    physical
+                    and virtual art exhibition.</li>
+                <li>Supporting Material: Provide links to high-resolution images, audio, webpages and/or videos that
+                    will help
+                    give the reviewers a clear sense of your work</li>
+            </ol>
+
+            <h4>Artworks could involve any of the following forms:</h4>
+            <ul>
+                <li>Visualization that emphasizes visual and performative aesthetics</li>
+                <li>Visualization that encourages creative and/or collaborative interactions</li>
+                <li>Speculative visualizations</li>
+                <li>Visualization as tactical media</li>
+                <li>New data paradigms</li>
+                <li>Live coding and streaming data</li>
+                <li>Complex systems</li>
+                <li>Exploratory data semantics</li>
+                <li>3D visualization, VR/AR/XR environments, and immersive analytics</li>
+                <li>Computational photography</li>
+                <li>Ambient information displays</li>
+                <li>Visualization as storytelling</li>
+                <li>Design studies</li>
+                <li>Data sonification</li>
+                <li>Conversation theory</li>
+                <li>Digital humanities visualization</li>
+                <li>Physical visualization and sculptural design</li>
+            </ul>
+
+            <h4>Submission Format (Exhibition)</h4>
+            <p>Artists and designers are required to submit a 2 page .pdf file describing the work they wish to exhibit.
+                No
+                specific format is imposed.
+
+                Submitting additional images, videos, or audio files as supplementary material is strongly encouraged to
+                help
+                reviewers evaluate the submission.</p>
+
+            <h4>Previous accepted work</h4>
+            <p>Please see the <a href="https://visap.net/2025/downloads/visap-2025-booklet.pdf" target="_blank">2025
+                    catalog</a>
+                (designed
+                by Beatrice Gobbo), the <a href="https://visap.net/2024/downloads/visap-catalogue-2024-web.pdf"
+                    target="_blank">2024 catalog</a>, the <a href="https://visap.net/2023/visap-catalogue-2023-web.pdf"
+                    target="_blank">2023 catalogue</a> (designed by
+                Tommaso Elli
+                and Francesca
+                Morini), the <a href="https://visap.net/2022/VISAP22_catalogue_v6.pdf" target="_blank">2022</a> and <a
+                    href="https://visap.net/2021/media/VISAP21-Catalogue.pdf" target="_blank">2021</a> catalogues
+                (designed by Bon
+                Adriel
+                Aseniero), the <a href="https://visap.net/2020/media/IEEE_VISAP_20_Catalog_Final.pdf"
+                    target="_blank">2020
+                    catalog</a> (designed
+                by Christy Cheung), the <a href="https://visap.net/2019/media/VISAP19-Catalogue.pdf"
+                    target="_blank">2019
+                    catalog</a> (designed
+                by Damla Çay), <a href="http://visap.net/2018/media/VISAP18-Catalogue.pdf" target="_blank">2018
+                    catalog</a>
+                (designed by Density
+                Design), the 2017 catalog (designed by Yoon Chung Han), the 2016 catalog
+                (designed by Jeremy Boy), the 2015 catalog (designed by Jack Henrie Fisher), the 2014 catalog, or the
+                2013
+                catalog (both designed by Lauren
+                Thorson) to get a sense of the range of artworks that have been accepted previously. Please feel welcome
+                to
+                contact the chairs if you have questions about whether or not your work is an appropriate submission to
+                VISAP.
+            </p>
+
+            <h4>Acceptance</h4>
+            <p>All accepted artworks will be included in the online proceedings of VISAP on the <a
+                    href="https://visap.net/" target="_blank" rel="noopener noreferrer">visap.net</a> website, as well
+                as in a VISAP 2026 catalog that will
+                be shared on the
+                VISAP website. All accepted artworks will be presented in the gallery space of the <a
+                    href="https://betterworld.mit.edu/met-warehouse/" target="_blank" rel="noopener noreferrer">Met
+                    Warehouse</a>,
+                from November 9 to November 13, 2026.</p>
+
+            <h3>Submission Procedure (for all tracks)</h3>
+            <p>All submissions must be made using the <a href="https://new.precisionconference.com/submissions"
+                    target="_blank" rel="noopener noreferrer">IEEE VGTC
+                    Electronic Conference System (on PCS)</a>. After creating an account or signing in, submitters will
+                find the
+                VISAP 2026 Papers and Exhibition submissions by:
+            </p>
+            <ul>
+                <li>Clicking on the "Submissions" tab;
+                <li>Selecting VTGC (in "Society");</li>
+                <li>Selecting VIS 2026 (for "Conference/Journal");</li>
+                <li>Selecting VIS 2026 Arts Program (for "Track")</li>
+                <li>Clicking on "Go"</li>
+            </ul>
+
+            <p>VISAP uses a single-blind review process: submitted material is not required to be anonymized.
+                At least one author per accepted paper and pictorial is required to register to the IEEE VIS conference
+                to
+                present the work in-person. Submitters of accepted exhibits are also strongly encouraged to attend the
+                conference to set up their work for the opening reception, and to participate in the program throughout
+                the week
+                in-person.
+                We invite students to apply to the IEEE VIS student volunteer program to help cover registration fees.
+                We also
+                invite authors and artists who demonstrate financial need to apply for the IEEE VIS Inclusivity &
+                Diversity
+                Scholarship.
+            </p>
+
+
+        </section>
+
+
+
+        <section id="organizers">
+            <h2>Organizers</h2>
+
+            <article>
+
+                <h3>
+                    <a href="https://dariorodighiero.com" target="_blank">Dario Rodighiero</a>
+                </h3>
+                <p class="affiliation">University of Groningen</p>
+                <p class="text-smaller">
+                    Assistant Professor of STS at Campus Fryslân, Faculty Associate at
+                    the Berkman Klein Center and Principal at metaLAB (at) Harvard /
+                    Berlin / Basel. His research investigates how complex information
+                    can be revealed through the combination of computational techniques
+                    and design, with a focus on the mapping of science and digital
+                    cultural archives. He is the author of Mapping Affinities:
+                    Democratizing Data Visualization (Métis Presses, 2021), holds a PhD
+                    from EPFL, and has held research positions at MIT, Sciences Po, and
+                    the European Commission.
+                </p>
+            </article>
+
+            <article>
+                <h3>
+                    <a href="https://civicdatadesignlab.mit.edu/Sarah-Williams" target="_blank">Sarah Williams</a>
+                </h3>
+                <p class="affiliation">MIT</p>
+                <p class="text-smaller">
+                    Director of the Civic Data Design Lab and Associate Professor of
+                    Technology and Urban Planning at MIT. Her research uses data
+                    collection, mapping, and visualization to address issues of equity
+                    and urban development in cities around the world. She has led
+                    projects across sub-Saharan Africa, China, and the Americas,
+                    developing open-source tools that put data analysis in the hands of
+                    communities and policymakers. Her work bridges design and policy,
+                    and has been recognized for its impact on urban planning practice
+                    and civic technology.
+                </p>
+            </article>
+
+            <article>
+                <h3>
+                    <a href="https://www.zhangweidi.com" target="_blank">Weidi Zhang</a>
+                </h3>
+                <p class="affiliation">Arizona State University</p>
+                <p class="text-smaller">
+                    Tenure-track Assistant Professor of Immersive Experience Design at
+                    the MIX Center, Arizona State University. Her research explores a
+                    speculative assemblage of artificial memories and language at the
+                    intersection of immersive media design, experimental data
+                    visualization, and interactive AI art. Her work has earned
+                    distinctions including Best in Show at ACM SIGGRAPH and Honorary
+                    Mention at Prix Ars Electronica. She holds a PhD from UC Santa
+                    Barbara and has exhibited at CCCB, V2_ Lab, Artechouse NYC, and
+                    festivals across Europe, Asia, and the Americas.
+                </p>
+            </article>
+
+            <article>
+                <h2 class="design-chair">Design Chair</h2>
+                <h3>
+                    <a href="https://www.supsi.ch/ginevra-terenghi" target="_blank">Ginevra Terenghi</a>
+                </h3>
+                <p class="affiliation">SUPSI</p>
+                <p class="text-smaller">
+                    Design collaborator at the University of Applied Sciences and Arts
+                    of Southern Switzerland (SUPSI), she recently completed her PhD at
+                    Brunel University London. Her work explores participatory approaches
+                    to data physicalization to improve self-awareness, collective
+                    meaning-making, and critical reflection. While her PhD focused on
+                    healthcare, examining how physical variables can support the
+                    perception and communication of symptoms, her broader research
+                    considers materiality for interpretation.
+                </p>
+            </article>
+            <article>
+                <h2 class="design-chair">Exhibition Chair</h2>
+                <h3>
+                    <a href="https://lcau.mit.edu/people/ashley-louie" target="_blank">Ashley Louie</a>
+                </h3>
+                <p class="affiliation">MIT</p>
+                <p class="text-smaller">
+                    Research Associate at the Norman B. Leventhal Center for Advanced Urbanism and the Civic Data Design
+                    Lab. Her
+                    research uses communication design, data visualization, and mapping to communicate information that
+                    can serve
+                    communities and improve cities. Her work centers data-driven narratives for cultural, environmental,
+                    and
+                    social impact, with processes that involve participatory engagement methods and create policy
+                    change.
+                </p>
+            </article>
+
+            <article class="program-committee">
+
+                <h2 class="design-chair">Program Committee</h2>
+
+                <p class="affiliation">
+
+                    Jane Adams, Diaa Ahmedien, Derya Akbaba, Jamie Allen, Antonella Autuori, Elena Aversa, Viola
+                    Bernacchi, Denise
+                    Bertschi, David Bihanic, Biayna Bogosian, Mirko Bonfiglio, Maria de Los Angeles Briones Rojas,
+                    Alessio
+                    Caccamo, Serena Cangiano, Florian Conradi, Romain Di Vozzo, Tommaso Elli, Juan Escalante, Angus
+                    Forbes,
+                    Martina Froeschl, Giorgia Gibertini, Laurent Grisoni, Uta Hinrichs, Scottie Chih-Chieh Huang, Merle
+                    Chih-Chiehibach, Andrew Johnson, Yuichiro Katsumoto, Rebecca Davis Kelly, Doris Kosminsky, Maria
+                    Lantin,
+                    Annette Lehmann, Rodger Luo, Johan Malmstedt, Mauro Martino, Sebastian Meier, Isabel Meirelles,
+                    Avital Meshi,
+                    Till Nagel, Giacomo Nanni, Helene Nymann, Joel Ong, Sihwa Park, M. Cristina Pattuelli, Federico
+                    Pianzola,
+                    Giovanni Profeta, Tina Rosado, Hyemi Song, Junxiu Tang, Ginevra Terenghi, S.C. Vollmer, Yifang Wang,
+                    Florian
+                    Windhager, Midori Yamazaki, Yin Yu, Martina Zunica, Damla Çay
+
+                </p>
+
+            </article>
+        </section>
+
+
+
+
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <dl>
+                <div>
+                    <dt>Email</dt>
+                    <dd>
+                        <a href="mailto:art@ieeevis.org">art@ieeevis.org</a>
+                        <p>
+                            For questions about submissions, sponsorship, or the program.
+                        </p>
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Part of</dt>
+                    <dd>
+                        <a href="https://ieeevis.org" target="_blank">ieeevis.org</a>
+                        <p>
+                            The premier forum for advances in visualization and visual
+                            analytics.
+                        </p>
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Instagram</dt>
+                    <dd>
+                        <a href="https://www.instagram.com/visapnet/" target="_blank">@visapnet</a>
+                        <p>
+                            Updates on the program, accepted works, and the annual event.
+                        </p>
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>LinkedIn</dt>
+                    <dd>
+                        <a href="https://www.linkedin.com/company/ieeevisap/" target="_blank">VISAP Program</a>
+                        <p>
+                            Connect with the VISAP community and stay informed on open
+                            calls.
+                        </p>
+                    </dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 IEEE VIS Arts Program</p>
+        <nav aria-label="Previous editions">
+            <span>Previous editions:</span>
+            <ul>
+                <li><a href="https://visap.net/2025" target="_blank">2025</a></li>
+                <li><a href="https://visap.net/2024" target="_blank">2024</a></li>
+                <li><a href="https://visap.net/2023" target="_blank">2023</a></li>
+                <li><a href="https://visap.net/2022" target="_blank">2022</a></li>
+                <li><a href="https://visap.net/2021" target="_blank">2021</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
