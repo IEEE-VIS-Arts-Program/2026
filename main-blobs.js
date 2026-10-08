@@ -20,16 +20,18 @@ if (toggle && nav) {
 
 // ── Hero background: metaball layout sampled from sketch.svg ────────────────
 const PALETTE = {
+  // To stay fully compatible with audio.js proximity sounds, we map:
+  // - green -> "teal" (triggers forest synth)
+  // - orange -> "orange" (triggers tech beeps)
+  // - lilac -> "lavender" (triggers chat file)
   teal: "C_TEAL",
   orange: "C_ORANGE",
   lavender: "C_LAVENDER",
-  yellow: "C_YELLOW",
-  pink: "C_PINK",
 };
 const OPACITY = 0.6; // per-color blend strength
 const SPREAD = 1; // sphere-spacing multiplier — 1.0 = baked layout, >1 = farther apart
 const CLUMP = 4; // sub-spheres per baked blob — they orbit & merge into one metaball
-const CLUMP_R = 0.55; // sub-orbit radius as a fraction of the blob's own radius
+const CLUMP_R = 0.25; // sub-orbit radius as a fraction of the blob's own radius
 const CLUMP_SP = 0.5; // sub-sphere base angular speed (rad/s) around the centre
 const SPD_VAR = 0.55; // ± fraction the per-sphere spin speed varies (noise)
 const SIZE_VAR = 0.35; // ± fraction each sphere's size varies (noise)
@@ -37,159 +39,54 @@ const WOBBLE = 0.15; // noise breathing of cluster spread over time (0 = off)
 const SPEED = 0.7; // global animation tempo — <1 slower, 1 = original, >1 faster
 const RES = 0.85; // internal render scale — 1.0 = native sharpness, lower = faster
 
-// Blob layout baked from sketch.svg (equal-area circles, paint-order sorted).
-// sketch.svg is no longer read at runtime. To regenerate after editing the
-// SVG, re-run the old getTotalLength/shoelace extraction in a browser (the
-// blobs() routine in git history) and paste its JSON output here.
+// Three separate bubbles green, orange, lilac, proportioned to 30, 44, 79.
+// To keep them fully on screen and limit overlap to <= 20% of their surface,
+// we scaled down the area by a factor of 4.5 and optimized their centers:
+// - Lilac (79): A = 14.8 * 4.5 = 66.60
+// - Orange (44): A = 47.71 * 4.5 = 214.70
+// - Green (30): A = 102.63 * 4.5 = 461.84
 const LAYERS = [
-/*
   {
-    color: "teal",
+    color: "teal", // green
     blobs: [
       {
-        fx: 0.6533892667129327,
-        fy: 0.557839811144196,
-        A: 11.603034642344756,
+        fx: 0.61,
+        fy: 0.42,
+        A: 461.84,
         B: 0,
-        D: 11.603034642344756,
-      },
-      {
-        fx: 0.20458072830094914,
-        fy: 0.13710950636465538,
-        A: 47.27500008635689,
-        B: 0,
-        D: 47.27500008635689,
-      },
-      {
-        fx: 0.4387076207356397,
-        fy: 0.885872427212848,
-        A: 825.7293679467969,
-        B: 0,
-        D: 825.7293679467969,
-      },
+        D: 461.84,
+      }
     ],
   },
-*/
   {
-    color: "lavender",
+    color: "orange", // orange
     blobs: [
       {
-        fx: 0.5,
-        fy: 0.5,
-        A: 80.0,
-        B: 2.0,
-        D: 20.0,
-      }
-/*,
-      {
-        fx: 0.46278696054475854,
-        fy: 0.564164918339559,
-        A: 72.91663938982117,
+        fx: 0.39,
+        fy: 0.58,
+        A: 214.70,
         B: 0,
-        D: 72.91663938982117,
-      },
-      {
-        fx: 0.14759822113225227,
-        fy: 0.3820170972742382,
-        A: 126.41770713564458,
-        B: 0,
-        D: 126.41770713564458,
+        D: 214.70,
       }
-*/
+    ],
+  },
+  {
+    color: "lavender", // lilac
+    blobs: [
+      {
+        fx: 0.50,
+        fy: 0.50,
+        A: 66.60,
+        B: 0,
+        D: 66.60,
+      }
     ],
   }
-/*,
-  {
-    color: "yellow",
-    blobs: [
-      {
-        fx: 0.21392174316513965,
-        fy: 0.7602202030238026,
-        A: 20.72515653926128,
-        B: 0,
-        D: 20.72515653926128,
-      },
-      {
-        fx: 0.3672185913877172,
-        fy: 0.1978274903348792,
-        A: 99.193300590501,
-        B: 0,
-        D: 99.193300590501,
-      },
-      {
-        fx: 0.8671221958105809,
-        fy: 0.5437643750069042,
-        A: 262.0308068829056,
-        B: 0,
-        D: 262.0308068829056,
-      },
-      {
-        fx: 0.6883223601565908,
-        fy: 0.34565670235712914,
-        A: 410.48989743572895,
-        B: 0,
-        D: 410.48989743572895,
-      },
-    ],
-  },
-  {
-    color: "lavender",
-    blobs: [
-      {
-        fx: 0.8545886573490123,
-        fy: 0.8484774371962233,
-        A: 53.07607780203845,
-        B: 0,
-        D: 53.07607780203845,
-      },
-      {
-        fx: 0.5435612081742,
-        fy: 0.8306345329394453,
-        A: 76.69333474327499,
-        B: 0,
-        D: 76.69333474327499,
-      },
-      {
-        fx: 0.8962312071144286,
-        fy: 0.09203332642201652,
-        A: 252.10798463779886,
-        B: 0,
-        D: 252.10798463779886,
-      },
-      {
-        fx: 0.26456352553113516,
-        fy: 0.2852400263202124,
-        A: 1376.7544880862765,
-        B: 0,
-        D: 1376.7544880862765,
-      },
-    ],
-  },
-  {
-    color: "pink",
-    blobs: [
-      {
-        fx: 0.9374563543030439,
-        fy: 0.7544763924209188,
-        A: 1291.7641073560046,
-        B: 0,
-        D: 1291.7641073560046,
-      },
-      {
-        fx: 0.3846261557992157,
-        fy: 0.7772792047706668,
-        A: 414.30399094436007,
-        B: 0,
-        D: 414.30399094436007,
-      },
-    ],
-  }
-*/
 ];
 
 // orbit/cover constants — must match the ex-GLSL ctr()/orb() exactly
 const SVGA = 860 / 592;
-const ORBIT_R = 0.06;
+const ORBIT_R = 0.02; // very tight orbit to ensure they never drift off-screen
 const ORBIT_SP = 0.16;
 const TAU = 6.28318530718;
 // deterministic per-index hash in [0,1) — cheap noise source for sub-sphere jitter
@@ -214,7 +111,13 @@ async function boot() {
     fetch("./shaders/display.glsl").then((r) => r.text()),
   ]);
 
-  const { meta, src } = inject(tmpl, LAYERS);
+  // Adjust shared colors in memory to match the overall website palette from style.css
+  const adjustedTmpl = tmpl
+    .replace("vec3 C_TEAL     = vec3(0.024, 0.247, 0.259);", "vec3 C_TEAL     = vec3(0.024, 0.247, 0.259);")  // Website --teal: #063f42
+    .replace("vec3 C_LAVENDER = vec3(0.714, 0.408, 0.863);", "vec3 C_LAVENDER = vec3(0.714, 0.408, 0.863);")  // Website --purple: #b668dc
+    .replace("vec3 C_ORANGE   = vec3(0.965, 0.416, 0.345);", "vec3 C_ORANGE   = vec3(0.965, 0.514, 0.431);"); // Website --orange: #f6836e
+
+  const { meta, src } = inject(adjustedTmpl, LAYERS);
   const prog = program(vs, "#version 300 es\n" + chunk + "\n" + src);
 
   // bake pass: the exact 21-tap static grain kernel, written once to a texture
