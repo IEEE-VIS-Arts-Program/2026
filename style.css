@@ -7,10 +7,14 @@
   --orange: #f6836e;
   --purple: #b668dc;
 
-  /* Shared page grid: one 12-col system, one edge gutter. */
   --pad: 1rem;
   --gutter: 1rem;
 }
+
+
+/* ==================================================
+   RESET
+   ================================================== */
 
 * {
   margin: 0;
@@ -28,6 +32,11 @@ button {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
+
+
+/* ==================================================
+   GLOBAL
+   ================================================== */
 
 body {
   font-family: "Funnel Sans", sans-serif;
@@ -47,6 +56,13 @@ h4,
   color: var(--teal);
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
 .logo {
   font-size: 1rem;
 }
@@ -57,56 +73,55 @@ h1 {
 
 h2 {
   font-size: 2.0801em;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.4422em;
-  margin-bottom: 0.5rem;
   margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
   font-size: 1em;
   font-weight: 100;
-
-}
-
-@media (min-width: 768px) {
-  p {
-    font-size: 1.2em;
-  }
 }
 
 small {
   font-size: 0.6934em;
 }
 
-h1,
-h2,
-h3,
-h4 {
+.text-smaller {
+  font-size: 1rem;
   font-weight: normal;
 }
 
-h2 {
-  margin-top: 1.5rem;
-}
 
-body>nav {
+/* ==================================================
+   MAIN NAVIGATION
+   ================================================== */
+
+body > nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+
   display: grid;
-  min-height: 32px;
   grid-template-columns: 1fr auto auto;
   grid-template-rows: max-content auto;
+
+  min-height: 32px;
+
   background: var(--bg-dark);
-  z-index: 10;
+
   align-items: center;
   overflow: hidden;
+
   padding: 0 var(--pad);
+
+  z-index: 10;
 }
 
 .logo {
@@ -114,29 +129,25 @@ body>nav {
   text-decoration: none;
 }
 
-.design-chair {
-  margin-top: 3rem;
-  white-space: nowrap;
-}
 
-#organizers article h3 {
-  margin-bottom: 0;
-}
-
-.affiliation {
-  margin-bottom: 0.5rem;
-}
+/* ==================================================
+   SOUND
+   ================================================== */
 
 #soundToggle {
   grid-column: 2;
   grid-row: 1;
+
   align-self: center;
   justify-self: end;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   aspect-ratio: 1;
   padding: 0.5rem;
+
   color: var(--teal);
 }
 
@@ -159,15 +170,24 @@ body>nav {
   display: inline;
 }
 
+
+/* ==================================================
+   MOBILE MENU BUTTON
+   ================================================== */
+
 #toggle {
   grid-column: 3;
   grid-row: 1;
+
   justify-self: right;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   aspect-ratio: 1;
   padding: 0.5rem;
+
   color: var(--teal);
 }
 
@@ -190,20 +210,32 @@ nav.open #cross {
   display: inline;
 }
 
+
+/* ==================================================
+   MENU
+   ================================================== */
+
 #menu {
   display: none;
+
   list-style: none;
-  align-self: start;
+
   grid-column: 1 / -1;
   grid-row: 2;
+
+  align-self: start;
+
   gap: 1rem;
-  padding: 2rem 0 2rem;
+
+  padding: 2rem 0;
 }
 
 #menu li a {
   display: inline-block;
-  text-decoration: none;
+
   color: var(--teal);
+  text-decoration: none;
+
   font-size: 2.0801em;
 }
 
@@ -211,96 +243,55 @@ nav.open #menu {
   display: grid;
 }
 
-@media (min-width: 768px) {
-  #toggle {
-    display: none;
-  }
 
-  body>nav {
-    overflow: visible;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: auto;
-    column-gap: var(--gutter);
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  .logo {
-    grid-column: 1 / 4;
-  }
-
-  #menu {
-    display: flex;
-    grid-column: 4 / 12;
-    grid-row: 1;
-    justify-content: space-between;
-    align-items: center;
-    align-self: center;
-    overflow: visible;
-    padding: 0;
-  }
-
-  #soundToggle {
-    grid-column: 12 / 13;
-  }
-
-  #menu li a {
-    font-size: 1.3em;
-  }
-}
-
-footer nav ul {
-  list-style: none;
-  display: flex;
-  gap: 0.5rem;
-}
+/* ==================================================
+   HERO
+   ================================================== */
 
 #hero {
   position: relative;
+
   display: grid;
-  background-color: var(--bg);
+
   grid-template-columns: 1fr;
   grid-template-rows: repeat(12, minmax(0, 1fr));
+
   min-height: 100svh;
   max-height: 100svh;
+
   padding: 0 var(--pad);
-}
 
-#hero>h1 {
-  font-size: 3em;
-  grid-row-start: 4;
-  height: min-content;
-  align-self: end;
-  color: #000;
-
-}
-
-@media (min-width: 768px) {
-  #hero {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  #hero>h1 {
-    font-size: 7em;
-  }
+  background-color: var(--bg);
 }
 
 #bg {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
   display: block;
+
   z-index: 0;
 }
 
-#hero> :not(#bg) {
+#hero > :not(#bg) {
   position: relative;
   z-index: 1;
 }
 
-#hero>h4 {
+#hero > h1 {
+  grid-row-start: 4;
+
+  align-self: end;
+  height: min-content;
+
+  font-size: 3em;
+  color: #000;
+}
+
+#hero > h4 {
   grid-row-start: 5;
   color: #000;
 }
@@ -316,223 +307,6 @@ footer nav ul {
   cursor: pointer;
 }
 
-section {
-  padding: 2rem var(--pad) 2rem;
-}
-
-#about,
-#organizers {
-  background-color: var(--bg);
-}
-
-#about {
-  background-color: var(--bg);
-}
-
-#open-call-2 {
-  background-color: var(--bg-light);
-}
-
-
-footer {
-  background-color: var(--teal);
-  color: var(--bg-dark);
-  padding: 1rem var(--pad);
-}
-
-@media (min-width: 768px) {
-
-  /* Footer rides the same 12-col grid. */
-  footer {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--gutter);
-    align-items: baseline;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  #info {
-    grid-row-start: 5;
-    font-size: 2.5em;
-  }
-
-  #about,
-  #organizers,
-  #submissions,
-  #open-call-1,
-  #open-call-2 {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  #about>p,
-  #submissions>p,
-  #open-call-2>p {
-    justify-self: center;
-    width: 100%;
-  }
-
-  #open-call-2>ul,
-  #submissions>ul,
-  #submissions>ol {
-    justify-self: center;
-    width: 100%;
-    margin-left: -1.5rem;
-  }
-
-  footer>p {
-    grid-column: 1 / 5;
-    font-size: 1rem;
-  }
-
-  footer>nav {
-    grid-column: 5 / 13;
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-end;
-    gap: 0.5rem;
-  }
-
-  h2 {
-    margin-top: 0;
-  }
-
-  section {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--gutter);
-    row-gap: 1.3rem;
-    align-content: start;
-    align-items: start;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-}
-
-@media (min-width: 768px) {
-  section {
-    column-gap: 1.3rem;
-  }
-
-
-
-}
-
-/* Headings and lead prose take the full content width. */
-section>h2,
-section>h3,
-section>h4,
-section>p,
-section>blockquote,
-section>ul,
-section>ol {
-  grid-column: 1 / -1;
-}
-
-section>p,
-section>ul,
-section>ol {
-  max-width: 70ch;
-}
-
-section>ul,
-section>ol {
-  padding-left: 1.5rem;
-  font-weight: 100;
-  margin-top: 0.4rem;
-}
-
-section>ul li,
-section>ol li {
-  font-size: 1em;
-  margin-bottom: 0.5rem;
-}
-
-@media (min-width: 768px) {
-
-  section>ul,
-  section>ol {
-    font-size: 1.2em;
-  }
-}
-
-@media (min-width: 1200px) {
-
-  #about>p,
-  #submissions>p,
-  #open-call-2>p,
-  #open-call-2>ul,
-  #submissions>ul,
-  #submissions>ol {
-    grid-column: 3 / 11;
-    justify-self: center;
-    width: 100%;
-  }
-
-  section>h4 {
-    grid-column: 1 / 3;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  section>h4+p,
-  section>h4+ul,
-  section>h4+ol {
-    grid-column: 3 / 11;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  #submissions>h3 {
-    grid-column: 1 / 3;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  section>article,
-  .chair-group article {
-    padding-right: 2rem;
-  }
-}
-
-/* 3-up content: four of the twelve columns each. */
-section>article,
-.chair-group {
-  grid-column: span 4;
-}
-
-#submissions>article>h3 {
-  margin-top: 0;
-}
-
-/* Dates and contact: full-width bands whose 4 entries
-     snap to the same 12 columns (three columns each). */
-#dates {
-  grid-column: 1 / -1;
-}
-
-#contact>dl {
-  grid-column: 1 / -1;
-}
-
-#dates>dl>div,
-#contact>dl>div {
-  grid-column: span 3;
-}
-
-footer a {
-  color: var(--bg-dark);
-}
-
-body>footer>nav>ul>li>a {
-  color: var(--bg-dark);
-  text-decoration: underline;
-}
-
 #opening {
   grid-row-start: 10;
 }
@@ -545,40 +319,166 @@ body>footer>nav>ul>li>a {
   color: antiquewhite;
 }
 
-@media (min-width: 768px) {
-  #opening {
-    font-size: 1.1em;
-  }
 
-  #alongside {
-    font-size: 1.1em;
-  }
+/* ==================================================
+   SECTIONS — GENERAL
+   ================================================== */
 
-  #alongside a {
-    color: #000;
-  }
+section {
+  padding: 2rem var(--pad);
 }
+
+section > h2,
+section > h3,
+section > h4,
+section > p,
+section > blockquote,
+section > ul,
+section > ol {
+  grid-column: 1 / -1;
+}
+
+section > p,
+section > ul,
+section > ol {
+  max-width: 70ch;
+}
+
+section > ul,
+section > ol {
+  padding-left: 1.5rem;
+  margin-top: 0.4rem;
+  font-weight: 100;
+}
+
+section > ul li,
+section > ol li {
+  font-size: 1em;
+  margin-bottom: 0.5rem;
+}
+
+section > article,
+.chair-group {
+  grid-column: span 4;
+}
+
+
+/* ==================================================
+   SECTION BACKGROUNDS
+   ================================================== */
+
+#about,
+#organizers {
+  background-color: var(--bg);
+}
+
+#submissions,
+#program,
+#open-call-2 {
+  background-color: var(--bg-light);
+}
+
+
+/* ==================================================
+   THEME
+   ================================================== */
 
 #theme {
   background-color: var(--teal);
   color: var(--bg);
+
   font-family: "Funnel Display", sans-serif;
   font-size: 2.0801em;
   font-weight: 300;
   line-height: 1.1;
 }
 
-@media (min-width: 768px) {
-  #theme {
-    font-size: 3em;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
+
+/* ==================================================
+   SUBMISSIONS
+   ================================================== */
+
+#submissions > article > h3 {
+  margin-top: 0;
 }
 
-.text-smaller {
-  font-size: 1rem;
-  font-weight: normal;
+
+/* ==================================================
+   PROGRAM
+   ================================================== */
+
+/* PAPER heading + contribution titles */
+
+#program > h3,
+.program-contribution h4 {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 1.4422em;
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  line-height: 1.1;
+}
+
+
+/* PAPER 1 / PAPER 2 */
+
+#program > h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+/* ==================================================
+   PROGRAM — CONTRIBUTIONS
+   ================================================== */
+
+.program-contribution {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.program-contribution:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Time */
+
+.program-contribution .submission-time {
+  margin: 0 0 0.35rem 0;
+}
+
+
+/* Title */
+
+.program-contribution h4 {
+  width: 100%;
+  margin: 0 0 0.35rem 0;
+}
+
+
+/* Authors */
+
+.program-contribution .submission-authors {
+  margin: 0;
+}
+
+
+/* ==================================================
+   ORGANIZERS
+   ================================================== */
+
+.design-chair {
+  margin-top: 3rem;
+  white-space: nowrap;
+}
+
+#organizers article h3 {
+  margin-bottom: 0;
+}
+
+.affiliation {
+  margin-bottom: 0.5rem;
 }
 
 #organizers a {
@@ -586,7 +486,13 @@ body>footer>nav>ul>li>a {
   text-decoration: underline;
 }
 
+
+/* ==================================================
+   DATES
+   ================================================== */
+
 #dates {
+  grid-column: 1 / -1;
   margin-top: 2rem;
 }
 
@@ -600,40 +506,354 @@ body>footer>nav>ul>li>a {
   gap: 1rem 0.5rem;
 }
 
-#dates dl dt {
-  margin-top: 0;
+#dates > dl > div {
+  grid-column: span 3;
 }
 
-#submissions {
-  background-color: var(--bg-light);
-}
 
-#submissions article h3 {
-  font-family: "Funnel Sans", sans-serif;
-  font-size: 1em;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-top: 1.5rem;
-}
+/* ==================================================
+   DEFINITION LISTS
+   ================================================== */
 
 dl dt {
   font-weight: bold;
   margin-top: 1rem;
-  color: #063f42;
+  color: var(--teal);
 }
+
+
+/* ==================================================
+   CONTACT
+   ================================================== */
 
 #contact {
   background-color: var(--teal);
   color: var(--bg-dark);
 }
 
-#contact dl {
+#contact h2 {
+  color: var(--bg-dark);
+}
+
+#contact a {
+  color: var(--bg-dark);
+}
+
+#contact > dl {
+  grid-column: 1 / -1;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
   gap: 1rem 0.5rem;
 }
 
+#contact > dl > div {
+  grid-column: span 3;
+}
+
+#contact dl div dt {
+  margin-top: 0;
+}
+
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+
+footer {
+  background-color: var(--teal);
+  color: var(--bg-dark);
+
+  padding: 1rem var(--pad);
+}
+
+footer nav ul {
+  list-style: none;
+
+  display: flex;
+  gap: 0.5rem;
+}
+
+footer a {
+  color: var(--bg-dark);
+}
+
+body > footer > nav > ul > li > a {
+  color: var(--bg-dark);
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   TABLET + DESKTOP
+   ================================================== */
+
 @media (min-width: 768px) {
+
+  p {
+    font-size: 1.2em;
+  }
+
+  section > ul,
+  section > ol {
+    font-size: 1.2em;
+  }
+
+
+  /* ------------------------------
+     NAVIGATION
+     ------------------------------ */
+
+  #toggle {
+    display: none;
+  }
+
+  body > nav {
+    overflow: visible;
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto;
+
+    column-gap: var(--gutter);
+
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .logo {
+    grid-column: 1 / 4;
+  }
+
+  #menu {
+    display: flex;
+
+    grid-column: 4 / 12;
+    grid-row: 1;
+
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+
+    overflow: visible;
+
+    padding: 0;
+  }
+
+  #menu li a {
+    font-size: 1.3em;
+  }
+
+  #soundToggle {
+    grid-column: 12 / 13;
+  }
+
+
+  /* ------------------------------
+     HERO
+     ------------------------------ */
+
+  #hero {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  #hero > h1 {
+    font-size: 7em;
+  }
+
+  #info {
+    grid-row-start: 5;
+    font-size: 2.5em;
+  }
+
+  #opening,
+  #alongside {
+    font-size: 1.1em;
+  }
+
+  #alongside a {
+    color: #000;
+  }
+
+
+  /* ------------------------------
+     SECTIONS
+     ------------------------------ */
+
+  section {
+    display: grid;
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    column-gap: 1.3rem;
+    row-gap: 1.3rem;
+
+    align-content: start;
+    align-items: start;
+
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+
+  /* ------------------------------
+     STANDARD TEXT SECTIONS
+     ------------------------------ */
+
+  #about > p,
+  #submissions > p,
+  #open-call-2 > p {
+    justify-self: center;
+    width: 100%;
+  }
+
+  #open-call-2 > ul,
+  #submissions > ul,
+  #submissions > ol {
+    justify-self: center;
+    width: 100%;
+    margin-left: -1.5rem;
+  }
+
+
+  /* ==================================================
+     PROGRAM — DESKTOP
+     ================================================== */
+
+  #program > h2 {
+    grid-column: 1 / -1;
+  }
+
+
+  /*
+     PAPER 1
+     aligned with room, time and authors.
+
+     Parent grid gap = 1.3rem
+     Desired gap = 0.35rem
+     1.3 - 0.95 = 0.35rem
+  */
+
+  #program > h3 {
+    grid-column: 4 / 11;
+
+    justify-self: start;
+
+    width: 100%;
+
+    margin-top: 0;
+    margin-bottom: -0.95rem;
+  }
+
+
+  /* ------------------------------
+     ROOM + SESSION TIME
+     ------------------------------ */
+
+  #program > p {
+    grid-column: 4 / 11;
+
+    justify-self: start;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+
+  /* ------------------------------
+     CONTRIBUTION BLOCK
+     ------------------------------ */
+
+  .program-contribution {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    column-gap: 1.3rem;
+    row-gap: 0.35rem;
+
+    width: 100%;
+
+    margin-bottom: 1rem;
+  }
+
+
+  /* ------------------------------
+     CONTRIBUTION TIME
+     ------------------------------ */
+
+  .program-contribution .submission-time {
+    grid-column: 4 / 11;
+    grid-row: 1;
+
+    justify-self: start;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+
+  /* ------------------------------
+     CONTRIBUTION TITLE
+     ------------------------------ */
+
+  .program-contribution h4 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-self: start;
+
+    width: 100%;
+
+    margin: 0;
+  }
+
+
+  /* ------------------------------
+     AUTHORS
+     ------------------------------ */
+
+  .program-contribution .submission-authors {
+    grid-column: 4 / 11;
+    grid-row: 3;
+
+    justify-self: start;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+
+  /* ------------------------------
+     THEME
+     ------------------------------ */
+
+  #theme {
+    font-size: 3em;
+
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+
+  /* ------------------------------
+     DATES + CONTACT
+     ------------------------------ */
 
   #dates dl,
   #contact dl {
@@ -646,9 +866,14 @@ dl dt {
     line-height: 1.2;
   }
 
-  #dates p>br:first-child {
+  #dates p > br:first-child {
     display: none;
   }
+
+
+  /* ------------------------------
+     ORGANIZERS
+     ------------------------------ */
 
   #organizers > h2 {
     margin-bottom: 0.2rem;
@@ -669,29 +894,156 @@ dl dt {
   #organizers article.program-committee {
     grid-column: 1 / span 4;
   }
+
+
+  /* ------------------------------
+     FOOTER
+     ------------------------------ */
+
+  footer {
+    display: grid;
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+
+    align-items: baseline;
+
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  footer > p {
+    grid-column: 1 / 5;
+    font-size: 1rem;
+  }
+
+  footer > nav {
+    grid-column: 5 / 13;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+
+    gap: 0.5rem;
+  }
 }
 
-#contact dl div dt {
-  margin-top: 0;
+
+/* ==================================================
+   LARGE DESKTOP
+   ================================================== */
+
+@media (min-width: 1200px) {
+
+  /* ------------------------------
+     STANDARD CENTRED CONTENT
+     ------------------------------ */
+
+  #about > p,
+  #submissions > p,
+  #open-call-2 > p,
+  #open-call-2 > ul,
+  #submissions > ul,
+  #submissions > ol {
+    grid-column: 3 / 11;
+
+    justify-self: center;
+    width: 100%;
+  }
+
+
+  /* ------------------------------
+     STANDARD H4 LAYOUT
+     PROGRAM EXCLUDED
+     ------------------------------ */
+
+  section:not(#program) > h4 {
+    grid-column: 1 / 3;
+
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  section:not(#program) > h4 + p,
+  section:not(#program) > h4 + ul,
+  section:not(#program) > h4 + ol {
+    grid-column: 3 / 11;
+
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+
+  /* ------------------------------
+     SUBMISSIONS
+     ------------------------------ */
+
+  #submissions > h3 {
+    grid-column: 1 / 3;
+
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+
+  /* ------------------------------
+     ARTICLES
+     ------------------------------ */
+
+  section > article,
+  .chair-group article {
+    padding-right: 2rem;
+  }
 }
 
-#contact h2 {
-  color: var(--bg-dark);
-}
 
-#contact a {
-  color: var(--bg-dark);
-}
+/* ==================================================
+   MOBILE
+   ================================================== */
 
 @media (max-width: 767px) {
 
-  /* Increase space before h4, double it. */
   h4 {
     margin-top: 1em;
     margin-bottom: 0.4em;
   }
 
-  /* Make p style of organizers same style and alignment to p in other sections */
+
+  /* ------------------------------
+     PROGRAM
+     ------------------------------ */
+
+  #program > h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  #program > p {
+    margin: 0;
+  }
+
+  .program-contribution {
+    margin-top: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .program-contribution .submission-time {
+    margin: 0 0 0.35rem 0;
+  }
+
+  .program-contribution h4 {
+    margin: 0 0 0.35rem 0;
+  }
+
+  .program-contribution .submission-authors {
+    margin: 0;
+  }
+
+
+  /* ------------------------------
+     ORGANIZERS
+     ------------------------------ */
+
   #organizers p,
   #organizers .text-smaller,
   #organizers .affiliation {
