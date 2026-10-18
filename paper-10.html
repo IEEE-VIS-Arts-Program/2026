@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/png" href="fav-icon.png" />
+  <link href="style.css?v=6" rel="stylesheet" />
+  <script src="./main.js" defer></script>
+  <script src="./audio.js" defer></script>
+  <title>VISAP 2026 - P.each Peach: Materializing Immortality Desire through Data-Driven Sculptures</title>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html" class="logo link-coloured">
+      <span><strong>VISAP</strong> 2026</span>
+    </a>
+    <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <g id="bars">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </g>
+        <g id="cross">
+          <line x1="5" y1="5" x2="19" y2="19" />
+          <line x1="19" y1="5" x2="5" y2="19" />
+        </g>
+      </svg>
+    </button>
+
+    <ul id="menu">
+      <li><a href="index.html#about" class="link-coloured">About</a></li>
+      <li><a href="program.html" class="link-coloured">Program</a></li>
+      <li><a href="contributions.html" class="active link-coloured" aria-current="page">Contributions</a></li>
+      <li><a href="index.html#submissions" class="link-coloured">Submissions</a></li>
+      <li><a href="index.html#organizers" class="link-coloured">Organizers</a></li>
+      <li><a href="index.html#contact" class="link-coloured">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="contribution-detail" class="section-contribution-detail">
+      <p class="contribution-detail__category">Paper</p>
+      <h2 class="contribution-detail__title">The Choreographic Genome: Amplifying the Silent Structure of Text into
+        Dance</h2>
+      <p class="contribution-detail__authors">Michael Li, Alison Ding</p>
+
+      <div class="contribution-detail__abstract">
+        <p>Recent advances in generative artificial intelligence have enabled the synthesis of complex human motion with
+          unprecedented fidelity. However, current text-to-motion systems rely strictly on linguistic semantics: if an
+          input reads "I put my hands up", the model searches for a pose with raised hands, and every non-semantic
+          property of the text is discarded as noise. In this work, we treat that discarded structure as the signal. We
+          present an embodied visualization instrument that amplifies not what a text means, but how it is built. Our
+          method first quantizes dance kinematics into a motion codebook of 256 stylistic "regions" using Principal
+          Component Analysis and K-Means clustering, and orders those regions along the dominant axis of movement. We
+          then map the raw byte representation of any input text directly onto this codebook, producing a deterministic
+          sequence of regions that we call the text's "choreographic genome". A precomputed plausibility graph and a set
+          of physics smoothing routines turn this genome into fluid, full-body movement, so that the dancing body
+          becomes a display surface for the byte-level structure that semantic systems ignore. Through a series of
+          artistic case studies, including a Shakespeare sonnet, a machine error log, source code, an abolitionist's
+          question, and Indigenous and Devanagari scripts, we show that each text produces a visibly distinct dance, and
+          that scripts marginalized by ASCII-centric computing are amplified into close to three times as much movement
+          per character. We frame this not as a motion-synthesis benchmark, but as a critical and poetic visualization
+          that asks what we choose to count as signal, and what we allow to go unheard.</p>
+      </div>
+
+      <figure class="contribution-detail__image">
+        <img src="./Assets/visual/paper-10-visual.png" alt="The Choreographic Genome preview image" />
+      </figure>
+
+      <nav class="contribution-detail__nav" aria-label="Contribution navigation">
+        <a href="paper-9.html" class="contribution-detail__nav-arrow contribution-detail__nav-arrow--prev"
+          aria-label="Previous contribution">
+          <svg class="contribution-detail__arrow-icon" viewBox="0 0 42 14" width="42" height="14" fill="none"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="41" y1="7" x2="1" y2="7" />
+            <polyline points="7,1 1,7 7,13" />
+          </svg>
+        </a>
+        <a href="pictorial-1.html" class="contribution-detail__nav-arrow contribution-detail__nav-arrow--next"
+          aria-label="Next contribution">
+          <svg class="contribution-detail__arrow-icon" viewBox="0 0 42 14" width="42" height="14" fill="none"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="1" y1="7" x2="41" y2="7" />
+            <polyline points="35,1 41,7 35,13" />
+          </svg>
+        </a>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 IEEE VIS Arts Program</p>
+    <nav aria-label="Previous editions">
+      <span>Previous editions:</span>
+      <ul>
+        <li><a href="https://visap.net/2025" target="_blank" class="link-coloured">2025</a></li>
+        <li><a href="https://visap.net/2024" target="_blank" class="link-coloured">2024</a></li>
+        <li><a href="https://visap.net/2023" target="_blank" class="link-coloured">2023</a></li>
+        <li><a href="https://visap.net/2022" target="_blank" class="link-coloured">2022</a></li>
+        <li><a href="https://visap.net/2021" target="_blank" class="link-coloured">2021</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>

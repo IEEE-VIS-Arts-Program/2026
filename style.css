@@ -9,11 +9,20 @@
 
   --pad: 1rem;
   --gutter: 1rem;
+  --nav-height: 2.5rem;
+  /* Actual mobile navigation bar height */
+
+  --link-hover-color: #ffffff;
+
+  /* Contribution Category Colours (currently all white) */
+  --artwork-colour: #b668dc;
+  --paper-colour: #e4dc35;
+  --pictorial-colour: #f6836e;
 }
 
 
 /* ==================================================
-   RESET
+   1. RESET & BASE ELEMENTS
    ================================================== */
 
 * {
@@ -33,14 +42,10 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-
-/* ==================================================
-   GLOBAL
-   ================================================== */
-
 body {
   font-family: "Funnel Sans", sans-serif;
   background-color: var(--teal);
+  overflow-x: hidden;
 }
 
 a {
@@ -65,6 +70,8 @@ h4 {
 
 .logo {
   font-size: 1rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
 }
 
 h1 {
@@ -83,6 +90,11 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+h4 {
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+
 p {
   font-size: 1em;
   font-weight: 100;
@@ -97,12 +109,18 @@ small {
   font-weight: normal;
 }
 
+dl dt {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: var(--teal);
+}
+
 
 /* ==================================================
-   MAIN NAVIGATION
+   2. MAIN NAVIGATION
    ================================================== */
 
-body > nav {
+body>nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -113,25 +131,20 @@ body > nav {
   grid-template-rows: max-content auto;
 
   min-height: 32px;
-
   background: var(--bg-dark);
 
   align-items: center;
   overflow: hidden;
 
   padding: 0 var(--pad);
-
   z-index: 10;
 }
 
-.logo {
-  padding: 0.5rem 0;
-  text-decoration: none;
-}
+
 
 
 /* ==================================================
-   SOUND
+   3. SOUND CONTROLS
    ================================================== */
 
 #soundToggle {
@@ -172,14 +185,14 @@ body > nav {
 
 
 /* ==================================================
-   MOBILE MENU BUTTON
+   4. MOBILE MENU BUTTON & MENU
    ================================================== */
 
 #toggle {
   grid-column: 3;
   grid-row: 1;
 
-  justify-self: right;
+  justify-self: end;
 
   display: flex;
   align-items: center;
@@ -189,6 +202,16 @@ body > nav {
   padding: 0.5rem;
 
   color: var(--teal);
+}
+
+@media (max-width: 767.98px) {
+  body>nav:not(:has(#soundToggle)) {
+    grid-template-columns: 1fr auto;
+  }
+
+  body>nav:not(:has(#soundToggle)) #toggle {
+    grid-column: 2;
+  }
 }
 
 #toggle svg {
@@ -210,21 +233,14 @@ nav.open #cross {
   display: inline;
 }
 
-
-/* ==================================================
-   MENU
-   ================================================== */
-
 #menu {
   display: none;
-
   list-style: none;
 
   grid-column: 1 / -1;
   grid-row: 2;
 
   align-self: start;
-
   gap: 1rem;
 
   padding: 2rem 0;
@@ -232,11 +248,13 @@ nav.open #cross {
 
 #menu li a {
   display: inline-block;
-
   color: var(--teal);
   text-decoration: none;
-
   font-size: 2.0801em;
+}
+
+#menu li a.active {
+  text-transform: uppercase;
 }
 
 nav.open #menu {
@@ -245,12 +263,11 @@ nav.open #menu {
 
 
 /* ==================================================
-   HERO
+   5. HERO
    ================================================== */
 
 #hero {
   position: relative;
-
   display: grid;
 
   grid-template-columns: 1fr;
@@ -260,30 +277,25 @@ nav.open #menu {
   max-height: 100svh;
 
   padding: 0 var(--pad);
-
   background-color: var(--bg);
 }
 
 #bg {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   display: block;
-
   z-index: 0;
 }
 
-#hero > :not(#bg) {
+#hero> :not(#bg) {
   position: relative;
   z-index: 1;
 }
 
-#hero > h1 {
+#hero>h1 {
   grid-row-start: 4;
-
   align-self: end;
   height: min-content;
 
@@ -291,7 +303,7 @@ nav.open #menu {
   color: #000;
 }
 
-#hero > h4 {
+#hero>h4 {
   grid-row-start: 5;
   color: #000;
 }
@@ -321,72 +333,89 @@ nav.open #menu {
 
 
 /* ==================================================
-   SECTIONS — GENERAL
+   6. SECTIONS — BASE / GENERAL
    ================================================== */
 
 section {
   padding: 2rem var(--pad);
 }
 
-section > h2,
-section > h3,
-section > h4,
-section > p,
-section > blockquote,
-section > ul,
-section > ol {
+section>h2,
+section>h3,
+section>h4,
+section>p,
+section>blockquote,
+section>ul,
+section>ol {
   grid-column: 1 / -1;
 }
 
-section > p,
-section > ul,
-section > ol {
+section>p,
+section>ul,
+section>ol {
   max-width: 70ch;
 }
 
-section > ul,
-section > ol {
+section>ul,
+section>ol {
   padding-left: 1.5rem;
   margin-top: 0.4rem;
   font-weight: 100;
 }
 
-section > ul li,
-section > ol li {
+section>ul li,
+section>ol li {
   font-size: 1em;
   margin-bottom: 0.5rem;
 }
 
-section > article,
+section>article,
 .chair-group {
   grid-column: span 4;
 }
 
 
 /* ==================================================
-   SECTION BACKGROUNDS
+   7. SECTION BACKGROUNDS
    ================================================== */
 
+/* Warm neutral background (var(--bg)) */
 #about,
-#organizers {
+#theme-intro,
+#organizers,
+#contributions,
+#contribution-detail,
+.section-contribution-detail {
   background-color: var(--bg);
 }
 
+/* Light ivory background (var(--bg-light)) */
+#open-call,
+#open-call-2,
 #submissions,
-#program,
-#open-call-2 {
+#program-committee,
+#program {
   background-color: var(--bg-light);
+}
+
+/* Dark teal background (var(--teal)) */
+#theme,
+.section-theme-quote,
+#theme-quote-1,
+#theme-quote-2 {
+  background-color: var(--teal);
+  color: var(--bg);
 }
 
 
 /* ==================================================
-   THEME
+   8. THEME QUOTES
    ================================================== */
 
-#theme {
-  background-color: var(--teal);
-  color: var(--bg);
-
+#theme,
+.section-theme-quote,
+#theme-quote-1,
+#theme-quote-2 {
   font-family: "Funnel Display", sans-serif;
   font-size: 2.0801em;
   font-weight: 300;
@@ -395,69 +424,54 @@ section > article,
 
 
 /* ==================================================
-   SUBMISSIONS
+   9. SUBMISSIONS
    ================================================== */
 
-#submissions > article > h3 {
+#submissions>article>h3 {
   margin-top: 0;
 }
 
 
 /* ==================================================
-   PROGRAM
+   10. PROGRAM (Mobile Base)
    ================================================== */
 
-/* PAPER heading + contribution titles */
-
-#program > h3,
+#program>h3,
 .program-contribution h4 {
   font-family: "Funnel Display", sans-serif;
   color: var(--teal);
   font-size: 1.4422em;
   font-weight: 500;
-  /* text-transform: uppercase; */
   line-height: 1.1;
 }
 
-
-/* PAPER 1 / PAPER 2 */
-
-#program > h3 {
+#program>h3 {
   margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
-
-/* ==================================================
-   PROGRAM — CONTRIBUTIONS
-   ================================================== */
+#program>p {
+  margin: 0;
+}
 
 .program-contribution {
   width: 100%;
-  margin-bottom: 2.5rem;
+  margin-top: 1.3rem;
+  margin-bottom: 2rem;
 }
 
 .program-contribution:last-child {
   margin-bottom: 0;
 }
 
-
-/* Time */
-
 .program-contribution .submission-time {
   margin: 0 0 0.35rem 0;
 }
-
-
-/* Title */
 
 .program-contribution h4 {
   width: 100%;
   margin: 0 0 0.35rem 0;
 }
-
-
-/* Authors */
 
 .program-contribution .submission-authors {
   margin: 0;
@@ -465,7 +479,7 @@ section > article,
 
 
 /* ==================================================
-   ORGANIZERS
+   11. ORGANIZERS (Mobile Base)
    ================================================== */
 
 .design-chair {
@@ -486,44 +500,185 @@ section > article,
   text-decoration: underline;
 }
 
+#organizers p,
+#organizers .text-smaller,
+#organizers .affiliation {
+  font-size: 1em;
+  font-weight: 100;
+  max-width: 70ch;
+}
+
 
 /* ==================================================
-   DATES
+   12. CONTRIBUTIONS GRID (Mobile Base)
    ================================================== */
 
-#dates {
+.contributions-intro {
   grid-column: 1 / -1;
-  margin-top: 2rem;
-}
-
-#dates p {
   margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  max-width: 70ch;
 }
 
-#dates dl {
+.contributions-grid {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 1rem 0.5rem;
-}
-
-#dates > dl > div {
-  grid-column: span 3;
-}
-
-
-/* ==================================================
-   DEFINITION LISTS
-   ================================================== */
-
-dl dt {
-  font-weight: bold;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 0;
   margin-top: 1rem;
+}
+
+/* Category Color Variables */
+.contribution-card--artwork {
+  --card-colour: var(--artwork-colour);
+}
+
+.contribution-card--paper {
+  --card-colour: var(--paper-colour);
+}
+
+.contribution-card--pictorial {
+  --card-colour: var(--pictorial-colour);
+}
+
+/* Card Base Structure (Mobile: 1 column horizontal rectangle) */
+.contribution-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  text-decoration: none;
   color: var(--teal);
+  box-sizing: border-box;
+  /* Continuous 2px border system for 1 column:
+     Top, left, and right borders on all cards;
+     Last card owns the bottom outer border */
+  border-top: 2px solid var(--card-colour);
+  border-left: 2px solid var(--card-colour);
+  border-right: 2px solid var(--card-colour);
+  border-bottom: none;
+}
+
+.contribution-card:last-child {
+  border-bottom: 2px solid var(--card-colour);
+}
+
+/* Keyboard focus */
+.contribution-card:focus-visible {
+  outline: 2px solid var(--card-colour);
+  outline-offset: -2px;
+  z-index: 4;
+}
+
+/* Background Image Layer (z-index: 1) */
+.contribution-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 60%
+}
+
+/* Hover & Focus-Visible Overlay Layer (z-index: 2) */
+.contribution-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--card-colour);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.contribution-card:hover::before,
+.contribution-card:focus-visible::before {
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contribution-card::before {
+    transition: none;
+  }
+}
+
+/* Card Text Elements (z-index: 3) */
+.contribution-card__authors {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  left: 0.85rem;
+  max-width: 100%;
+  text-align: right;
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--teal);
+  z-index: 3;
+}
+
+.contribution-card__title {
+  position: absolute;
+  top: 50%;
+  left: 0.85rem;
+  right: 0.85rem;
+  transform: translateY(-50%);
+  max-width: 100%;
+  text-align: left;
+  font-family: "Funnel Display", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--teal);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0;
+  z-index: 3;
+}
+
+.contribution-card:hover .contribution-card__title,
+.contribution-card:focus-visible .contribution-card__title,
+.contribution-card:hover .contribution-card__title span,
+.contribution-card:focus-visible .contribution-card__title span {
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.contribution-card__category {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 0.85rem;
+  text-align: right;
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--teal);
+  background-color: #ffffff;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  z-index: 3;
+}
+
+.contribution-card__authors span,
+.contribution-card__title span,
+.contribution-card__category span {
+  background-color: white;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 
 /* ==================================================
-   CONTACT
+   13. CONTACT
    ================================================== */
 
 #contact {
@@ -539,7 +694,7 @@ dl dt {
   color: var(--bg-dark);
 }
 
-#contact > dl {
+#contact>dl {
   grid-column: 1 / -1;
 
   display: grid;
@@ -548,7 +703,7 @@ dl dt {
   gap: 1rem 0.5rem;
 }
 
-#contact > dl > div {
+#contact>dl>div {
   grid-column: span 3;
 }
 
@@ -558,20 +713,21 @@ dl dt {
 
 
 /* ==================================================
-   FOOTER
+   13. FOOTER
    ================================================== */
 
 footer {
   background-color: var(--teal);
   color: var(--bg-dark);
-
   padding: 1rem var(--pad);
 }
 
+
+
 footer nav ul {
   list-style: none;
-
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -579,14 +735,14 @@ footer a {
   color: var(--bg-dark);
 }
 
-body > footer > nav > ul > li > a {
+body>footer>nav>ul>li>a {
   color: var(--bg-dark);
   text-decoration: underline;
 }
 
 
 /* ==================================================
-   TABLET + DESKTOP
+   14. TABLET & DESKTOP (min-width: 768px)
    ================================================== */
 
 @media (min-width: 768px) {
@@ -595,8 +751,8 @@ body > footer > nav > ul > li > a {
     font-size: 1.2em;
   }
 
-  section > ul,
-  section > ol {
+  section>ul,
+  section>ol {
     font-size: 1.2em;
   }
 
@@ -609,7 +765,7 @@ body > footer > nav > ul > li > a {
     display: none;
   }
 
-  body > nav {
+  body>nav {
     overflow: visible;
 
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -622,13 +778,21 @@ body > footer > nav > ul > li > a {
   }
 
   .logo {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
+  }
+
+  #soundToggle {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    justify-self: start;
+    align-self: center;
+    padding: 0;
   }
 
   #menu {
     display: flex;
 
-    grid-column: 4 / 12;
+    grid-column: 5 / 13;
     grid-row: 1;
 
     justify-content: space-between;
@@ -641,11 +805,8 @@ body > footer > nav > ul > li > a {
   }
 
   #menu li a {
-    font-size: 1.3em;
-  }
-
-  #soundToggle {
-    grid-column: 12 / 13;
+    font-size: clamp(0.75rem, 1.55vw, 1.3em);
+    white-space: nowrap;
   }
 
 
@@ -658,7 +819,7 @@ body > footer > nav > ul > li > a {
     padding-right: 5rem;
   }
 
-  #hero > h1 {
+  #hero>h1 {
     font-size: 7em;
   }
 
@@ -678,7 +839,7 @@ body > footer > nav > ul > li > a {
 
 
   /* ------------------------------
-     SECTIONS
+     SECTIONS GRID
      ------------------------------ */
 
   section {
@@ -707,77 +868,61 @@ body > footer > nav > ul > li > a {
      STANDARD TEXT SECTIONS
      ------------------------------ */
 
-  #about > p,
-  #submissions > p,
-  #open-call-2 > p {
+  #about>p,
+  #theme-intro>p,
+  #submissions>p,
+  #open-call>p,
+  #open-call-2>p,
+  #program-committee>p,
+  .section-text>p {
     justify-self: center;
     width: 100%;
   }
 
-  #open-call-2 > ul,
-  #submissions > ul,
-  #submissions > ol {
+  #open-call>ul,
+  #open-call-2>ul,
+  #submissions>ul,
+  #submissions>ol,
+  .section-text>ul,
+  .section-text>ol {
     justify-self: center;
     width: 100%;
     margin-left: -1.5rem;
   }
 
 
-  /* ==================================================
+  /* ------------------------------
      PROGRAM — DESKTOP
-     ================================================== */
+     ------------------------------ */
 
-  #program > h2 {
+  #program>h2 {
     grid-column: 1 / -1;
   }
 
-
-  /*
-     PAPER 1
-     aligned with room, time and authors.
-
-     Parent grid gap = 1.3rem
-     Desired gap = 0.35rem
-     1.3 - 0.95 = 0.35rem
-  */
-
-  #program > h3 {
-    grid-column: 4 / 11;
+  #program>h3 {
+    grid-column: 3 / 11;
 
     justify-self: start;
-
     width: 100%;
 
     margin-top: 0;
     margin-bottom: -0.95rem;
   }
 
-
-  /* ------------------------------
-     ROOM + SESSION TIME
-     ------------------------------ */
-
-  #program > p {
-    grid-column: 4 / 11;
+  #program>p {
+    grid-column: 3 / 11;
 
     justify-self: start;
-
     width: 100%;
     max-width: none;
 
     margin: 0;
   }
 
-
-  /* ------------------------------
-     CONTRIBUTION BLOCK
-     ------------------------------ */
-
   .program-contribution {
     grid-column: 1 / -1;
 
     display: grid;
-
     grid-template-columns: repeat(12, minmax(0, 1fr));
 
     column-gap: 1.3rem;
@@ -785,65 +930,60 @@ body > footer > nav > ul > li > a {
 
     width: 100%;
 
+    margin-top: 0;
     margin-bottom: 1rem;
   }
 
-
-  /* ------------------------------
-     CONTRIBUTION TIME
-     ------------------------------ */
-
-  .program-contribution .submission-time {
-    grid-column: 4 / 11;
+  .program-contribution .submission-time,
+  .project-contribution .submission-time {
+    grid-column: 1 / -1;
     grid-row: 1;
 
     justify-self: start;
-
     width: 100%;
     max-width: none;
 
     margin: 0;
   }
 
-
-  /* ------------------------------
-     CONTRIBUTION TITLE
-     ------------------------------ */
-
-  .program-contribution h4 {
+  .program-contribution h4,
+  .project-contribution h4 {
     grid-column: 1 / -1;
     grid-row: 2;
 
     justify-self: start;
-
     width: 100%;
 
     margin: 0;
   }
 
-
-  /* ------------------------------
-     AUTHORS
-     ------------------------------ */
-
-  .program-contribution .submission-authors {
-    grid-column: 4 / 11;
+  .program-contribution .submission-authors,
+  .program-contribution .submission-author,
+  .project-contribution .submission-authors,
+  .project-contribution .submission-author {
+    grid-column: 1 / -1;
     grid-row: 3;
 
     justify-self: start;
-
     width: 100%;
     max-width: none;
 
     margin: 0;
   }
 
+  #program>div:nth-child(25)>p.submission-authors {
+    grid-column: 1 / 11;
+  }
+
 
   /* ------------------------------
-     THEME
+     THEME QUOTES — DESKTOP
      ------------------------------ */
 
-  #theme {
+  #theme,
+  .section-theme-quote,
+  #theme-quote-1,
+  #theme-quote-2 {
     font-size: 3em;
 
     padding-left: 5rem;
@@ -852,30 +992,20 @@ body > footer > nav > ul > li > a {
 
 
   /* ------------------------------
-     DATES + CONTACT
+     CONTACT — DESKTOP
      ------------------------------ */
 
-  #dates dl,
   #contact dl {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--gutter);
   }
 
-  #dates p {
-    margin-top: 3.3rem;
-    line-height: 1.2;
-  }
-
-  #dates p > br:first-child {
-    display: none;
-  }
-
 
   /* ------------------------------
-     ORGANIZERS
+     ORGANIZERS — DESKTOP
      ------------------------------ */
 
-  #organizers > h2 {
+  #organizers>h2 {
     margin-bottom: 0.2rem;
   }
 
@@ -897,40 +1027,216 @@ body > footer > nav > ul > li > a {
 
 
   /* ------------------------------
-     FOOTER
+     FOOTER — DESKTOP
      ------------------------------ */
 
   footer {
-    display: grid;
-
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--gutter);
-
+    display: flex;
+    justify-content: space-between;
     align-items: baseline;
 
     padding-left: 5rem;
     padding-right: 5rem;
   }
 
-  footer > p {
-    grid-column: 1 / 5;
+  footer>p {
     font-size: 1rem;
+    margin-bottom: 0;
+    white-space: nowrap;
   }
 
-  footer > nav {
-    grid-column: 5 / 13;
-
+  footer>nav {
     display: flex;
     align-items: baseline;
-    justify-content: flex-end;
-
     gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  footer>nav span {
+    display: inline;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  footer>nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ------------------------------
+     CONTRIBUTIONS GRID — 3 COLUMNS (TABLET / SMALLER DESKTOP)
+     ------------------------------ */
+
+  .contributions-intro {
+    display: none;
+  }
+
+  .contributions-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1.5rem;
+  }
+
+  .contribution-card {
+    height: auto;
+    aspect-ratio: 1 / 1;
+
+    /* Continuous 2px border system for 3 columns:
+       Every card owns top and left borders */
+    border-top: 2px solid var(--card-colour);
+    border-left: 2px solid var(--card-colour);
+    border-right: none;
+    border-bottom: none;
+  }
+
+  /* Right outer border: column 3 cards, plus last card (card 31) in row 11 */
+  .contribution-card:nth-child(3n) {
+    border-right: 2px solid var(--card-colour);
+  }
+
+  .contribution-card:last-child {
+    border-right: 2px solid var(--card-colour);
+  }
+
+  /* Bottom outer border:
+     Row 10 has cards 28, 29, 30.
+     Card 28 is followed below by card 31, so card 28 has no bottom border.
+     Cards 29, 30, and 31 have no card below them, so they own the bottom border */
+  .contribution-card:nth-child(n + 29) {
+    border-bottom: 2px solid var(--card-colour);
+  }
+
+  .contribution-card__authors {
+    top: 0.85rem;
+    right: 0.85rem;
+    max-width: 100%;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+
+  .contribution-card__title {
+    left: 0.85rem;
+    right: 0.85rem;
+    max-width: calc(100% - 1.7rem);
+    font-size: 0.92rem;
+    line-height: 1.22;
+  }
+
+  .contribution-card__category {
+    bottom: 0.85rem;
+    right: 0.85rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1249.98px) {
+  .contribution-card__authors {
+    font-size: 0.88rem;
+  }
+
+  .contribution-card__title {
+    font-size: 1.05rem;
+  }
+
+  .contribution-card__category {
+    font-size: 0.88rem;
+  }
+}
+
+
+
+
+
+/* ==================================================
+   16. CONTRIBUTIONS GRID — LARGE DESKTOP (min-width: 1250px)
+   ================================================== */
+
+@media (min-width: 1250px) {
+
+  .contributions-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .contribution-card {
+    /* Reset borders to top & left ownership */
+    border-top: 2px solid var(--card-colour);
+    border-left: 2px solid var(--card-colour);
+    border-right: none;
+    border-bottom: none;
+  }
+
+  /* Reset 3-column right borders with matching specificity */
+  .contribution-card:nth-child(3n) {
+    border-right: none;
+  }
+
+  /* Column 5 cards own the right outer border */
+  .contribution-card:nth-child(5n) {
+    border-right: 2px solid var(--card-colour);
+  }
+
+  /* Card 31 (alone in row 7 column 1) owns its right outer border */
+  .contribution-card:last-child {
+    border-right: 2px solid var(--card-colour);
+  }
+
+  /* Reset 3-column bottom borders with matching specificity */
+  .contribution-card:nth-child(n + 29) {
+    border-bottom: none;
+  }
+
+  /* Bottom outer border in 5 columns:
+     Row 6 has cards 26, 27, 28, 29, 30.
+     Card 26 has card 31 below it, so card 26 gets no bottom border.
+     Cards 27, 28, 29, 30, and 31 have no card below them */
+  .contribution-card:nth-child(n + 27) {
+    border-bottom: 2px solid var(--card-colour);
+  }
+
+  .contribution-card__authors {
+    top: 0.85rem;
+    right: 0.85rem;
+    left: 0.85rem;
+    max-width: 100%;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+
+  .contribution-card__title {
+    left: 0.85rem;
+    right: 0.85rem;
+    max-width: calc(100% - 1.7rem);
+    font-size: 0.92rem;
+    line-height: 1.22;
+  }
+
+  .contribution-card__category {
+    bottom: 0.85rem;
+    right: 0.85rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (min-width: 1440px) {
+
+  .contribution-card__authors {
+    font-size: 0.88rem;
+  }
+
+  .contribution-card__title {
+    font-size: 1.02rem;
+  }
+
+  .contribution-card__category {
+    font-size: 0.88rem;
   }
 }
 
 
 /* ==================================================
-   LARGE DESKTOP
+   16. LARGE DESKTOP (min-width: 1200px)
    ================================================== */
 
 @media (min-width: 1200px) {
@@ -939,12 +1245,19 @@ body > footer > nav > ul > li > a {
      STANDARD CENTRED CONTENT
      ------------------------------ */
 
-  #about > p,
-  #submissions > p,
-  #open-call-2 > p,
-  #open-call-2 > ul,
-  #submissions > ul,
-  #submissions > ol {
+  #about>p,
+  #theme-intro>p,
+  #submissions>p,
+  #open-call>p,
+  #open-call-2>p,
+  #open-call>ul,
+  #open-call-2>ul,
+  #submissions>ul,
+  #submissions>ol,
+  #program-committee>p,
+  .section-text>p,
+  .section-text>ul,
+  .section-text>ol {
     grid-column: 3 / 11;
 
     justify-self: center;
@@ -957,16 +1270,16 @@ body > footer > nav > ul > li > a {
      PROGRAM EXCLUDED
      ------------------------------ */
 
-  section:not(#program) > h4 {
+  section:not(#program)>h4 {
     grid-column: 1 / 3;
 
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  section:not(#program) > h4 + p,
-  section:not(#program) > h4 + ul,
-  section:not(#program) > h4 + ol {
+  section:not(#program)>h4+p,
+  section:not(#program)>h4+ul,
+  section:not(#program)>h4+ol {
     grid-column: 3 / 11;
 
     margin-top: 0;
@@ -978,7 +1291,7 @@ body > footer > nav > ul > li > a {
      SUBMISSIONS
      ------------------------------ */
 
-  #submissions > h3 {
+  #submissions>h3 {
     grid-column: 1 / 3;
 
     margin-top: 0;
@@ -990,7 +1303,7 @@ body > footer > nav > ul > li > a {
      ARTICLES
      ------------------------------ */
 
-  section > article,
+  section>article,
   .chair-group article {
     padding-right: 2rem;
   }
@@ -998,57 +1311,339 @@ body > footer > nav > ul > li > a {
 
 
 /* ==================================================
-   MOBILE
+   17. CONTRIBUTION DETAIL PAGES
    ================================================== */
 
-@media (max-width: 767px) {
+/* Mobile Base Layout & Typography */
+.section-contribution-detail {
+  width: 100%;
+}
 
-  h4 {
-    margin-top: 1em;
-    margin-bottom: 0.4em;
+@media (max-width: 767.98px) {
+  .section-contribution-detail {
+    /* Account for fixed mobile navigation bar height plus breathing room above content */
+    padding-top: calc(var(--nav-height, 2.5rem) + 1.5rem);
+  }
+}
+
+.section-contribution-detail .contribution-detail__category {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teal);
+  margin: 0 0 0.5rem 0;
+}
+
+.section-contribution-detail .contribution-detail__title,
+.section-contribution-detail h2 {
+  font-family: "Funnel Display", sans-serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: var(--teal);
+  /* text-transform: uppercase; */
+  line-height: 1.15;
+  margin: 0 0 0.5rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.section-contribution-detail .contribution-detail__authors {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1.1rem;
+  color: var(--teal);
+  margin: 0 0 1.5rem 0;
+}
+
+.section-contribution-detail .contribution-detail__abstract,
+.section-contribution-detail p.contribution-detail__abstract {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000;
+  margin: 0 0 2rem 0;
+}
+
+.section-contribution-detail .contribution-detail__abstract p {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  max-width: none;
+}
+
+.section-contribution-detail .contribution-detail__abstract p:last-child {
+  margin-bottom: 0;
+}
+
+.section-contribution-detail .contribution-detail__image {
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+
+.section-contribution-detail .contribution-detail__image:last-child {
+  margin-bottom: 0;
+}
+
+.section-contribution-detail .contribution-detail__image img,
+.section-contribution-detail img.contribution-detail__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.section-contribution-detail .contribution-detail__placeholder {
+  width: 100%;
+  padding: 4rem 2rem;
+  border: 2px dashed var(--teal);
+  text-align: center;
+  color: var(--teal);
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 2rem 0;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Navigation Arrows — Mobile Base */
+.contribution-detail__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.contribution-detail__nav-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--teal);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.contribution-detail__nav-arrow:hover,
+.contribution-detail__nav-arrow:focus-visible {
+  color: #b668dc;
+  outline: none;
+}
+
+.contribution-detail__nav-arrow--prev {
+  justify-content: flex-start;
+}
+
+.contribution-detail__nav-arrow--next {
+  justify-content: flex-end;
+}
+
+.contribution-detail__arrow-icon {
+  display: block;
+  width: 42px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Tablet & Desktop Layout (min-width: 768px) */
+@media (min-width: 768px) {
+
+  /* Unfold navigation so arrows become direct 12-column grid children */
+  .section-contribution-detail .contribution-detail__nav {
+    display: contents;
   }
 
-
-  /* ------------------------------
-     PROGRAM
-     ------------------------------ */
-
-  #program > h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.35rem;
+  /* Category, title, and authors vertically stacked across columns 3–12 */
+  .section-contribution-detail .contribution-detail__category {
+    grid-column: 3 / 13;
+    grid-row: 1;
+    justify-self: start;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
   }
 
-  #program > p {
-    margin: 0;
+  .section-contribution-detail .contribution-detail__title,
+  .section-contribution-detail h2 {
+    grid-column: 3 / 13;
+    grid-row: 2;
+    justify-self: start;
+    width: 100%;
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
   }
 
-  .program-contribution {
-    margin-top: 1.3rem;
-    margin-bottom: 2rem;
+  .section-contribution-detail .contribution-detail__authors {
+    grid-column: 3 / 13;
+    grid-row: 3;
+    justify-self: start;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    align-self: center;
   }
 
-  .program-contribution .submission-time {
-    margin: 0 0 0.35rem 0;
+  /* Navigation Arrows — Desktop: placed in row 3 aligned with authors' names */
+  .section-contribution-detail .contribution-detail__nav-arrow--prev {
+    grid-column: 1 / 2;
+    grid-row: 3;
+    justify-self: start;
+    align-self: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 
-  .program-contribution h4 {
-    margin: 0 0 0.35rem 0;
+  .section-contribution-detail .contribution-detail__nav-arrow--next {
+    grid-column: 12 / 13;
+    grid-row: 3;
+    justify-self: end;
+    align-self: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 
-  .program-contribution .submission-authors {
-    margin: 0;
+  /* Abstract positioned below authors, spans columns 1–10, leaves 11–12 empty */
+  .section-contribution-detail .contribution-detail__abstract,
+  .section-contribution-detail p.contribution-detail__abstract {
+    grid-column: 1 / 11;
+    justify-self: start;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 
-
-  /* ------------------------------
-     ORGANIZERS
-     ------------------------------ */
-
-  #organizers p,
-  #organizers .text-smaller,
-  #organizers .affiliation {
-    font-size: 1em;
+  .section-contribution-detail .contribution-detail__abstract p {
+    font-size: 1.2em;
     font-weight: 100;
-    max-width: 70ch;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+
+  .section-contribution-detail .contribution-detail__abstract p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Image(s) positioned below abstract, left edge aligned with column 3, spanning columns 3–12 */
+  .section-contribution-detail .contribution-detail__image,
+  .section-contribution-detail img.contribution-detail__image {
+    grid-column: 3 / 13;
+    justify-self: start;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .section-contribution-detail .contribution-detail__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-contribution-detail .contribution-detail__placeholder {
+    grid-column: 3 / 13;
+    margin: 0;
+  }
+}
+
+
+/* ==================================================
+   18. DESKTOP LINK HOVER EFFECTS
+   ================================================== */
+
+@media (min-width: 768px) and (hover: hover) {
+
+  /* Subtle colour transition matching navigation arrows */
+  a,
+  .link-coloured,
+  .logo,
+  #menu li a,
+  #info a,
+  #alongside a,
+  #organizers a,
+  #contact a,
+  footer a,
+  body>footer>nav>ul>li>a,
+  #soundToggle,
+  .contribution-card,
+  .contribution-card__authors,
+  .contribution-card__title,
+  .contribution-card__category,
+  .contribution-card__authors span,
+  .contribution-card__title span,
+  .contribution-card__category span {
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* All clickable links turn white on hover & keyboard focus */
+  a:hover,
+  a:focus-visible,
+  .logo:hover,
+  .logo:focus-visible,
+  #menu li a:hover,
+  #menu li a:focus-visible,
+  #info a:hover,
+  #info a:focus-visible,
+  #alongside a:hover,
+  #alongside a:focus-visible,
+  #organizers a:hover,
+  #organizers a:focus-visible,
+  #contact a:hover,
+  #contact a:focus-visible,
+  footer a:hover,
+  footer a:focus-visible,
+  body>footer>nav>ul>li>a:hover,
+  body>footer>nav>ul>li>a:focus-visible,
+  #soundToggle:hover,
+  #soundToggle:focus-visible {
+    color: var(--link-hover-color);
+  }
+
+  /* Coloured links (lilac from palette) on hover & keyboard focus */
+  .link-coloured:hover,
+  .link-coloured:focus-visible,
+  #submissions a:hover,
+  #submissions a:focus-visible {
+    color: var(--purple) !important;
+  }
+
+  /* Contribution cards: text turns white and badges invert to dark teal on hover */
+  .contribution-card:hover,
+  .contribution-card:focus-visible,
+  .contribution-card:hover .contribution-card__authors,
+  .contribution-card:hover .contribution-card__title,
+  .contribution-card:hover .contribution-card__category,
+  .contribution-card:focus-visible .contribution-card__authors,
+  .contribution-card:focus-visible .contribution-card__title,
+  .contribution-card:focus-visible .contribution-card__category {
+    color: var(--link-hover-color);
+  }
+
+  .contribution-card:hover .contribution-card__authors span,
+  .contribution-card:hover .contribution-card__title span,
+  .contribution-card:hover .contribution-card__category span,
+  .contribution-card:focus-visible .contribution-card__authors span,
+  .contribution-card:focus-visible .contribution-card__title span,
+  .contribution-card:focus-visible .contribution-card__category span {
+    background-color: var(--teal);
+    color: var(--link-hover-color);
+  }
+
+  .contribution-card:hover .contribution-card__title,
+  .contribution-card:focus-visible .contribution-card__title,
+  .contribution-card:hover .contribution-card__title span,
+  .contribution-card:focus-visible .contribution-card__title span {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500;
   }
 }

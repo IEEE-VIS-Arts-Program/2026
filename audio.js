@@ -453,11 +453,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── PAST HERO → nearest text section drives its mapped colour ──
   const sectionSynth = {
     theme: "teal",
+    "theme-quote-1": "teal",
+    "theme-quote-2": "teal",
+    "theme-intro": "lavender",
     about: "lavender",
+    "about-visap": "lavender",
+    "open-call": "lavender",
     "open-call-2": "lavender",
     submissions: "orange",
+    inquiries: "orange",
     organizers: "yellow",
     contact: "teal",
+    program: "orange",
+    contributions: "lavender",
   };
   const attractors = [];
   document.querySelectorAll("section[id]").forEach((section) => {

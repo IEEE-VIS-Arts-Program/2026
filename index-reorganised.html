@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" type="image/png" href="fav-icon.png" />
+    <link href="style.css?v=6" rel="stylesheet" />
+    <script src="./main.js" defer></script>
+    <script src="./audio.js" defer></script>
+    <title>VISAP 2026</title>
+</head>
+
+<body>
+    <nav>
+        <a href="#" class="logo link-coloured">
+            <span><strong>VISAP</strong> 2026</span>
+        </a>
+        <button id="soundToggle" type="button" aria-label="Toggle sound" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linejoin="round">
+                <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="currentColor" stroke="none" />
+                <g id="soundOff">
+                    <line x1="16" y1="9.5" x2="21" y2="14.5" />
+                    <line x1="21" y1="9.5" x2="16" y2="14.5" />
+                </g>
+                <g id="soundOn">
+                    <path d="M16 9a4 4 0 0 1 0 6" />
+                    <path d="M18.7 7a7 7 0 0 1 0 10" />
+                </g>
+            </svg>
+        </button>
+        <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <g id="bars">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </g>
+                <g id="cross">
+                    <line x1="5" y1="5" x2="19" y2="19" />
+                    <line x1="19" y1="5" x2="5" y2="19" />
+                </g>
+            </svg>
+        </button>
+
+        <ul id="menu">
+            <li><a href="index.html#about" class="link-coloured">About</a></li>
+            <li><a href="program.html" class="link-coloured">Program</a></li>
+            <li><a href="contributions.html" class="link-coloured">Contributions</a></li>
+            <li><a href="index.html#submissions" class="link-coloured">Submissions</a></li>
+            <li><a href="index.html#organizers" class="link-coloured">Organizers</a></li>
+            <li><a href="index.html#contact" class="link-coloured">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <header id="hero">
+        <canvas id="bg" aria-hidden="true"></canvas>
+
+        <h1>Amplification</h1>
+
+        <p id="info">
+            <time datetime="2026-11-09/2026-11-13">November 11th, 2026</time>
+            <br />
+            <a href="https://betterworld.mit.edu/met-warehouse/" target="_blank" rel="noopener noreferrer"
+                class="link-coloured">Met Warehouse</a>,
+            MIT
+            <br />
+            Boston
+        </p>
+
+        <div id="opening">
+            <p>Keynote and exhibition opening</p>
+            <time datetime="2026-11-11">November 11, 2026</time>
+        </div>
+
+        <div id="alongside">
+            <p>
+                Event held alongside
+                <a href="https://ieeevis.org/year/2026/welcome/" target="_blank" rel="noopener noreferrer"
+                    class="link-coloured">IEEE VIS</a>
+            </p>
+            <time datetime="2026-11-09/2026-11-13">November 9–13, 2026</time>
+        </div>
+    </header>
+
+    <main>
+
+
+        <section id="program" class="section-program">
+
+
+            <h3>Visualizations as instruments that make the quiet legible and the overlooked visible. What does it
+                mean
+                to turn up the signal on data, stories, and communities that the world tends not to hear?</h3>
+
+
+            <div class="program-contribution">
+
+                <p class="submission-time">
+                    Data surrounds all life on Earth. From the smallest signal to vast planetary systems, we gather,
+                    process, and visualize traces of the world around us. Yet not all signals are heard equally.
+                    Some
+                    data
+                    becomes visible, operative, and powerful, while other stories remain quiet, obscured,
+                    fragmented, or
+                    deliberately ignored.
+
+                    In this context, visualization is not only a method of representation. It is also an instrument
+                    of
+                    amplification. It can make the quiet legible, the overlooked visible, and the unheard more
+                    present.
+                    It
+                    can reveal hidden structures, suppressed histories, fragile ecologies, minor gestures, and forms
+                    of
+                    community knowledge that conventional systems fail to recognize.
+
+                    As data becomes increasingly entangled with social, cultural, political, and environmental life,
+                    urgent
+                    questions emerge about what is amplified, who is given visibility, and whose experiences remain
+                    outside
+                    the frame. New technologies have granted us unprecedented access to data streams, but they have
+                    also
+                    intensified systems of extraction, surveillance, bias, and exclusion. Against this backdrop, we
+                    recognize a pressing need for critical, poetic, and equitable approaches to visualization that
+                    can
+                    turn
+                    up the signal on marginalized voices, overlooked communities, and hidden relations.
+                </p>
+
+            </div>
+
+            <h3>How might amplification serve humanity? What does data make louder, and what does it silence? Who builds
+                the systems behind our datasets, and who is accountable for them? How can artistic and critical
+                practices expand the role of visualization resistance, speculation, and social imagination and expose
+                the socio-technical architecture behind AI? How can visualization help shape new narratives, new
+                solidarities, and new modes of perception?</h3>
+
+            <div class="program-contribution">
+
+                <p class="submission-time">
+                    Together, we will explore innovative ways to generate, interpret, and create through amplification.
+                    Moving across concepts and contexts, VISAP 2026: Amplification seeks original research work
+                    exploring critical methods, algorithmic visual forms, and emerging narratives in data visualization
+                    art and design practices. We welcome research papers, artwork submissions, and pictorials for
+                    presentation across two interrelated tracks, paper/pictorials and exhibition, running alongside the
+                    IEEE VIS conference. We invite innovative and original contributions to the fields of data
+                    visualization, aesthetics, and process, including but not limited to:
+
+                    Original creative work using generative technologies to amplify data, stories, signals, and their
+                    aesthetic manifestations;
+                    Experimental and analog processes that reveal overlooked patterns, quiet gestures, or hidden
+                    relations within data;
+                    Advanced prototypes for eco-critical and sustainable technology in visualization contexts;
+                    Critical data interactions that explore amplification from social, cultural, political, or
+                    environmental standpoints;
+                    Creative work that questions what counts as signal, noise, evidence, or visibility;
+                    Experimental prototypes that visualize information through AR, XR, VR, immersive media, and spatial
+                    computing;
+                    Visualizations of invisible, marginalized, suppressed, or more-than-human worlds;
+                    Contributions to the understanding of planetary ecology, climate change, and environmental justice;
+                    Projects that build telematic co-presence and amplify connection across physically remote
+                    environments;
+                    Culturally safe and inclusive practices supporting social movements, community memory, Indigenous
+                    futures, Black Lives Matter, 2SLGBTQIA+ communities, migrant justice, disability justice, and
+                    beyond;
+                    Work that challenges the digital divide and amplifies perspectives from the Global South;
+                    Contributions that imagine visualization as a force for building a more equitable world. </p>
+
+            </div>
+
+
+            <h3>About VISAP</h3>
+
+            <div class="program-contribution">
+
+                <p class="submission-time">
+                    The IEEE VIS Arts Program (VISAP) is a dedicated venue for visualization researchers, designers,
+                    and artists exploring innovative approaches at the intersection of visualization and the arts.
+
+                    VISAP brings together practitioners who push the boundaries of what data visualization can be —
+                    from scientific rigor to artistic expression, from community storytelling to critical
+                    speculation.
+
+                    Held annually as part of IEEE VIS, the premier forum for visualization and visual analytics,
+                    VISAP provides a unique platform where technical and artistic communities meet.
+
+                    Contributions responding to this year’s theme, Amplification, may be submitted to either the
+                    papers/pictorials track or the exhibition track. VISAP 2026 will be held fully in person,
+                    offering participants the opportunity to engage face-to-face.
+
+                    We encourage artists to collaborate with artificial intelligence as a creative partner in the
+                    production of data-driven work. However, the VISAP committee will critically assess the role of
+                    AI in each submission, considering its relevance, ethical use, and creative intention. If your
+                    work involves AI-generated components, please clearly acknowledge them in your submission.</p>
+
+            </div>
+
+
+            <h3>Submissions</h3>
+
+            <p>
+                Call opens: May 2026 <br>
+                Submission deadline: 7 July, 2026 <br>
+                Notifications: August 2026<br>
+                Camera ready: September 2026
+            </p>
+
+            <div class="program-contribution">
+
+                <p class="submission-time">
+                    Call opens
+                    May 2026
+
+                    Submission deadline
+                    7 July, 2026
+
+                    Notifications
+                    August 2026
+
+                    Camera ready
+                    September 2026
+
+                    All deadlines at 11:59pm AoE.
+                    We welcome contributions across three tracks, all engaging with the theme of Amplification. All
+                    submissions are made via the IEEE VGTC Electronic Conference System (PCS). VISAP uses a single-blind
+                    review process.</p>
+
+            </div>
+
+
+
+            <h3>Paper</h3>
+
+            <p>
+                We invite researchers, scholars, and creative practitioners to submit papers related to the theme
+                Amplification. Submissions can include, but are not limited to technical descriptions of creative
+                visualization projects and techniques, reflections on the impact of data visualization techniques on art
+                and design practice, philosophical meditations on art-science methodology, expanded descriptions and
+                discussions of specific (media) art projects (including design case studies), and critical
+                interpretations of visualization approaches and practices. We are open to any submission that relates in
+                some way to art or design and to this year's theme.
+            </p>
+
+
+            <div class="program-contribution">
+
+                <h4>Paper format</h4>
+
+                <p class="submission-authors">
+                    Authors are required to use the IEEE Conference format for paper submissions. Word and LaTeX
+                    templates are available. It is mandatory to use this format. However, including keywords and index
+                    terms is optional.
+                </p>
+
+            </div>
+
+
+            <div class="program-contribution">
+
+                <h4>Acceptance</h4>
+
+                <p class="submission-authors">
+                    Accepted authors will present their work in-person in one of the two VISAP Papers sessions during
+                    the conference. All accepted papers will be published online in the IEEE VIS 2026 Arts Program
+                    proceedings, and indexed in the IEEE Xplore digital library.
+                </p>
+
+            </div>
+
+            <div class="program-contribution">
+
+                <h4>Previous VISAP Papers</h4>
+
+                <p class="submission-authors">
+                    Please see the online proceedings from previous years (2025, 2024, 2023, 2022, 2021, 2020, 2019,
+                    2018, 2017, 2016, 2015, 2014, 2013) for examples of accepted submissions. (Selected VISAP papers
+                    have also been featured in IEEE Computer Graphics and Applications and Leonardo).
+                </p>
+
+            </div>
+
+
+
+            <h3>Pictorials</h3>
+
+            <p>
+                We invite artists and designers to submit pictorials and annotated portfolios related to the theme
+                Amplification. Artists, designers, and researchers all make creative choices based on practical
+                knowledge, generally acquired through experience. Unfortunately, this knowledge is seldom shared in
+                publications. VISAP Pictorials aim to foster discussions about this reflection-in-action when creating
+                visualizations or data-driven art pieces. Pictorial submissions reflect either on shared concepts among
+                a selection of visualizations, or on the design process of a single work. Whether in the case of a
+                single artifact, or, in the case of a series of artifacts, the designer is in a unique position to
+                provide valuable insights into the design intentions, the design space explorations, and the design
+                process (Löwgren 2013). Through pictorials and annotated portfolios, we invite submissions that
+                communicate the visualization practices in rich, heavily visual ways.
+            </p>
+
+
+            <div class="program-contribution">
+
+                <h4>What to consider</h4>
+
+                <p class="submission-authors">
+                    Elements that reviewers will look for include:
+
+                    The quality of the description of the design process and reflections on this process
+                    The appropriateness and richness of the visual style
+                    The quality of presentation
+                    The production value of images, photos and diagrams
+                </p>
+
+            </div>
+
+
+            <div class="program-contribution">
+
+                <h4>What is a pictorial / annotated portfolio?</h4>
+
+                <p class="submission-authors">
+                    A pictorial is a visual description and reflection of the design process of a single visualization
+                    project. It is intended to capture the situated and rich nature of design. An annotated portfolio is
+                    a collection of design works with brief textual annotations. It has been proposed by Gaver and
+                    Bowers (2012) as a "way to communicate design research". The systematic selection and annotation of
+                    the artifacts are part of the contribution. Submitters are encouraged to highlight important
+                    features, discuss how ideas were developed, and reflect on recurring topics through their series of
+                    works.
+                </p>
+
+            </div>
+
+            <div class="program-contribution">
+
+                <h4>Pictorial format</h4>
+
+                <p class="submission-authors">
+                    Artists and designers are required to use the VISAP'26 Pictorials format for pictorial and annotated
+                    portfolio submissions. InDesign and Word templates are available. It is mandatory to use this
+                    format. Pictorials and annotated portfolios must not exceed 16 pages. We encourage submitters to use
+                    the space in the most creative and visual way. Submitting supplementary material and/or links to
+                    external material is encouraged to help reviewers evaluate the submission.
+                </p>
+
+            </div>
+
+
+            <div class="program-contribution">
+
+                <h4>Pictorials and Annotated Portfolio from previous years</h4>
+
+                <p class="submission-authors">
+                    Please see works 1, 2, 3, from the 2025 program; 1, 2, 3, from the 2024 program; works 1, 2, 3, from
+                    the 2023 program; works 1, 2, 3, from the 2022 program; works 1, 2, 3, 4, 5, from the 2021 program;
+                    works 1, 2, from the 2020 program; works 1, 2, from the 2019 program; and works 1, 2, 3, 4, 5, from
+                    the 2018 program.
+                </p>
+
+            </div>
+
+            <div class="program-contribution">
+
+                <h4>Pictorial acceptance</h4>
+
+                <p class="submission-authors">
+                    All accepted Pictorials will be published online in the IEEE VIS 2026 Arts Program proceedings, and
+                    indexed in the IEEE Xplore digital library. Pictorials will be part of the VISAP 2026 exhibition as
+                    printed booklets and showcased in the VISAP 2026 catalog. Selected submissions will be invited to
+                    present their work in-person in one of the VISAP Papers sessions during the conference.
+                </p>
+
+            </div>
+
+
+
+
+            <h3>Artworks</h3>
+
+            <p>
+                We invite artists and designers to submit data-driven artworks related to the theme Amplification. We
+                welcome submissions in any medium, e.g., interactive projections, multimedia sculptures, mobile devices,
+                illustrations, physicalizations, video game art, digital prints, screen-based art, fixed audio-visual
+                pieces, etc.
+            </p>
+
+
+            <div class="program-contribution">
+
+                <h4>What to include</h4>
+
+                <p class="submission-authors">
+                    While the proposal is free-form, the following information must be included (consider structuring
+                    your proposal based on these headings):
+
+                    General Information: Title of the work, Year, Authors (and roles), Medium and Dimensions of the work
+                    Description: Description of the work and any interactive elements. Explain how your work relates to
+                    this year's theme and how it links to information visualization, scientific visualization, and/or
+                    visual analytics. Discuss the reception of your work at previous exhibitions (if it has been
+                    exhibited before)
+                    Technical Requirements: Given that VISAP' 26 is an in-person event, describe how the work will be
+                    presented at the gallery space. Provide technical details of the project. For example, what
+                    technical equipment is required? Does the project require the audience to interact with it live? Are
+                    there any time of day requirements or specific lighting conditions needed? Does it require any
+                    specific space or technical setup (e.g. VR gadgets or audiovisual equipment)? Consider how your
+                    artwork could be integrated in both a physical and virtual art exhibition.
+                    Supporting Material: Provide links to high-resolution images, audio, webpages and/or videos that
+                    will help give the reviewers a clear sense of your work
+                </p>
+
+            </div>
+
+
+            <div class="program-contribution">
+
+                <h4>Artworks could involve any of the following forms:</h4>
+
+                <p class="submission-authors">
+                    Visualization that emphasizes visual and performative aesthetics
+                    Visualization that encourages creative and/or collaborative interactions
+                    Speculative visualizations
+                    Visualization as tactical media
+                    New data paradigms
+                    Live coding and streaming data
+                    Complex systems
+                    Exploratory data semantics
+                    3D visualization, VR/AR/XR environments, and immersive analytics
+                    Computational photography
+                    Ambient information displays
+                    Visualization as storytelling
+                    Design studies
+                    Data sonification
+                    Conversation theory
+                    Digital humanities visualization
+                    Physical visualization and sculptural design
+                </p>
+
+            </div>
+
+            <div class="program-contribution">
+
+                <h4>PSubmission Format (Exhibition)</h4>
+
+                <p class="submission-authors">
+                    Artists and designers are required to submit a 2 page .pdf file describing the work they wish to
+                    exhibit. No specific format is imposed. Submitting additional images, videos, or audio files as
+                    supplementary material is strongly encouraged to help reviewers evaluate the submission.
+                </p>
+
+            </div>
+
+
+            <div class="program-contribution">
+
+                <h4>Previous accepted work</h4>
+
+                <p class="submission-authors">
+                    Please see the 2025 catalog (designed by Beatrice Gobbo), the 2024 catalog, the 2023 catalogue
+                    (designed by Tommaso Elli and Francesca Morini), the 2022 and 2021 catalogues (designed by Bon
+                    Adriel Aseniero), the 2020 catalog (designed by Christy Cheung), the 2019 catalog (designed by Damla
+                    Çay), 2018 catalog (designed by Density Design), the 2017 catalog (designed by Yoon Chung Han), the
+                    2016 catalog (designed by Jeremy Boy), the 2015 catalog (designed by Jack Henrie Fisher), the 2014
+                    catalog, or the 2013 catalog (both designed by Lauren Thorson) to get a sense of the range of
+                    artworks that have been accepted previously. Please feel welcome to contact the chairs if you have
+                    questions about whether or not your work is an appropriate submission to VISAP.
+                </p>
+
+            </div>
+
+            <div class="program-contribution">
+
+                <h4>Acceptance</h4>
+
+                <p class="submission-authors">
+                    All accepted artworks will be included in the online proceedings of VISAP on the visap.net website,
+                    as well as in a VISAP 2026 catalog that will be shared on the VISAP website. All accepted artworks
+                    will be presented in the gallery space of the Met Warehouse, from November 9 to November 13, 2026.
+                </p>
+
+            </div>
+
+
+
+            <h3>Submission Procedure (for all tracks)</h3>
+
+            <p>
+                All submissions must be made using the IEEE VGTC Electronic Conference System (on PCS). After creating
+                an account or signing in, submitters will find the VISAP 2026 Papers and Exhibition submissions by:
+
+                Clicking on the "Submissions" tab;
+                Selecting VTGC (in "Society");
+                Selecting VIS 2026 (for "Conference/Journal");
+                Selecting VIS 2026 Arts Program (for "Track")
+                Clicking on "Go"
+                VISAP uses a single-blind review process: submitted material is not required to be anonymized. At least
+                one author per accepted paper and pictorial is required to register to the IEEE VIS conference to
+                present the work in-person. Submitters of accepted exhibits are also strongly encouraged to attend the
+                conference to set up their work for the opening reception, and to participate in the program throughout
+                the week in-person. We invite students to apply to the IEEE VIS student volunteer program to help cover
+                registration fees. We also invite authors and artists who demonstrate financial need to apply for the
+                IEEE VIS Inclusivity & Diversity Scholarship.
+            </p>
+
+
+
+            <div class="program-contribution">
+
+                <h4>Organizers</h4>
+
+                <p class="submission-authors">
+                    Assistant Professor of STS at Campus Fryslân, Faculty Associate at the Berkman Klein Center and
+                    Principal at metaLAB (at) Harvard / Berlin / Basel. His research investigates how complex
+                    information can be revealed through the combination of computational techniques and design, with a
+                    focus on the mapping of science and digital cultural archives. He is the author of Mapping
+                    Affinities: Democratizing Data Visualization (Métis Presses, 2021), holds a PhD from EPFL, and has
+                    held research positions at MIT, Sciences Po, and the European Commission.
+                </p>
+
+            </div>
+
+
+
+            <h3>Dario Rodighiero</h3>
+
+            <p>
+                Assistant Professor of STS at Campus Fryslân, Faculty Associate at the Berkman Klein Center and
+                Principal at metaLAB (at) Harvard / Berlin / Basel. His research investigates how complex information
+                can be revealed through the combination of computational techniques and design, with a focus on the
+                mapping of science and digital cultural archives. He is the author of Mapping Affinities: Democratizing
+                Data Visualization (Métis Presses, 2021), holds a PhD from EPFL, and has held research positions at MIT,
+                Sciences Po, and the European Commission.
+            </p>
+
+
+
+
+
+
+
+
+        </section>
+
+
+
+
+
+    </main>
+
+    <footer>
+        <p>© 2026 IEEE VIS Arts Program</p>
+        <nav aria-label="Previous editions">
+            <span>Previous editions:</span>
+            <ul>
+                <li><a href="https://visap.net/2025" target="_blank" class="link-coloured">2025</a></li>
+                <li><a href="https://visap.net/2024" target="_blank" class="link-coloured">2024</a></li>
+                <li><a href="https://visap.net/2023" target="_blank" class="link-coloured">2023</a></li>
+                <li><a href="https://visap.net/2022" target="_blank" class="link-coloured">2022</a></li>
+                <li><a href="https://visap.net/2021" target="_blank" class="link-coloured">2021</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>

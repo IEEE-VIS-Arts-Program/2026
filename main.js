@@ -18,6 +18,161 @@ if (toggle && nav) {
   });
 }
 
+// ── Active Navigation State ──────────────────────────────────────────────────
+function initActiveNav() {
+  const menuLinks = document.querySelectorAll("#menu a");
+  if (!menuLinks.length) return;
+
+  function setActive(activeLink) {
+    menuLinks.forEach((link) => {
+      if (link === activeLink) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  const rawPath = window.location.pathname.toLowerCase();
+  const path = rawPath.split("/").pop() || "";
+
+  // 1. Program page
+  if (path === "program.html" || path === "program") {
+    const link = document.querySelector('#menu a[href*="program.html"]');
+    if (link) setActive(link);
+    return;
+  }
+
+  // 2. Contributions page & individual contribution detail pages
+  if (
+    path === "contributions.html" ||
+    path === "contributions" ||
+    path.startsWith("artwork-") ||
+    path.startsWith("paper-") ||
+    path.startsWith("pictorial-")
+  ) {
+    const link = document.querySelector('#menu a[href*="contributions.html"]');
+    if (link) setActive(link);
+    return;
+  }
+
+  // 3. Index page: in-page section tracking
+  const sectionDefs = [
+    { id: "about", link: document.querySelector('#menu a[href*="#about"]') },
+    { id: "submissions", link: document.querySelector('#menu a[href*="#submissions"]') },
+    { id: "organizers", link: document.querySelector('#menu a[href*="#organizers"]') },
+    { id: "program-committee", link: document.querySelector('#menu a[href*="#organizers"]') },
+    { id: "contact", link: document.querySelector('#menu a[href*="#contact"]') },
+  ];
+
+  const validSections = sectionDefs
+    .map((s) => ({ elem: document.getElementById(s.id), link: s.link }))
+    .filter((s) => s.elem && s.link);
+
+  if (!validSections.length) return;
+
+  let isClickScrolling = false;
+  let clickTimeout = null;
+
+  function updateActiveOnScroll() {
+    if (isClickScrolling) return;
+
+    // Check if user is scrolled to the very bottom
+    const scrollBottom = window.innerHeight + window.scrollY;
+    if (scrollBottom >= document.documentElement.scrollHeight - 60) {
+      const contactDef = validSections.find((s) => s.elem.id === "contact");
+      if (contactDef) {
+        setActive(contactDef.link);
+        return;
+      }
+    }
+
+    const threshold = Math.min(window.innerHeight * 0.35, 200);
+
+    // If still before the first content section (e.g. in hero)
+    const aboutElem = document.getElementById("about");
+    if (aboutElem && aboutElem.getBoundingClientRect().top > threshold) {
+      setActive(null);
+      return;
+    }
+
+    let currentLink = null;
+    for (let i = validSections.length - 1; i >= 0; i--) {
+      const rect = validSections[i].elem.getBoundingClientRect();
+      if (rect.top <= threshold && rect.bottom > 0) {
+        currentLink = validSections[i].link;
+        break;
+      }
+    }
+    setActive(currentLink);
+  }
+
+  // Hash-based check on load
+  if (window.location.hash) {
+    const targetId = window.location.hash.slice(1);
+    const target = validSections.find((s) => s.elem.id === targetId);
+    if (target) {
+      setActive(target.link);
+      isClickScrolling = true;
+      clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(() => {
+        isClickScrolling = false;
+        updateActiveOnScroll();
+      }, 1500);
+    } else {
+      updateActiveOnScroll();
+    }
+  } else {
+    updateActiveOnScroll();
+  }
+
+  window.addEventListener("scroll", updateActiveOnScroll, { passive: true });
+  window.addEventListener("resize", updateActiveOnScroll, { passive: true });
+
+  window.addEventListener("hashchange", () => {
+    const targetId = window.location.hash.slice(1);
+    const target = validSections.find((s) => s.elem.id === targetId);
+    if (target) {
+      setActive(target.link);
+      isClickScrolling = true;
+      clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(() => {
+        isClickScrolling = false;
+        updateActiveOnScroll();
+      }, 1500);
+    } else {
+      updateActiveOnScroll();
+    }
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href") || "";
+      if (href.includes("#")) {
+        const hash = href.split("#")[1];
+        const target = validSections.find((s) => s.elem.id === hash);
+        if (target) {
+          setActive(target.link);
+          isClickScrolling = true;
+          clearTimeout(clickTimeout);
+          clickTimeout = setTimeout(() => {
+            isClickScrolling = false;
+            updateActiveOnScroll();
+          }, 1500);
+        }
+      }
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initActiveNav);
+} else {
+  initActiveNav();
+}
+
 // ── Hero background: metaball layout sampled from sketch.svg ────────────────
 const PALETTE = {
   teal: "C_TEAL",
@@ -193,7 +348,7 @@ const noise = (n) => {
 };
 
 const canvas = document.querySelector("#bg");
-const gl = canvas.getContext("webgl2", { antialias: false, alpha: false });
+const gl = canvas ? canvas.getContext("webgl2", { antialias: false, alpha: false }) : null;
 
 if (gl) {
   boot();

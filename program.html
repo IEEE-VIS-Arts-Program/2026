@@ -10,7 +10,7 @@
     href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
     rel="stylesheet" />
   <link rel="icon" type="image/png" href="fav-icon.png" />
-  <link href="style.css?v=4" rel="stylesheet" />
+  <link href="style.css?v=6" rel="stylesheet" />
   <script src="./main.js" defer></script>
   <script src="./audio.js" defer></script>
   <title>VISAP 2026</title>
@@ -18,23 +18,9 @@
 
 <body>
   <nav>
-    <a href="#" class="logo">
+    <a href="#" class="logo link-coloured">
       <span><strong>VISAP</strong> 2026</span>
     </a>
-    <button id="soundToggle" type="button" aria-label="Toggle sound" aria-pressed="false">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linejoin="round">
-        <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill="currentColor" stroke="none" />
-        <g id="soundOff">
-          <line x1="16" y1="9.5" x2="21" y2="14.5" />
-          <line x1="21" y1="9.5" x2="16" y2="14.5" />
-        </g>
-        <g id="soundOn">
-          <path d="M16 9a4 4 0 0 1 0 6" />
-          <path d="M18.7 7a7 7 0 0 1 0 10" />
-        </g>
-      </svg>
-    </button>
     <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
         <g id="bars">
@@ -49,139 +35,288 @@
       </svg>
     </button>
     <ul id="menu">
-        <li><a href="index.html#about">About</a></li>
-  <li><a href="program.html">Program</a></li>
-  <li><a href="index.html#submissions">Submissions</a></li>
-  <li><a href="index.html#organizers">Organizers</a></li>
-  <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#about" class="link-coloured">About</a></li>
+      <li><a href="program.html" class="active link-coloured" aria-current="page">Program</a></li>
+      <li><a href="contributions.html" class="link-coloured">Contributions</a></li>
+      <li><a href="index.html#submissions" class="link-coloured">Submissions</a></li>
+      <li><a href="index.html#organizers" class="link-coloured">Organizers</a></li>
+      <li><a href="index.html#contact" class="link-coloured">Contact</a></li>
     </ul>
   </nav>
 
-  
+
   <main>
-   
-
-   <section id="program">
-
-  <h2>Program</h2>
-
-<h3>PAPER 1</h3>
-
-<p>
-  Room: Hall St. George A-B<br>
-  Time: Wednesday, Nov 11 @ 08:00 - 09:30 (US/Eastern)
-</p>
-
-<div class="program-contribution">
-  <p class="submission-time">08:00 - 08:12</p>
-  <h4>P.each Peach: Materializing Immortality Desire through Data-Driven Sculptures</h4>
-  <p class="submission-authors">Yihan Wang, Yixiong Wang, Jia-Qi Shi</p>
-</div>
-
-<div class="program-contribution">
-  <p class="submission-time">08:12 - 08:24</p>
-  <h4>The Data Twist: Co-designing a Survey for Public Performance</h4>
-  <p class="submission-authors">Lins Derry</p>
-</div>
-
-<div class="program-contribution">
-  <p class="submission-time">08:24 - 08:36</p>
-  <h4>The Indoor Emerald Necklace: Amplifying Boston's Winter Spatial Inequality</h4>
-  <p class="submission-authors">Natalie Ng, Michael Lawrence Evans</p>
-</div>
-
-<div class="program-contribution">
-  <p class="submission-time">08:36 - 08:48</p>
-  <h4>Reciprocal Parametric Design for Multimodal Visualization: A Case Study of The Rap Tapestry</h4>
-  <p class="submission-authors">Carmen Hull, Gregory Gold, Matthew Brehmer</p>
-</div>
-
-<div class="program-contribution">
-  <p class="submission-time">08:48 - 09:00</p>
-  <h4>Street Scores: Composing the Social Life of Public Space</h4>
-  <p class="submission-authors">Jingrong Zhang, Fábio Duarte</p>
-</div>
 
 
-<h3>PAPER 2</h3>
+    <section id="program" class="section-program">
 
-<p>
-  Room: Hall St. George A-B<br>
-  Time: Wednesday, Nov 11 @ 10:00 - 11:30 (US/Eastern)
-</p>
+      <h2>Program</h2>
 
-<div class="program-contribution">
-  <p class="submission-time">10:00 - 10:12</p>
-  <h4>Playing the Archive: Audiovisual Latent Space Exploration with The Ocular Harpsichord 2.0</h4>
-  <p class="submission-authors">Johan Malmstedt</p>
-</div>
+      <h3>Paper 1</h3>
 
-<div class="program-contribution">
-  <p class="submission-time">10:12 - 10:24</p>
-  <h4>Peeling Cycle: Performative Visualization of Synthetic Datafication in Live AI Performance</h4>
-  <p class="submission-authors">Han Zhang, Anqi Liu, Mingyong Cheng</p>
-</div>
+      <p>
+        Hall St. George A–B, The Westin Copley Place, Boston<br>
+        Wednesday, Nov 11 @ 08:00 - 09:30 (US/Eastern)
+      </p>
 
-<div class="program-contribution">
-  <p class="submission-time">10:24 - 10:36</p>
-  <h4>In Between Portraits: Institutional Archives and the Artist's Voice</h4>
-  <p class="submission-authors">Magdalena Navracruz, Thiago G. Hersan</p>
-</div>
+      <div class="program-contribution">
 
-<div class="program-contribution">
-  <p class="submission-time">10:36 - 10:48</p>
-  <h4>Meta-Acervos: AI, Metadata, and the Politics of Visibility in Brazilian Museum Collections</h4>
-  <p class="submission-authors">Thiago G. Hersan, Giselle Beiguelman, Ana Gonçalves Magalhães</p>
-</div>
+        <p class="submission-time">08:00 - 08:12</p>
 
-<div class="program-contribution">
-  <p class="submission-time">10:48 - 11:00</p>
-  <h4>The Choreographic Genome: Amplifying the Silent Structure of Text into Dance</h4>
-  <p class="submission-authors">Michael Li, Alison Ding</p>
-</div>
+        <h4>
+
+          <a href="paper-1.html" class="link-coloured">
+
+            P.EACH PEACH: MATERIALIZING IMMORTALITY DESIRE THROUGH DATA-DRIVEN SCULPTURES
+
+          </a>
+
+        </h4>
+
+        <p class="submission-authors">Yihan Wang, Yixiong Wang, Jia-Qi Shi</p>
+
+      </div>
+
+      <div class="program-contribution">
+
+        <p class="submission-time">08:12 - 08:24</p>
+
+        <h4>
+
+          <a href="paper-2.html" class="link-coloured">
+
+            THE DATA TWIST: CO-DESIGNING A SURVEY FOR PUBLIC PERFORMANCE
+
+          </a>
+
+        </h4>
+
+        <p class="submission-authors">Lins Derry</p>
+
+      </div>
+
+      <div class="program-contribution">
+
+        <p class="submission-time">08:24 - 08:36</p>
+
+        <h4>
+
+          <a href="paper-3.html" class="link-coloured">
+
+            THE INDOOR EMERALD NECKLACE: AMPLIFYING BOSTON’S WINTER SPATIAL INEQUALITY
+
+          </a>
+
+        </h4>
+
+        <p class="submission-authors">Natalie Ng, Michael Lawrence Evans</p>
+
+      </div>
+
+      <div class="program-contribution">
+
+        <p class="submission-time">08:36 - 08:48</p>
+
+        <h4>
+
+          <a href="paper-4.html" class="link-coloured">
+
+            RECIPROCAL PARAMETRIC DESIGN FOR MULTIMODAL VISUALIZATION: A CASE STUDY OF THE RAP TAPESTRY
+
+          </a>
+
+        </h4>
+
+        <p class="submission-authors">Carmen Hull, Gregory Gold, Matthew Brehmer</p>
+
+      </div>
+
+      <div class="program-contribution">
+
+        <p class="submission-time">08:48 - 09:00</p>
+
+        <h4>
+
+          <a href="paper-5.html" class="link-coloured">
+
+            STREET SCORES: COMPOSING THE SOCIAL LIFE OF PUBLIC SPACE
+
+          </a>
+
+        </h4>
+
+        <p class="submission-authors">Jingrong Zhang, Fábio Duarte</p>
+
+      </div>
 
 
-<h3>PICTORIAL</h3>
+      <h3>Paper 2</h3>
 
-<p>
-  Room: Hall St. George A-B<br>
-  Time: Wednesday, Nov 11 @ 13:00 - 14:30 (US/Eastern)
-</p>
+      <p>
+        Hall St. George A–B, The Westin Copley Place, Boston<br>
+        Wednesday, Nov 11 @ 10:00 - 11:30 (US/Eastern)
+      </p>
 
-<div class="program-contribution">
-  <p class="submission-time">13:00 - 13:12</p>
-  <h4>Proteus</h4>
-  <p class="submission-authors">David Hunter, Anika Mahajan, Rishi Vanukuru, Che Chuan Weng, Brad Gallagher, Ada Yi Zhao, Shih-Yu Ma, Daniel Leithinger, Ellen Yi-Luen Do</p>
-</div>
+      <div class="program-contribution">
+        <p class="submission-time">10:00 - 10:12</p>
+        <h4>
+          <a href="paper-6.html" class="link-coloured">
+            PLAYING THE ARCHIVE: AUDIOVISUAL LATENT SPACE EXPLORATION WITH THE OCULAR HARPSICHORD 2.0
+          </a>
+        </h4>
+        <p class="submission-authors">Johan Malmstedt</p>
+      </div>
 
-<div class="program-contribution">
-  <p class="submission-time">13:12 - 13:24</p>
-  <h4>Ice Archives: Amplifying Greenland's Geologic Memory</h4>
-  <p class="submission-authors">Francesca Samsel, Benjamin Keisling, Greg Abram</p>
-</div>
+      <div class="program-contribution">
+        <p class="submission-time">10:12 - 10:24</p>
+        <h4>
+          <a href="paper-7.html" class="link-coloured">
+            PEELING CYCLE: PERFORMATIVE VISUALIZATION OF SYNTHETIC DATAFICATION IN LIVE AI PERFORMANCE
+          </a>
+        </h4>
+        <p class="submission-authors">Han Zhang, Anqi Liu, Mingyong Cheng</p>
+      </div>
 
-<div class="program-contribution">
-  <p class="submission-time">13:24 - 13:36</p>
-  <h4>Guan-Guan: A Visual Cartography of Sound and Structure in the Shijing (Book of Songs)</h4>
-  <p class="submission-authors">Sean Zhai, Rebecca Ruige Xu</p>
-</div>
+      <div class="program-contribution">
+        <p class="submission-time">10:24 - 10:36</p>
+        <h4>
+          <a href="paper-8.html" class="link-coloured">
+            IN BETWEEN PORTRAITS: INSTITUTIONAL ARCHIVES AND THE ARTIST'S VOICE
+          </a>
+        </h4>
+        <p class="submission-authors">Magdalena Navracruz, Thiago G. Hersan</p>
+      </div>
 
-<div class="program-contribution">
-  <p class="submission-time">13:36 - 13:48</p>
-  <h4>Lost in Transliteration: Not My Name, Not My Gender</h4>
-  <p class="submission-authors">Liuhuaying Yang</p>
-</div>
+      <div class="program-contribution">
+        <p class="submission-time">10:36 - 10:48</p>
+        <h4>
+          <a href="paper-9.html" class="link-coloured">
+            META-ACERVOS: AI, METADATA, AND THE POLITICS OF VISIBILITY IN BRAZILIAN MUSEUM COLLECTIONS
+          </a>
+        </h4>
+        <p class="submission-authors">Thiago G. Hersan, Giselle Beiguelman, Ana Gonçalves Magalhães</p>
+      </div>
 
-<div class="program-contribution">
-  <p class="submission-time">13:48 - 14:00</p>
-  <h4>Within Reach: String as a Material for Tactile Data Physicalization</h4>
-  <p class="submission-authors">Jordan Gilardi, Dietmar Offenhuber</p>
-</div>
-</section>
+      <div class="program-contribution">
+        <p class="submission-time">10:48 - 11:00</p>
+        <h4>
+          <a href="paper-10.html" class="link-coloured">
+            THE CHOREOGRAPHIC GENOME: AMPLIFYING THE SILENT STRUCTURE OF TEXT INTO DANCE
+          </a>
+        </h4>
+        <p class="submission-authors">Michael Li, Alison Ding</p>
+      </div>
+
+
+      <h3>Pictorial</h3>
+
+      <p>
+        Hall St. George A–B, The Westin Copley Place, Boston<br>
+        Wednesday, Nov 11 @ 13:00 - 14:30 (US/Eastern)
+      </p>
+
+      <div class="program-contribution">
+        <p class="submission-time">13:00 - 13:12</p>
+        <h4>
+          <a href="pictorial-1.html" class="link-coloured">
+            PROTEUS
+          </a>
+        </h4>
+        <p class="submission-authors">David Hunter, Anika Mahajan, Rishi Vanukuru, Che Chuan Weng, Brad Gallagher, Ada
+          Yi Zhao, Shih-Yu Ma, Daniel Leithinger, Ellen Yi-Luen Do</p>
+      </div>
+
+      <div class="program-contribution">
+        <p class="submission-time">13:12 - 13:24</p>
+        <h4>
+          <a href="pictorial-2.html" class="link-coloured">
+            ICE ARCHIVES: AMPLIFYING GREENLAND'S GEOLOGIC MEMORY
+          </a>
+        </h4>
+        <p class="submission-authors">Francesca Samsel, Benjamin Keisling, Greg Abram</p>
+      </div>
+
+      <div class="program-contribution">
+        <p class="submission-time">13:24 - 13:36</p>
+        <h4>
+          <a href="pictorial-3.html" class="link-coloured">
+            GUAN-GUAN: A VISUAL CARTOGRAPHY OF SOUND AND STRUCTURE IN THE SHIJING (BOOK OF SONGS)
+          </a>
+        </h4>
+        <p class="submission-authors">Sean Zhai, Rebecca Ruige Xu</p>
+      </div>
+
+      <div class="program-contribution">
+        <p class="submission-time">13:36 - 13:48</p>
+        <h4>
+          <a href="pictorial-4.html" class="link-coloured">
+            LOST IN TRANSLITERATION: NOT MY NAME, NOT MY GENDER
+          </a>
+        </h4>
+        <p class="submission-authors">Liuhuaying Yang</p>
+      </div>
+
+      <div class="program-contribution">
+        <p class="submission-time">13:48 - 14:00</p>
+        <h4>
+          <a href="pictorial-5.html" class="link-coloured">
+            WITHIN REACH: STRING AS A MATERIAL FOR TACTILE DATA PHYSICALIZATION
+          </a>
+        </h4>
+        <p class="submission-authors">Jordan Gilardi, Dietmar Offenhuber</p>
+      </div>
 
 
 
-   
+
+
+
+      <h3>Keynote speaker and opening of the exhibition</h3>
+
+      <p>
+        Met Werehouse – MIT, Boston<br>
+        Wednesday, Nov 11 @ 19:00 - 21:00 (US/Eastern)
+      </p>
+
+      <div class="program-contribution">
+
+        <p class="submission-time">19:00</p>
+
+        <h4><a href="https://richardthe.com/" class="link-coloured" target="_blank" rel="noopener noreferrer">RICHARD
+            THE</a></h4>
+
+        <p class="submission-authors">
+
+          Richard The is a designer, educator and partner at
+
+          <a href="https://thegreeneyl.com/" target="_blank" rel="noopener noreferrer"
+            class="link-coloured">TheGreenEyl</a>,
+
+          an interdisciplinary design studio based in Berlin and New York.
+
+          His work explores the aesthetic and cultural implications of technology
+
+          through graphic design, interactive interfaces and immersive installations.
+
+          His projects have been exhibited internationally, including at the Venice
+
+          Architecture Biennale, Ars Electronica and the Design Museum London.
+
+          He is also an Associate Professor of Interaction Design at Parsons School
+
+          of Design, where he directs the MS Data Visualization program.
+
+        </p>
+
+      </div>
+
+
+
+
+    </section>
+
+
+
   </main>
 
   <footer>
@@ -189,11 +324,11 @@
     <nav aria-label="Previous editions">
       <span>Previous editions:</span>
       <ul>
-        <li><a href="https://visap.net/2025" target="_blank">2025</a></li>
-        <li><a href="https://visap.net/2024" target="_blank">2024</a></li>
-        <li><a href="https://visap.net/2023" target="_blank">2023</a></li>
-        <li><a href="https://visap.net/2022" target="_blank">2022</a></li>
-        <li><a href="https://visap.net/2021" target="_blank">2021</a></li>
+        <li><a href="https://visap.net/2025" target="_blank" class="link-coloured">2025</a></li>
+        <li><a href="https://visap.net/2024" target="_blank" class="link-coloured">2024</a></li>
+        <li><a href="https://visap.net/2023" target="_blank" class="link-coloured">2023</a></li>
+        <li><a href="https://visap.net/2022" target="_blank" class="link-coloured">2022</a></li>
+        <li><a href="https://visap.net/2021" target="_blank" class="link-coloured">2021</a></li>
       </ul>
     </nav>
   </footer>

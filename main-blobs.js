@@ -18,85 +18,65 @@ if (toggle && nav) {
   });
 }
 
-// ── Hero background: metaball layout sampled from sketch.svg ────────────────
+// ── Hero background: metaball layout for A4 vertical canvas ────────────────
 const PALETTE = {
-  // To stay fully compatible with audio.js proximity sounds, we map:
-  // - green -> "teal" (triggers forest synth)
-  // - orange -> "orange" (triggers tech beeps)
-  // - lilac -> "lavender" (triggers chat file)
+  purple: "C_LAVENDER",
+  lavender: "C_LAVENDER",
   teal: "C_TEAL",
   orange: "C_ORANGE",
-  lavender: "C_LAVENDER",
+  yellow: "C_YELLOW",
+  pink: "C_PINK",
 };
-const OPACITY = 0.6; // per-color blend strength
-const SPREAD = 1; // sphere-spacing multiplier — 1.0 = baked layout, >1 = farther apart
-const CLUMP = 4; // sub-spheres per baked blob — they orbit & merge into one metaball
-const CLUMP_R = 0.25; // sub-orbit radius as a fraction of the blob's own radius
-const CLUMP_SP = 0.5; // sub-sphere base angular speed (rad/s) around the centre
-const SPD_VAR = 0.55; // ± fraction the per-sphere spin speed varies (noise)
-const SIZE_VAR = 0.35; // ± fraction each sphere's size varies (noise)
-const WOBBLE = 0.15; // noise breathing of cluster spread over time (0 = off)
-const SPEED = 0.7; // global animation tempo — <1 slower, 1 = original, >1 faster
-const RES = 0.85; // internal render scale — 1.0 = native sharpness, lower = faster
 
-// Three separate bubbles green, orange, lilac, proportioned to 30, 44, 79.
-// To keep them fully on screen and limit overlap to <= 20% of their surface,
-// we scaled down the area by a factor of 4.5 and optimized their centers:
-// - Lilac (79): A = 14.8 * 4.5 = 66.60
-// - Orange (44): A = 47.71 * 4.5 = 214.70
-// - Green (30): A = 102.63 * 4.5 = 461.84
+const OPACITY = 0.72; // blend strength for the purple blob
+const SPREAD = 1.0; // layout scale multiplier
+const CLUMP = 4; // sub-spheres — they orbit & merge into one organic rounded metaball
+const CLUMP_R = 0.16; // tight sub-orbit radius to keep the blob distinctly rounded and smooth
+const CLUMP_SP = 0.45; // sub-sphere angular speed (rad/s)
+const SPD_VAR = 0.45; // ± fraction the per-sphere spin speed varies
+const SIZE_VAR = 0.25; // ± fraction each sphere's size varies
+const WOBBLE = 0.12; // subtle breathing wobble of the rounded contour
+const SPEED = 0.75; // animation tempo
+const RES = 1.0; // render scale: 1.0 for crisp sharpness
+
+// Only one oval purple blob from the palette:
+// - fx: 0.50, fy: 0.50 (centered on the vertical A4 canvas)
+// - A = 28.0, D = 84.0 (horizontal oval with ~1.73 : 1 width-to-height ratio)
+// - Gentle floating motion and organic breathing surface
 const LAYERS = [
   {
-    color: "teal", // green
-    blobs: [
-      {
-        fx: 0.61,
-        fy: 0.42,
-        A: 461.84,
-        B: 0,
-        D: 461.84,
-      }
-    ],
-  },
-  {
-    color: "orange", // orange
-    blobs: [
-      {
-        fx: 0.39,
-        fy: 0.58,
-        A: 214.70,
-        B: 0,
-        D: 214.70,
-      }
-    ],
-  },
-  {
-    color: "lavender", // lilac
+    color: "purple",
     blobs: [
       {
         fx: 0.50,
         fy: 0.50,
-        A: 66.60,
-        B: 0,
-        D: 66.60,
-      }
+        A: 28.0,
+        B: 0.0,
+        D: 84.0,
+        orbitR: 0.025,
+        orbitSp: 0.20,
+        freqX: 1.0,
+        freqY: 1.2,
+        clumpR: 0.16,
+      },
     ],
-  }
+  },
 ];
 
-// orbit/cover constants — must match the ex-GLSL ctr()/orb() exactly
-const SVGA = 860 / 592;
-const ORBIT_R = 0.02; // very tight orbit to ensure they never drift off-screen
-const ORBIT_SP = 0.16;
+// Vertical A4 aspect ratio (210mm / 297mm = 1 / √2)
+const SVGA = 210 / 297;
+const ORBIT_R = 0.05;
+const ORBIT_SP = 0.25;
 const TAU = 6.28318530718;
-// deterministic per-index hash in [0,1) — cheap noise source for sub-sphere jitter
+
+// Deterministic per-index hash in [0,1)
 const noise = (n) => {
   const x = Math.sin(n * 127.1) * 43758.5453;
   return x - Math.floor(x);
 };
 
 const canvas = document.querySelector("#bg");
-const gl = canvas.getContext("webgl2", { antialias: false, alpha: false });
+const gl = canvas ? canvas.getContext("webgl2", { antialias: false, alpha: false }) : null;
 
 if (gl) {
   boot();
@@ -111,16 +91,19 @@ async function boot() {
     fetch("./shaders/display.glsl").then((r) => r.text()),
   ]);
 
-  // Adjust shared colors in memory to match the overall website palette from style.css
+  // Adjust shared colors in memory to match the website palette from style.css
   const adjustedTmpl = tmpl
     .replace("vec3 C_TEAL     = vec3(0.024, 0.247, 0.259);", "vec3 C_TEAL     = vec3(0.024, 0.247, 0.259);")  // Website --teal: #063f42
     .replace("vec3 C_LAVENDER = vec3(0.714, 0.408, 0.863);", "vec3 C_LAVENDER = vec3(0.714, 0.408, 0.863);")  // Website --purple: #b668dc
-    .replace("vec3 C_ORANGE   = vec3(0.965, 0.416, 0.345);", "vec3 C_ORANGE   = vec3(0.965, 0.514, 0.431);"); // Website --orange: #f6836e
+    .replace("vec3 C_ORANGE   = vec3(0.965, 0.416, 0.345);", "vec3 C_ORANGE   = vec3(0.965, 0.514, 0.431);")  // Website --orange: #f6836e
+    .replace("vec3 C_YELLOW   = vec3(0.894, 0.863, 0.208);", "vec3 C_YELLOW   = vec3(0.894, 0.863, 0.208);")  // Website --yellow: #e4dc35
+    .replace("vec3 C_PINK     = vec3(0.941, 0.424, 0.471);", "vec3 C_PINK     = vec3(0.941, 0.424, 0.471);")  // Website pink
+    .replace("vec3 GROUND     = vec3(0.929, 0.882, 0.839);", "vec3 GROUND     = vec3(0.965, 0.945, 0.914);"); // Website --bg: #f6f1e9
 
   const { meta, src } = inject(adjustedTmpl, LAYERS);
   const prog = program(vs, "#version 300 es\n" + chunk + "\n" + src);
 
-  // bake pass: the exact 21-tap static grain kernel, written once to a texture
+  // bake pass: 21-tap static grain kernel, written once to a texture
   const bakeFS = `
 out vec4 o;
 void main(){
@@ -166,7 +149,7 @@ void main(){
   gl.enableVertexAttribArray(0);
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
 
-  // grain-texture format: R16F (bit-exact) where renderable, else R8 (≤1/255)
+  // grain-texture format: R16F where renderable, else R8
   const flt =
     gl.getExtension("EXT_color_buffer_float") ||
     gl.getExtension("EXT_color_buffer_half_float");
@@ -179,7 +162,6 @@ void main(){
         enc: [0.25, 0.5],
         dec: [4.0, -2.0],
       };
-  console.info("grain bake:", flt ? "R16F (exact)" : "R8 (fallback)");
 
   const gtex = gl.createTexture();
   const gfbo = gl.createFramebuffer();
@@ -194,7 +176,7 @@ void main(){
   const uRipples = gl.getUniformLocation(prog, "u_ripples");
   const uGenc = gl.getUniformLocation(gprog, "u_genc");
 
-  // one-time GL state — never changes per frame
+  // one-time GL state
   gl.useProgram(gprog);
   gl.uniform2f(uGenc, FMT.enc[0], FMT.enc[1]);
   gl.useProgram(prog);
@@ -208,32 +190,36 @@ void main(){
   let S = 0;
   const ctr = new Float32Array(meta.length * 2);
 
-  // CPU port of the ex-GLSL ctr()+orb(): orbited scene-uv centre per blob.
-  // double precision ≥ GPU float; the shared 5-dp literal rounding (baked into
-  // `meta`) is matched on both sides, so positions stay sub-pixel identical.
+  // CPU calculation of orbited scene-uv centre per sub-sphere:
+  // - Multi-frequency Lissajous drift moves the blob clusters across the canvas
+  // - Sub-spheres orbit the cluster centroid, generating fluid morphing shapes
   function centers(t) {
     for (let j = 0; j < meta.length; j++) {
       const m = meta[j];
       const cx = (m.fx - 0.5) * SPREAD * SVGA * S;
       const cy = (0.5 - m.fy) * SPREAD * S;
-      const a = t * ORBIT_SP + m.ph * TAU;
-      // cluster centroid — the old single-sphere drift, shared by all siblings
+      const a = t * (m.orbitSp || ORBIT_SP) + m.ph * TAU;
+      const fX = m.freqX || 1.0;
+      const fY = m.freqY || 1.0;
+      const oR = m.orbitR !== undefined ? m.orbitR : ORBIT_R;
+
+      // Smooth floating wandering around base position
       const wx =
-        cx + ORBIT_R * (Math.cos(a) + 0.45 * Math.cos(a * 0.41 + m.ph));
+        cx + oR * (Math.cos(a * fX + m.ph) + 0.35 * Math.cos(a * 1.6 + m.ph));
       const wy =
-        cy + ORBIT_R * (Math.sin(a) + 0.45 * Math.sin(a * 0.57 + m.ph * 2.0));
-      // sub-sphere rotating around that centroid → siblings orbit & merge,
-      // each at its own noise-jittered speed, with a gentle breathing spread
-      const r = CLUMP_R * S * m.rad * (1 + WOBBLE * Math.sin(t * 0.5 + m.wph));
+        cy + oR * (Math.sin(a * fY + m.ph * 1.5) + 0.35 * Math.sin(a * 1.4 + m.ph * 2.0));
+
+      // Sub-spheres rotate around centroid, breathing in and out
+      const cR = m.clumpR !== undefined ? m.clumpR : CLUMP_R;
+      const r = cR * S * m.rad * (1 + WOBBLE * Math.sin(t * 0.6 + m.wph));
       const g = m.sa + t * CLUMP_SP * m.sp + m.ph * TAU;
+      const aspectY = m.aspectY || 1.0;
       ctr[j * 2] = wx + r * Math.cos(g);
-      ctr[j * 2 + 1] = wy + r * Math.sin(g);
+      ctr[j * 2 + 1] = wy + r * Math.sin(g) * aspectY;
     }
     return ctr;
   }
 
-  // re-bake the static grain at the current resolution, then restore display
-  // state (the bake pass swaps program/FBO/viewport).
   function bake() {
     const w = canvas.width,
       h = canvas.height;
@@ -291,21 +277,21 @@ void main(){
   }
   new ResizeObserver(resize).observe(canvas);
   resize();
-  centers(0); // warm ctr so heroBlobs() is valid before the first frame
+  centers(0);
 
-  // live blob screen positions (client px), grouped by colour — the audio
-  // proximity engine reads this instead of DOM .blob-* elements.
+  // Live blob screen positions (client px), grouped by colour
   window.heroBlobs = () => {
     const r = canvas.getBoundingClientRect();
     const fx2 = 2 * fil[0],
       fy2 = 2 * fil[1];
-    const out = { teal: [], orange: [], yellow: [], lavender: [], pink: [] };
+    const out = { teal: [], orange: [], yellow: [], lavender: [], purple: [], pink: [] };
     for (let j = 0; j < meta.length; j++) {
-      const g = out[meta[j].c];
-      if (!g) continue;
+      const c = meta[j].c;
       const nx = ctr[j * 2] / fx2 + 0.5;
       const ny = ctr[j * 2 + 1] / fy2 + 0.5;
-      g.push({ x: r.left + nx * r.width, y: r.top + (1 - ny) * r.height });
+      const pt = { x: r.left + nx * r.width, y: r.top + (1 - ny) * r.height };
+      if (out[c]) out[c].push(pt);
+      if (c === "purple") out.lavender.push(pt);
     }
     return out;
   };
@@ -338,14 +324,13 @@ void main(){
   let lastRippleY = -1000;
 
   document.getElementById("hero")?.addEventListener("mousemove", (e) => {
-    if (window.innerWidth < 768) return;
     const t = ((performance.now() - t0) / 1000) * SPEED;
     const dx = e.clientX - lastRippleX;
     const dy = e.clientY - lastRippleY;
     const dist = Math.hypot(dx, dy);
 
-    // Only drop a ripple if mouse moved enough distance and time has passed
-    if (dist > 40 && t - lastRippleTime > 0.05) {
+    // Drop a water ripple if mouse moved enough distance and time has passed
+    if (dist > 30 && t - lastRippleTime > 0.05) {
       const rect = canvas.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width;
       const ny = 1.0 - (e.clientY - rect.top) / rect.height;
@@ -377,27 +362,32 @@ void main(){
   }
 
   function inject(srcTmpl, layers) {
-    const f = (x) => x.toFixed(5);
+    const f = (x) => Number(x).toFixed(5);
     let fields = "";
     let composite = "";
     let k = 0; // global u_ctr index (one slot per sub-sphere)
     let pk = 0; // per-blob counter → golden-ratio cluster phase
     const meta = []; // [{fx,fy,ph,rad,sa}] in global k order
-    for (const { color, blobs } of layers) {
-      const name = PALETTE[color];
+
+    for (let layerIdx = 0; layerIdx < layers.length; layerIdx++) {
+      const { color, blobs, opacity = OPACITY } = layers[layerIdx];
+      const colName = PALETTE[color];
+      const fnName = `fld_${colName}_${layerIdx}`;
+
       const adds = blobs
         .flatMap((b) => {
           const fx = Number(f(b.fx));
           const fy = Number(f(b.fy));
           const ph = Number(f((pk++ * 0.6180339887) % 1));
           const rad = 1 / Math.sqrt(b.A); // blob radius ∝ 1/√A (in scene-uv ÷ s)
-          const B = f(b.B);
           const lines = [];
+
           for (let i = 0; i < CLUMP; i++) {
             // noise-jittered per sub-sphere: spin speed, size, wobble phase
             const sp = 1 + SPD_VAR * (noise(k * 1.7 + 0.5) * 2 - 1);
             const sz = 1 + SIZE_VAR * (noise(k * 1.7 + 9.3) * 2 - 1);
             const wph = noise(k * 1.7 + 3.1) * TAU;
+
             meta.push({
               c: color,
               fx,
@@ -407,22 +397,33 @@ void main(){
               sa: (i * TAU) / CLUMP,
               sp,
               wph,
+              clumpR: b.clumpR !== undefined ? b.clumpR : CLUMP_R,
+              orbitR: b.orbitR !== undefined ? b.orbitR : ORBIT_R,
+              orbitSp: b.orbitSp !== undefined ? b.orbitSp : ORBIT_SP,
+              freqX: b.freqX || 1.0,
+              freqY: b.freqY || 1.0,
+              aspectY: Math.sqrt(b.A / b.D),
             });
-            // split area across CLUMP, then scale radius by sz (A ∝ 1/r²)
-            const A = f((b.A * CLUMP) / (sz * sz));
-            const D = f((b.D * CLUMP) / (sz * sz));
+
+            // split area across CLUMP, then scale radius by sz (A, B, D ∝ 1/r²)
+            const scale = CLUMP / (sz * sz);
+            const A = f(b.A * scale);
+            const B = f((b.B || 0) * scale);
+            const D = f(b.D * scale);
             lines.push(`  f += ell(p, u_ctr[${k}], ${A}, ${B}, ${D}, u_s);`);
             k++;
           }
           return lines;
         })
         .join("\n");
-      fields += `float fld_${name}(vec2 p){\n  float f = 0.0;\n${adds}\n  return f;\n}\n`;
+
+      fields += `float ${fnName}(vec2 p){\n  float f = 0.0;\n${adds}\n  return f;\n}\n`;
       composite +=
-        `  col = mix(col, ${name}, ` +
+        `  col = mix(col, ${colName}, ` +
         `smoothstep(1.0 - mix(0.40, 0.11, n), 1.0 + mix(0.40, 0.11, n), ` +
-        `fld_${name}(puv)) * ${f(OPACITY)});\n`;
+        `${fnName}(puv)) * ${f(opacity)});\n`;
     }
+
     const decl = `uniform vec2 u_ctr[${k}];\n`;
     return {
       meta,
