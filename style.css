@@ -328,7 +328,12 @@ nav.open #menu {
 }
 
 #alongside a {
-  color: antiquewhite;
+  color: black;
+}
+
+#alongside a:hover,
+#alongside a:focus-visible {
+  color: var(--purple);
 }
 
 
@@ -1349,11 +1354,45 @@ body>footer>nav>ul>li>a {
   overflow-wrap: break-word;
 }
 
-.section-contribution-detail .contribution-detail__authors {
+.section-contribution-detail .contribution-detail__authors,
+.section-contribution-detail .contribution-detail__link,
+.contribution-detail__link {
   font-family: "Funnel Sans", sans-serif;
   font-size: 1.1rem;
   color: var(--teal);
   margin: 0 0 1.5rem 0;
+}
+
+.section-contribution-detail .contribution-detail__link p,
+.contribution-detail__link p,
+.section-contribution-detail .contribution-detail__link > p,
+.contribution-detail__link > p {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+.section-contribution-detail .contribution-detail__link a,
+.contribution-detail__link a,
+.section-contribution-detail .contribution-detail__link p a,
+.contribution-detail__link p a {
+  color: var(--teal);
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+.section-contribution-detail .contribution-detail__link a:hover,
+.section-contribution-detail .contribution-detail__link a:focus-visible,
+.contribution-detail__link a:hover,
+.contribution-detail__link a:focus-visible,
+.section-contribution-detail .contribution-detail__link p a:hover,
+.section-contribution-detail .contribution-detail__link p a:focus-visible,
+.contribution-detail__link p a:hover,
+.contribution-detail__link p a:focus-visible {
+  color: #b668dc;
 }
 
 .section-contribution-detail .contribution-detail__abstract,
@@ -1376,6 +1415,20 @@ body>footer>nav>ul>li>a {
 
 .section-contribution-detail .contribution-detail__abstract p:last-child {
   margin-bottom: 0;
+}
+
+#contribution-detail > div > p > a,
+.section-contribution-detail .contribution-detail__abstract a {
+  color: var(--teal);
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+#contribution-detail > div > p > a:hover,
+#contribution-detail > div > p > a:focus-visible,
+.section-contribution-detail .contribution-detail__abstract a:hover,
+.section-contribution-detail .contribution-detail__abstract a:focus-visible {
+  color: #b668dc;
 }
 
 .section-contribution-detail .contribution-detail__image {
@@ -1533,6 +1586,16 @@ body>footer>nav>ul>li>a {
     margin-bottom: 0;
   }
 
+  /* Link positioned below abstract, left edge aligned with column 3, spanning columns 3–13 */
+  .section-contribution-detail .contribution-detail__link,
+  .contribution-detail__link {
+    grid-column: 3 / 13;
+    justify-self: start;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
   /* Image(s) positioned below abstract, left edge aligned with column 3, spanning columns 3–12 */
   .section-contribution-detail .contribution-detail__image,
   .section-contribution-detail img.contribution-detail__image {
@@ -1593,8 +1656,6 @@ body>footer>nav>ul>li>a {
   #menu li a:focus-visible,
   #info a:hover,
   #info a:focus-visible,
-  #alongside a:hover,
-  #alongside a:focus-visible,
   #organizers a:hover,
   #organizers a:focus-visible,
   #contact a:hover,
@@ -1611,9 +1672,23 @@ body>footer>nav>ul>li>a {
   /* Coloured links (lilac from palette) on hover & keyboard focus */
   .link-coloured:hover,
   .link-coloured:focus-visible,
+  #alongside a:hover,
+  #alongside a:focus-visible,
   #submissions a:hover,
-  #submissions a:focus-visible {
-    color: var(--purple) !important;
+  #submissions a:focus-visible,
+  #contribution-detail > div > p > a:hover,
+  #contribution-detail > div > p > a:focus-visible,
+  .section-contribution-detail .contribution-detail__abstract a:hover,
+  .section-contribution-detail .contribution-detail__abstract a:focus-visible,
+  .section-contribution-detail .contribution-detail__link a:hover,
+  .section-contribution-detail .contribution-detail__link a:focus-visible,
+  .contribution-detail__link a:hover,
+  .contribution-detail__link a:focus-visible,
+  .section-contribution-detail .contribution-detail__link p a:hover,
+  .section-contribution-detail .contribution-detail__link p a:focus-visible,
+  .contribution-detail__link p a:hover,
+  .contribution-detail__link p a:focus-visible {
+    color: #b668dc !important;
   }
 
   /* Contribution cards: text turns white and badges invert to dark teal on hover */
@@ -1645,5 +1720,582 @@ body>footer>nav>ul>li>a {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 500;
+  }
+}
+
+
+/* ==================================================
+   HOMEPAGE / INDEX (Dedicated Layout System)
+   ==================================================
+   Dedicated styling system for index.html based on the
+   structural grid layout of program.html.
+   All classes use the home-* prefix to remain completely
+   isolated from program.html and other pages.
+   ================================================== */
+
+/* --------------------------------------------------
+   0. HERO HEADER (Mobile Base)
+   Controls:
+   - Full viewport height and 12-row vertical rhythm
+   - Content container styling inside the hero
+   -------------------------------------------------- */
+
+.home-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+  min-height: 100svh;
+  max-height: 100svh;
+  padding: 0 var(--pad);
+  background-color: var(--bg);
+}
+
+.home-hero .home-hero__content {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, minmax(0, 1fr));
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero .home-hero__title {
+  grid-row-start: 4;
+  align-self: end;
+  height: min-content;
+  font-size: 3em;
+  color: #000;
+  margin: 0;
+}
+
+.home-hero .home-hero__info {
+  grid-row-start: 5;
+  font-size: 1.4422em;
+  margin: 0;
+}
+
+.home-hero .home-hero__opening {
+  grid-row-start: 10;
+}
+
+.home-hero .home-hero__alongside {
+  grid-row-start: 11;
+}
+
+
+/* --------------------------------------------------
+   A. MAIN CONTAINER & SECTION CONTROLS (Mobile Base)
+   Controls:
+   - Width and max-width of main content
+   - Internal padding and external margins of sections
+   - Section height and background variants
+   -------------------------------------------------- */
+
+.home-main {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  position: relative;
+}
+
+.home-section {
+  width: 100%;
+  max-width: none;
+  min-height: auto;
+  padding: 2rem var(--pad);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Section Background Palette Variants */
+.home-section--quote {
+  background-color: var(--teal);
+  color: var(--bg);
+}
+
+.home-section--light {
+  background-color: var(--bg-light);
+}
+
+.home-section--neutral {
+  background-color: var(--bg);
+}
+
+.home-section--dark {
+  background-color: var(--teal);
+  color: var(--bg-dark);
+}
+
+
+/* --------------------------------------------------
+   B. SECTION HEADINGS, TITLES & LEADS (Mobile Base)
+   Controls:
+   - Font family, size, weight, line-height
+   - Heading margins and text alignment
+   -------------------------------------------------- */
+
+/* Main Section Title (h2) */
+.home-title {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 2.0801em;
+  font-weight: normal;
+  line-height: 1.15;
+  text-align: left;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-section--quote .home-title,
+.home-section--dark .home-title {
+  color: var(--bg-dark);
+}
+
+/* Section Subheading / Track Title (h3) */
+.home-heading {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 1.4422em;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: left;
+  margin-top: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.home-section--quote .home-heading,
+.home-section--dark .home-heading {
+  color: var(--bg);
+}
+
+/* Large Display Theme Quotes (Theme 1 & 2) */
+.home-heading--quote {
+  font-family: "Funnel Display", sans-serif;
+  font-size: 2.0801em;
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--bg);
+}
+
+.home-section--light .home-heading--quote {
+  color: var(--teal);
+}
+
+/* Section Intro / Lead Paragraph (like room/time in program.html) */
+.home-lead {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1.4;
+  color: inherit;
+  margin: 0 0 1rem 0;
+}
+
+
+/* --------------------------------------------------
+   C. CONTENT ITEM / CONTRIBUTION BLOCK (Mobile Base)
+   Structural reference: .program-contribution
+   Controls:
+   - Block width, margins, and spacing between items
+   -------------------------------------------------- */
+
+.home-item {
+  width: 100%;
+  margin-top: 1.3rem;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.home-item:last-child {
+  margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------
+   D. ITEM COMPONENTS (Meta, Title, Body & Lists)
+   Controls:
+   - Label/Time metadata typography & margins
+   - Block title (h4) typography & margins
+   - Body paragraph line-height, font-size, spacing
+   - Bulleted / numbered list formatting
+   -------------------------------------------------- */
+
+/* Item Metadata / Kicker / Category / Time */
+.home-item__meta {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--teal);
+  margin: 0 0 0.35rem 0;
+}
+
+.home-section--quote .home-item__meta,
+.home-section--dark .home-item__meta {
+  color: var(--bg-dark);
+}
+
+/* Item Title / Headline (h4) */
+.home-item__title {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 1.4422em;
+  font-weight: 500;
+  line-height: 1.1;
+  width: 100%;
+  margin: 0 0 0.35rem 0;
+}
+
+.home-item__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-section--quote .home-item__title,
+.home-section--dark .home-item__title {
+  color: var(--bg);
+}
+
+/* Item Body / Paragraph Text */
+.home-item__body {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1.45;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.home-item__body p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.home-item__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Item Lists */
+.home-item__list {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 100;
+  line-height: 1.45;
+}
+
+.home-item__list li {
+  font-size: 1em;
+  margin-bottom: 0.5rem;
+}
+
+.home-item__affiliation {
+  font-weight: 400;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.home-section--quote .home-item__affiliation,
+.home-section--dark .home-item__affiliation {
+  color: var(--bg-dark);
+}
+
+
+/* --------------------------------------------------
+   E. CONTACT SECTION (Mobile Base)
+   Controls:
+   - Contact definitions list grid and spacing
+   -------------------------------------------------- */
+
+.home-contact-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem 0.5rem;
+  margin: 0;
+}
+
+.home-contact-list dt {
+  font-weight: bold;
+  color: var(--bg-dark);
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.home-contact-list dd {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.home-contact-list dd a {
+  color: var(--bg-dark);
+}
+
+.home-contact-list dd p {
+  font-size: 0.95em;
+  font-weight: 100;
+  margin-top: 0.25rem;
+}
+
+
+/* --------------------------------------------------
+   F. MEDIA & VISUAL ELEMENTS
+   Controls:
+   - Sizing and responsive scaling of visual elements
+   -------------------------------------------------- */
+
+.home-media {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ==================================================
+   HOMEPAGE / INDEX — TABLET & DESKTOP (min-width: 768px)
+   Structural Reference: PROGRAM — DESKTOP
+   Controls:
+   - 12-column grid structure
+   - Column placement and column spanning
+   - Desktop spacing, gaps, and typography scaling
+   ================================================== */
+
+@media (min-width: 768px) {
+
+  /* Hero Header Grid Placement */
+  #hero.home-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, minmax(0, 1fr));
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  #hero.home-hero .home-hero__content {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  #hero.home-hero .home-hero__title {
+    grid-column: 12 / 3;
+    grid-row-start: 4;
+    align-self: end;
+    height: min-content;
+    font-size: 7em;
+    color: #000;
+    margin: 0;
+  }
+
+  #hero.home-hero .home-hero__info {
+    grid-column: 12 / 1;
+    grid-row-start: 5;
+    font-size: 2.5em;
+    margin: 0;
+  }
+
+  #hero.home-hero .home-hero__opening {
+    grid-column: 12 / 1;
+    grid-row-start: 10;
+    align-self: start;
+    font-size: 1.1em;
+    margin: 0;
+  }
+
+  #hero.home-hero .home-hero__alongside {
+    grid-column: 12 / 1;
+    grid-row-start: 11;
+    align-self: start;
+    font-size: 1.1em;
+    margin: 0;
+  }
+
+  /* Section Grid Container */
+  .home-section {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 1.3rem;
+    align-content: start;
+    align-items: start;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  /* Main Title (h2) spanning all 12 columns */
+  .home-title {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Subheadings (h3) in columns 3 to 10 (matching program.html #program>h3) */
+  .home-heading {
+    grid-column: 3 / 11;
+    justify-self: start;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: -0.95rem;
+  }
+
+  /* Large Display Quotes spanning full width on desktop */
+  #theme-quote-1.home-section,
+  #theme-quote-2.home-section {
+    font-size: 1rem;
+  }
+
+  .home-heading--quote,
+  #theme-quote-1 > h3,
+  #theme-quote-2 > h3 {
+    grid-column: 1 / -1;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Lead summary paragraph (matching program.html #program>p) */
+  .home-lead {
+    grid-column: 3 / 11;
+    justify-self: start;
+    width: 100%;
+    max-width: none;
+    font-size: 1.2em;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* Contribution Item Block: 12-column subgrid (matching .program-contribution) */
+  .home-item {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 0.35rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Item Sub-elements Grid Rows & Column Spans */
+  .home-item__meta {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: start;
+    width: 100%;
+    max-width: none;
+    font-size: 1.1em;
+    margin: 0;
+  }
+
+  .home-item__title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+    width: 100%;
+    margin: 0;
+  }
+
+  .home-item__body {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: start;
+    width: 100%;
+    max-width: none;
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  .home-item__list {
+    font-size: 1em;
+    padding-left: 1.5rem;
+    margin-left: -1.5rem;
+  }
+
+  /* Open Call: paragraph starts at column 3; list stays on column 1 */
+  #open-call .home-item__body {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+  }
+
+  #open-call .home-item__body p {
+    grid-column: 3 / 11;
+    width: 100%;
+  }
+
+  #open-call .home-item__body .home-item__list {
+    grid-column: 1 / -1;
+  }
+
+  /* Organizers specific bio width (matching 10 columns width) */
+  .home-item--organizer .home-item__body {
+    grid-column: 1 / 11;
+  }
+
+  /* Contact List: 4 items across 12-column desktop grid */
+  .home-contact-list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    row-gap: 1rem;
+  }
+
+  .home-contact-list>div {
+    grid-column: span 3;
+  }
+}
+
+
+/* ==================================================
+   HOMEPAGE / INDEX — LARGE DESKTOP (min-width: 1200px)
+   Controls:
+   - Centered content columns (cols 3 to 10)
+   - Large display typography fine-tuning
+   ================================================== */
+
+@media (min-width: 1200px) {
+
+  .home-section {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  #theme-quote-1.home-section,
+  #theme-quote-2.home-section {
+    font-size: 1rem;
+  }
+
+  .home-heading--quote,
+  #theme-quote-1 > h3,
+  #theme-quote-2 > h3 {
+    font-size: 2.5rem;
+  }
+
+  /* Align general body text to columns 3 to 10 for optimal reading line length */
+  #theme-intro .home-item__body,
+  #about .home-item__body,
+  #program-committee .home-item__body {
+    grid-column: 3 / 11;
   }
 }
