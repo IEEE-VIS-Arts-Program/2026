@@ -72,6 +72,7 @@ h4 {
   font-size: 1rem;
   padding: 0.5rem 0;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 h1 {
@@ -388,6 +389,8 @@ section>article,
 #about,
 #theme-intro,
 #organizers,
+#sponsors,
+.section-sponsors,
 #contributions,
 #contribution-detail,
 .section-contribution-detail {
@@ -441,6 +444,12 @@ section>article,
    10. PROGRAM (Mobile Base)
    ================================================== */
 
+@media (max-width: 767.98px) {
+  #program>h2 {
+    line-height: 1.1;
+  }
+}
+
 #program>h3,
 .program-contribution h4 {
   font-family: "Funnel Display", sans-serif;
@@ -452,11 +461,16 @@ section>article,
 
 #program>h3 {
   margin-top: 1.5rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0;
+}
+
+#program>p+h3 {
+  margin-top: 0.35rem;
 }
 
 #program>p {
-  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .program-contribution {
@@ -500,17 +514,51 @@ section>article,
   margin-bottom: 0.5rem;
 }
 
-#organizers a {
+#organizers a,
+#sponsors a {
   color: inherit;
   text-decoration: underline;
 }
 
 #organizers p,
 #organizers .text-smaller,
-#organizers .affiliation {
+#organizers .affiliation,
+#sponsors .text-smaller,
+#sponsors .affiliation {
   font-size: 1em;
   font-weight: 100;
   max-width: 70ch;
+}
+
+#sponsors>p,
+.section-sponsors>p {
+  font-size: 1em;
+  font-weight: 100;
+  max-width: 70ch;
+  margin-bottom: 2rem;
+}
+
+/* Sponsor Logos */
+.sponsor-logo,
+#organizers article figure,
+#sponsors article figure,
+.section-sponsors article figure {
+  margin: 0 0 0.8rem 0;
+  padding: 0;
+  width: 100%;
+  max-width: 70ch;
+}
+
+.sponsor-logo img,
+#organizers article figure img,
+#sponsors article figure img,
+.section-sponsors article figure img {
+  width: 40%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
 }
 
 
@@ -518,12 +566,6 @@ section>article,
    12. CONTRIBUTIONS GRID (Mobile Base)
    ================================================== */
 
-.contributions-intro {
-  grid-column: 1 / -1;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
-  max-width: 70ch;
-}
 
 .contributions-grid {
   grid-column: 1 / -1;
@@ -773,7 +815,7 @@ body>footer>nav>ul>li>a {
   body>nav {
     overflow: visible;
 
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1fr) repeat(10, minmax(0, 1fr));
     grid-template-rows: auto;
 
     column-gap: var(--gutter);
@@ -783,11 +825,12 @@ body>footer>nav>ul>li>a {
   }
 
   .logo {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
+    white-space: nowrap;
   }
 
   #soundToggle {
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 1;
     justify-self: start;
     align-self: center;
@@ -797,7 +840,7 @@ body>footer>nav>ul>li>a {
   #menu {
     display: flex;
 
-    grid-column: 5 / 13;
+    grid-column: 3 / 13;
     grid-row: 1;
 
     justify-content: space-between;
@@ -901,21 +944,25 @@ body>footer>nav>ul>li>a {
      ------------------------------ */
 
   #program>h2 {
-    grid-column: 1 / -1;
+    grid-column: 1 / 11;
   }
 
   #program>h3 {
-    grid-column: 3 / 11;
+    grid-column: 3 / 13;
 
     justify-self: start;
     width: 100%;
 
     margin-top: 0;
-    margin-bottom: -0.95rem;
+    margin-bottom: 0rem;
+  }
+
+  #program>p+h3 {
+    margin-top: 1.35rem;
   }
 
   #program>p {
-    grid-column: 3 / 11;
+    grid-column: 3 / 13;
 
     justify-self: start;
     width: 100%;
@@ -941,7 +988,7 @@ body>footer>nav>ul>li>a {
 
   .program-contribution .submission-time,
   .project-contribution .submission-time {
-    grid-column: 1 / -1;
+    grid-column: 1 / 11;
     grid-row: 1;
 
     justify-self: start;
@@ -953,7 +1000,7 @@ body>footer>nav>ul>li>a {
 
   .program-contribution h4,
   .project-contribution h4 {
-    grid-column: 1 / -1;
+    grid-column: 1 / 11;
     grid-row: 2;
 
     justify-self: start;
@@ -966,7 +1013,7 @@ body>footer>nav>ul>li>a {
   .program-contribution .submission-author,
   .project-contribution .submission-authors,
   .project-contribution .submission-author {
-    grid-column: 1 / -1;
+    grid-column: 1 / 11;
     grid-row: 3;
 
     justify-self: start;
@@ -974,6 +1021,10 @@ body>footer>nav>ul>li>a {
     max-width: none;
 
     margin: 0;
+  }
+
+  #program>div:not(.program-keynote)>p {
+    grid-column: 1 / 11;
   }
 
   #program>div:nth-child(25)>p.submission-authors {
@@ -1010,8 +1061,72 @@ body>footer>nav>ul>li>a {
      ORGANIZERS — DESKTOP
      ------------------------------ */
 
-  #organizers>h2 {
+  #sponsors,
+  .section-sponsors {
+    row-gap: 0.8rem;
+  }
+
+  #organizers>h2,
+  #sponsors>h2,
+  .section-sponsors>h2 {
     margin-bottom: 0.2rem;
+  }
+
+  /* Align Sponsors intro text with column 3 and justify left */
+  #sponsors>p,
+  .section-sponsors>p {
+    grid-column: 3 / 11;
+    justify-self: start;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 100;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 70ch;
+  }
+
+  /* Sponsors Grid Layout - Align with column 3 */
+  #sponsors>article,
+  .section-sponsors>article,
+  .section-program-committee>article,
+  article:has(.sponsor-logo) {
+    grid-column: 3 / 11;
+    justify-self: start;
+    width: 100%;
+    margin: 0;
+    margin-top: 0.5rem;
+    padding: 0;
+  }
+
+  #sponsors>article:empty,
+  .section-sponsors>article:empty,
+  .section-program-committee>article:empty,
+  .section-text>article:empty {
+    display: none;
+  }
+
+  .sponsor-logo,
+  #organizers article figure,
+  #sponsors article figure,
+  .section-sponsors article figure {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 70ch;
+  }
+
+  .sponsor-logo img,
+  #organizers article figure img,
+  #sponsors article figure img,
+  .section-sponsors article figure img {
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-position: left center;
   }
 
   #organizers article h3 {
@@ -1075,13 +1190,11 @@ body>footer>nav>ul>li>a {
      CONTRIBUTIONS GRID — 3 COLUMNS (TABLET / SMALLER DESKTOP)
      ------------------------------ */
 
-  .contributions-intro {
-    display: none;
-  }
 
   .contributions-grid {
     grid-template-columns: repeat(3, 1fr);
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .contribution-card {
@@ -1269,6 +1382,17 @@ body>footer>nav>ul>li>a {
     width: 100%;
   }
 
+  #sponsors>p,
+  .section-sponsors>p {
+    grid-column: 3 / 11;
+    justify-self: start;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 100;
+    width: 100%;
+    max-width: 70ch;
+  }
+
 
   /* ------------------------------
      STANDARD H4 LAYOUT
@@ -1365,8 +1489,8 @@ body>footer>nav>ul>li>a {
 
 .section-contribution-detail .contribution-detail__link p,
 .contribution-detail__link p,
-.section-contribution-detail .contribution-detail__link > p,
-.contribution-detail__link > p {
+.section-contribution-detail .contribution-detail__link>p,
+.contribution-detail__link>p {
   font-family: "Funnel Sans", sans-serif;
   font-size: 1.1rem;
   font-weight: normal;
@@ -1395,20 +1519,22 @@ body>footer>nav>ul>li>a {
   color: #b668dc;
 }
 
+#contribution-detail>div,
 .section-contribution-detail .contribution-detail__abstract,
 .section-contribution-detail p.contribution-detail__abstract {
   font-family: "Funnel Sans", sans-serif;
   font-size: 1rem;
-  line-height: 1.5;
-  color: #000;
+  line-height: normal;
+  color: #063F56;
   margin: 0 0 2rem 0;
 }
 
+#contribution-detail>div>p,
 .section-contribution-detail .contribution-detail__abstract p {
   font-family: "Funnel Sans", sans-serif;
   font-size: 1rem;
   font-weight: 100;
-  line-height: 1.5;
+  line-height: normal;
   margin: 0 0 1rem 0;
   max-width: none;
 }
@@ -1417,15 +1543,15 @@ body>footer>nav>ul>li>a {
   margin-bottom: 0;
 }
 
-#contribution-detail > div > p > a,
+#contribution-detail>div>p>a,
 .section-contribution-detail .contribution-detail__abstract a {
   color: var(--teal);
   transition: color 0.2s ease;
   word-break: break-word;
 }
 
-#contribution-detail > div > p > a:hover,
-#contribution-detail > div > p > a:focus-visible,
+#contribution-detail>div>p>a:hover,
+#contribution-detail>div>p>a:focus-visible,
 .section-contribution-detail .contribution-detail__abstract a:hover,
 .section-contribution-detail .contribution-detail__abstract a:focus-visible {
   color: #b668dc;
@@ -1574,10 +1700,11 @@ body>footer>nav>ul>li>a {
     margin-bottom: 1.5rem;
   }
 
+  #contribution-detail>div>p,
   .section-contribution-detail .contribution-detail__abstract p {
     font-size: 1.2em;
     font-weight: 100;
-    line-height: 1.5;
+    line-height: normal;
     margin-bottom: 1rem;
     max-width: none;
   }
@@ -1676,8 +1803,8 @@ body>footer>nav>ul>li>a {
   #alongside a:focus-visible,
   #submissions a:hover,
   #submissions a:focus-visible,
-  #contribution-detail > div > p > a:hover,
-  #contribution-detail > div > p > a:focus-visible,
+  #contribution-detail>div>p>a:hover,
+  #contribution-detail>div>p>a:focus-visible,
   .section-contribution-detail .contribution-detail__abstract a:hover,
   .section-contribution-detail .contribution-detail__abstract a:focus-visible,
   .section-contribution-detail .contribution-detail__link a:hover,
@@ -2163,8 +2290,8 @@ body>footer>nav>ul>li>a {
   }
 
   .home-heading--quote,
-  #theme-quote-1 > h3,
-  #theme-quote-2 > h3 {
+  #theme-quote-1>h3,
+  #theme-quote-2>h3 {
     grid-column: 1 / -1;
     font-size: 2.5rem;
     line-height: 1.15;
@@ -2287,8 +2414,8 @@ body>footer>nav>ul>li>a {
   }
 
   .home-heading--quote,
-  #theme-quote-1 > h3,
-  #theme-quote-2 > h3 {
+  #theme-quote-1>h3,
+  #theme-quote-2>h3 {
     font-size: 2.5rem;
   }
 
@@ -2297,5 +2424,320 @@ body>footer>nav>ul>li>a {
   #about .home-item__body,
   #program-committee .home-item__body {
     grid-column: 3 / 11;
+  }
+}
+
+
+/* ==================================================
+   19. EXHIBITION PAGE (Dedicated Styles)
+   Custom styles for exhibition.html.
+   Changes here will NOT affect any other pages.
+   ================================================== */
+
+/* --- Mobile Base --- */
+.page-exhibition .section-exhibition {
+  background-color: var(--bg-light);
+  width: 100%;
+}
+
+/* Opening Section */
+.page-exhibition .section-exhibition-opening h2 {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 2.0801em;
+  font-weight: normal;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contribution-intro,
+.contributions-intro,
+.program-intro,
+.page-exhibition .exhibition-intro {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.contribution-intro__text,
+.contributions-intro__text,
+.program-intro__text,
+.page-exhibition .exhibition-intro__text {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: normal;
+  margin: 0;
+}
+
+/* Keynote Section */
+.page-exhibition #exhibition-keynote,
+#exhibition-keynote {
+  background-color: #f6f1e9;
+}
+
+.program-keynote {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.program-keynote:first-of-type {
+  margin-top: 1rem;
+}
+
+.program-keynote .exhibition-keynote__category,
+.page-exhibition .exhibition-keynote__category {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.program-keynote .exhibition-keynote__speaker,
+#exhibition-keynote>h2,
+.page-exhibition .exhibition-keynote__speaker {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 2.0801em;
+  font-weight: normal;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.page-exhibition .exhibition-keynote__meta {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+
+.program-keynote .exhibition-keynote__meta {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+#program .program-keynote+p {
+  margin-top: 0;
+}
+
+.page-exhibition .exhibition-keynote__bio {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: normal;
+  color: #000;
+  margin: 0 0 1.5rem 0;
+}
+
+.page-exhibition .exhibition-keynote__bio p {
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: normal;
+  margin: 0 0 1rem 0;
+  max-width: none;
+}
+
+.page-exhibition .exhibition-keynote__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.page-exhibition .exhibition-keynote__image {
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+
+.page-exhibition .exhibition-keynote__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Projects Section */
+.page-exhibition .exhibition-projects__title {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 2.0801em;
+  font-weight: normal;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Contribution Sample Section */
+.page-exhibition .exhibition-contribution-item {
+  width: 100%;
+  margin-top: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+#exhibition-contributions h4,
+#exhibition-contributions>h4,
+.page-exhibition .exhibition-contribution-item h4 {
+  font-family: "Funnel Display", sans-serif;
+  color: var(--teal);
+  font-size: 1.4422em;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 0.35rem 0;
+  text-transform: uppercase;
+}
+
+
+/* --- Tablet & Desktop (min-width: 768px) --- */
+@media (min-width: 768px) {
+
+  .page-exhibition .section-exhibition {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 1.3rem;
+    align-content: start;
+    align-items: start;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  /* Opening Section */
+  #contributions>h2,
+  .page-exhibition .section-exhibition-opening h2 {
+    grid-column: 1 / 11;
+    margin-top: 0;
+  }
+
+  .contribution-intro,
+  .contributions-intro,
+  .program-intro,
+  .page-exhibition .exhibition-intro {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .contribution-intro__text,
+  .contributions-intro__text,
+  .program-intro__text,
+  .page-exhibition .exhibition-intro__text {
+    grid-column: 1 / 11;
+    font-size: 1.2em;
+    font-weight: 100;
+    line-height: normal;
+    margin: 0;
+  }
+
+  /* Keynote Section & Program Keynote Block */
+  .program-keynote {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 1.3rem;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: -0.8rem;
+  }
+
+  .program-keynote:first-of-type {
+    margin-top: 0;
+  }
+
+  .program-keynote .exhibition-keynote__category,
+  .page-exhibition .exhibition-keynote__category {
+    grid-column: 3 / 13;
+    grid-row: 1;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
+  }
+
+  .program-keynote .exhibition-keynote__speaker,
+  #exhibition-keynote>h2,
+  .page-exhibition .exhibition-keynote__speaker {
+    grid-column: 3 / 13;
+    grid-row: 2;
+    font-size: 2.0801em;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
+  }
+
+  .program-keynote .exhibition-keynote__meta,
+  .page-exhibition .exhibition-keynote__meta {
+    grid-column: 3 / 13;
+    grid-row: 3;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  .page-exhibition .exhibition-keynote__bio {
+    grid-column: 1 / 11;
+    grid-row: 4;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-exhibition .exhibition-keynote__bio p {
+    font-size: 1.2em;
+    font-weight: 100;
+    line-height: normal;
+    margin-bottom: 1rem;
+    max-width: none;
+  }
+
+  .page-exhibition .exhibition-keynote__bio p:last-child {
+    margin-bottom: 0;
+  }
+
+  #exhibition-keynote>figure,
+  .page-exhibition .exhibition-keynote__image {
+    grid-column: 3 / 11;
+    grid-row: 5;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Projects Section */
+  .page-exhibition .exhibition-projects__title {
+    grid-column: 1 / 11;
+    font-size: 2.5rem;
+    margin-top: 0;
+  }
+
+  /* Contribution Sample Section */
+  .page-exhibition .exhibition-contribution-item {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 1.3rem;
+    row-gap: 0.35rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .page-exhibition .exhibition-contribution-item h4 {
+    grid-column: 1 / 11;
+    margin: 0;
+  }
+
+  .page-exhibition .exhibition-contribution-item .submission-authors {
+    grid-column: 1 / 11;
+    margin: 0;
   }
 }
