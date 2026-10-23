@@ -923,6 +923,7 @@ body>footer>nav>ul>li>a {
   #open-call-2>p,
   #program-committee>p,
   .section-text>p {
+    grid-column: 3 / 11;
     justify-self: center;
     width: 100%;
   }
@@ -1072,11 +1073,11 @@ body>footer>nav>ul>li>a {
     margin-bottom: 0.2rem;
   }
 
-  /* Align Sponsors intro text with column 3 and justify left */
+  /* Align Sponsors intro text and logos with #program-committee > p */
   #sponsors>p,
   .section-sponsors>p {
     grid-column: 3 / 11;
-    justify-self: start;
+    justify-self: center;
     text-align: left;
     font-size: 1.2em;
     font-weight: 100;
@@ -1087,14 +1088,17 @@ body>footer>nav>ul>li>a {
     max-width: 70ch;
   }
 
-  /* Sponsors Grid Layout - Align with column 3 */
+  /* Sponsors Grid Layout - Align left with #program-committee > p */
   #sponsors>article,
+  #sponsors>article:nth-child(3),
+  #sponsors>article:nth-child(4),
   .section-sponsors>article,
   .section-program-committee>article,
   article:has(.sponsor-logo) {
     grid-column: 3 / 11;
-    justify-self: start;
+    justify-self: center;
     width: 100%;
+    max-width: 70ch;
     margin: 0;
     margin-top: 0.5rem;
     padding: 0;
@@ -1108,6 +1112,7 @@ body>footer>nav>ul>li>a {
   }
 
   .sponsor-logo,
+  #sponsors>article:nth-child(4)>figure,
   #organizers article figure,
   #sponsors article figure,
   .section-sponsors article figure {
@@ -1116,13 +1121,14 @@ body>footer>nav>ul>li>a {
     padding: 0;
     width: 100%;
     max-width: 70ch;
+    text-align: left;
   }
 
   .sponsor-logo img,
   #organizers article figure img,
   #sponsors article figure img,
   .section-sponsors article figure img {
-    width: 40%;
+    width: 30%;
     max-width: 100%;
     height: auto;
     display: block;
@@ -1383,9 +1389,13 @@ body>footer>nav>ul>li>a {
   }
 
   #sponsors>p,
-  .section-sponsors>p {
+  .section-sponsors>p,
+  #sponsors>article,
+  #sponsors>article:nth-child(3),
+  #sponsors>article:nth-child(4),
+  .section-sponsors>article {
     grid-column: 3 / 11;
-    justify-self: start;
+    justify-self: center;
     text-align: left;
     font-size: 1.2em;
     font-weight: 100;
