@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" type="image/png" href="fav-icon.png" />
+    <link href="style.css?v=6" rel="stylesheet" />
+    <script src="./main.js" defer></script>
+    <script src="./audio.js" defer></script>
+    <title>An Archive in Conversation: Connecting Public Discourse to Collective Memory</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="logo link-coloured">
+            <span><strong>VISAP</strong> 2026</span>
+        </a>
+        <button id="toggle" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <g id="bars">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </g>
+                <g id="cross">
+                    <line x1="5" y1="5" x2="19" y2="19" />
+                    <line x1="19" y1="5" x2="5" y2="19" />
+                </g>
+            </svg>
+        </button>
+
+        <ul id="menu">
+            <li><a href="index.html#about" class="link-coloured">About</a></li>
+            <li><a href="exhibition.html" class="link-coloured">Exhibition</a></li>
+            <li><a href="program.html" class="link-coloured">Program</a></li>
+            <li><a href="contributions.html" class="active link-coloured" aria-current="page">Contributions</a></li>
+            <li><a href="index.html#submissions" class="link-coloured">Submissions</a></li>
+            <li><a href="index.html#organizers" class="link-coloured">Organizers</a></li>
+            <li><a href="index.html#contact" class="link-coloured">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="contribution-detail" class="section-contribution-detail">
+            <p class="contribution-detail__category">Artwork</p>
+            <h2 class="contribution-detail__title">An Archive in Conversation: Connecting Public Discourse to Collective
+                Memory</h2>
+            <p class="contribution-detail__authors">Tina Rosado, Sabina Rosenbergová, Dario Rodighiero</p>
+
+            <div class="contribution-detail__abstract">
+                <p>How can a community explore decades of public discourse, and what emerges when people bring situated
+                    knowledge to its interpretation? An Archive in Conversation explores the relationship between
+                    computational representations of public discourse, situated knowledge, and collective memory in
+                    Longyearbyen, a small Arctic settlement in Svalbard, Norway. The project transforms more than 16,700
+                    articles published in Svalbardposten, Longyearbyen's local newspaper, between 2006 and 2024 into an
+                    interactive visual landscape. Through computational text analysis, articles are organized according
+                    to semantic relationships and represented as clusters within a topographic map. The visualization
+                    makes nearly two decades of recorded public discourse accessible for exploration, revealing thematic
+                    patterns and relationships that are difficult to perceive through conventional archival reading.
+                    Earlier this year, the visualization became the basis for a participatory workshop in Longyearbyen.
+                    Participants explored the digital interface and a large printed map, annotating patterns they
+                    recognized, questioning computational groupings, proposing alternative connections, and introducing
+                    historical and contextual knowledge. These interventions revealed productive tensions between
+                    computational and situated interpretations. Participants questioned, for example, why community
+                    commentary appeared at the margins of the map while institutional topics occupied more central
+                    positions. Others proposed connections between cultural events and community traditions or raised
+                    questions about the visibility of international residents. Rather than simply validating or
+                    correcting the computational representation, participants contributed different ways of
+                    understanding the relationships, histories, and experiences represented in the archive. For VISAP
+                    2026, the project brings these perspectives together in a physical and digital installation. A large
+                    printed archival map incorporates participants' annotations through visual encodings. Physical flip
+                    cards invite visitors to encounter the original observations, questions, and interpretations
+                    associated with specific areas of the map. Workshop photographs reveal the participatory process,
+                    while the interactive digital visualization allows visitors to explore the underlying archive. The
+                    installation responds to the theme of Amplification through three interconnected dimensions. It
+                    amplifies the archive by transforming recorded discourse into an explorable landscape; amplifies
+                    community interpretation by making situated knowledge visible alongside computational relationships;
+                    and explores the potential to amplify collective memory by creating opportunities for shared
+                    reflection on how a place is represented, remembered, and understood. The work proposes archival
+                    visualization not as a definitive representation of community history, but as a shared object of
+                    inquiry. Through recognition, questioning, reconnection, and the contribution of new perspectives,
+                    the archive becomes something people can think and remember with—a space where multiple
+                    interpretations may encounter one another and where collective understandings of the past can be
+                    negotiated and reshaped. Situated at the intersection of information design, computational text
+                    analysis, network visualization, digital humanities, and participatory design, the project examines
+                    how visual representations can support collective sense-making without reducing community knowledge
+                    to computational patterns. The work builds on a participatory workshop held in Longyearbyen in 2026.
+                    The VISAP installation extends this experience to an audience unfamiliar with the town, inviting
+                    visitors to discover how participants interpreted the archive and reconsidered the relationships
+                    made visible through computational analysis.
+                </p>
+            </div>
+
+            <div class="contribution-detail__link">
+                <a href="https://tinarosado.github.io/longyearbyen_workshop_AUG2026/" target="_blank"
+                    rel="noopener noreferrer">https://tinarosado.github.io/longyearbyen_workshop_AUG2026/</a>
+            </div>
+
+            <figure class="contribution-detail__image">
+                <img src="./Assets/visual/artwork-17-visual.jpg" alt="An Archive in Conversation preview image" />
+            </figure>
+
+            <div class="contribution-detail__link">
+                <p>This visualization maps the Svalbardposten archive to show the debates that have shaped the local
+                    community in the last two decades. Each dot is an article: its size shows the article’s length, and
+                    its color shows when it was published, from blue for older to red for recent. Clusters that run red
+                    are heating up; those that run blue are cooling. Dots are placed by semantic similarity, so articles
+                    gather into thematic clusters that allow a distant reading of the archive.</p>
+            </div>
+
+
+            <nav class="contribution-detail__nav" aria-label="Contribution navigation">
+                <a href="artwork-16.html" class="contribution-detail__nav-arrow contribution-detail__nav-arrow--prev"
+                    aria-label="Previous contribution">
+                    <svg class="contribution-detail__arrow-icon" viewBox="0 0 42 14" width="42" height="14" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <line x1="41" y1="7" x2="1" y2="7" />
+                        <polyline points="7,1 1,7 7,13" />
+                    </svg>
+                </a>
+                <a href="paper-1.html" class="contribution-detail__nav-arrow contribution-detail__nav-arrow--next"
+                    aria-label="Next contribution">
+                    <svg class="contribution-detail__arrow-icon" viewBox="0 0 42 14" width="42" height="14" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <line x1="1" y1="7" x2="41" y2="7" />
+                        <polyline points="35,1 41,7 35,13" />
+                    </svg>
+                </a>
+            </nav>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 IEEE VIS Arts Program</p>
+        <nav aria-label="Previous editions">
+            <span>Previous editions:</span>
+            <ul>
+                <li><a href="https://visap.net/2025" target="_blank" class="link-coloured">2025</a></li>
+                <li><a href="https://visap.net/2024" target="_blank" class="link-coloured">2024</a></li>
+                <li><a href="https://visap.net/2023" target="_blank" class="link-coloured">2023</a></li>
+                <li><a href="https://visap.net/2022" target="_blank" class="link-coloured">2022</a></li>
+                <li><a href="https://visap.net/2021" target="_blank" class="link-coloured">2021</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
