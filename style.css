@@ -2662,8 +2662,7 @@ body>footer>nav>ul>li>a {
     margin-top: 0;
   }
 
-  .program-keynote .exhibition-keynote__category,
-  .page-exhibition .exhibition-keynote__category {
+  .program-keynote .exhibition-keynote__category {
     grid-column: 3 / 13;
     grid-row: 1;
     font-size: 1.1rem;
@@ -2671,9 +2670,14 @@ body>footer>nav>ul>li>a {
     margin-bottom: -0.6rem;
   }
 
-  .program-keynote .exhibition-keynote__speaker,
-  #exhibition-keynote>h2,
-  .page-exhibition .exhibition-keynote__speaker {
+  .page-exhibition .exhibition-keynote__category {
+    grid-column: 3 / 13;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
+  }
+
+  .program-keynote .exhibition-keynote__speaker {
     grid-column: 3 / 13;
     grid-row: 2;
     font-size: 2.0801em;
@@ -2682,8 +2686,16 @@ body>footer>nav>ul>li>a {
     margin-bottom: -0.6rem;
   }
 
-  .program-keynote .exhibition-keynote__meta,
-  .page-exhibition .exhibition-keynote__meta {
+  #exhibition-keynote>h2,
+  .page-exhibition .exhibition-keynote__speaker {
+    grid-column: 3 / 13;
+    font-size: 2.0801em;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: -0.6rem;
+  }
+
+  .program-keynote .exhibition-keynote__meta {
     grid-column: 3 / 13;
     grid-row: 3;
     font-size: 1.1rem;
@@ -2692,9 +2704,16 @@ body>footer>nav>ul>li>a {
     align-self: center;
   }
 
+  .page-exhibition .exhibition-keynote__meta {
+    grid-column: 3 / 13;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: center;
+  }
+
   .page-exhibition .exhibition-keynote__bio {
     grid-column: 1 / 11;
-    grid-row: 4;
     width: 100%;
     max-width: none;
     margin-top: 0;
@@ -2716,7 +2735,6 @@ body>footer>nav>ul>li>a {
   #exhibition-keynote>figure,
   .page-exhibition .exhibition-keynote__image {
     grid-column: 3 / 11;
-    grid-row: 5;
     width: 100%;
     max-width: 100%;
     margin: 0;
