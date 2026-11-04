@@ -2558,214 +2558,226 @@ body>footer>nav>ul>li>a {
   margin-bottom: 0;
 }
 
-.page-exhibition .exhibition-keynote__image {
-  width: 100%;
-  margin: 0 0 2rem 0;
-}
 
-.page-exhibition .exhibition-keynote__image img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Projects Section */
-.page-exhibition .exhibition-projects__title {
-  font-family: "Funnel Display", sans-serif;
-  color: var(--teal);
-  font-size: 2.0801em;
-  font-weight: normal;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Contribution Sample Section */
-.page-exhibition .exhibition-contribution-item {
-  width: 100%;
-  margin-top: 1.3rem;
-  margin-bottom: 2rem;
-}
-
-#exhibition-contributions h4,
-#exhibition-contributions>h4,
-.page-exhibition .exhibition-contribution-item h4 {
-  font-family: "Funnel Display", sans-serif;
-  color: var(--teal);
-  font-size: 1.4422em;
-  font-weight: 500;
-  line-height: 1.1;
-  margin: 0 0 0.35rem 0;
-  text-transform: uppercase;
-}
-
-
-/* --- Tablet & Desktop (min-width: 768px) --- */
-@media (min-width: 768px) {
-
-  .page-exhibition .section-exhibition {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 1.3rem;
-    row-gap: 1.3rem;
-    align-content: start;
-    align-items: start;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  /* Opening Section */
-  #contributions>h2,
-  .page-exhibition .section-exhibition-opening h2 {
-    grid-column: 1 / 11;
-    margin-top: 0;
-  }
-
-  .contribution-intro,
-  .contributions-intro,
-  .program-intro,
-  .page-exhibition .exhibition-intro {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 1.3rem;
+  .page-exhibition .exhibition-keynote__image,
+  .page-exhibition figure.exhibition-keynote__speaker {
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 2rem 0;
   }
 
-  .contribution-intro__text,
-  .contributions-intro__text,
-  .program-intro__text,
-  .page-exhibition .exhibition-intro__text {
-    grid-column: 1 / 11;
-    font-size: 1.2em;
-    font-weight: 100;
-    line-height: normal;
-    margin: 0;
-  }
 
-  /* Keynote Section & Program Keynote Block */
-  .program-keynote {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 1.3rem;
-    row-gap: 1.3rem;
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: -0.8rem;
-  }
+    .page-exhibition .exhibition-keynote__image img,
+    .page-exhibition figure.exhibition-keynote__speaker img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-  .program-keynote:first-of-type {
-    margin-top: 0;
-  }
+    /* Projects Section */
+    .page-exhibition .exhibition-projects__title {
+      font-family: "Funnel Display", sans-serif;
+      color: var(--teal);
+      font-size: 2.0801em;
+      font-weight: normal;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
 
-  .program-keynote .exhibition-keynote__category {
-    grid-column: 3 / 13;
-    grid-row: 1;
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: -0.6rem;
-  }
+    /* Contribution Sample Section */
+    .page-exhibition .exhibition-contribution-item {
+      width: 100%;
+      margin-top: 1.3rem;
+      margin-bottom: 2rem;
+    }
 
-  .page-exhibition .exhibition-keynote__category {
-    grid-column: 3 / 13;
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: -0.6rem;
-  }
+    #exhibition-contributions h4,
+    #exhibition-contributions>h4,
+    .page-exhibition .exhibition-contribution-item h4 {
+      font-family: "Funnel Display", sans-serif;
+      color: var(--teal);
+      font-size: 1.4422em;
+      font-weight: 500;
+      line-height: 1.1;
+      margin: 0 0 0.35rem 0;
+      text-transform: uppercase;
+    }
 
-  .program-keynote .exhibition-keynote__speaker {
-    grid-column: 3 / 13;
-    grid-row: 2;
-    font-size: 2.0801em;
-    font-weight: normal;
-    margin-top: 0;
-    margin-bottom: -0.6rem;
-  }
 
-  #exhibition-keynote>h2,
-  .page-exhibition .exhibition-keynote__speaker {
-    grid-column: 3 / 13;
-    font-size: 2.0801em;
-    font-weight: normal;
-    margin-top: 0;
-    margin-bottom: -0.6rem;
-  }
+    /* --- Tablet & Desktop (min-width: 768px) --- */
+    @media (min-width: 768px) {
 
-  .program-keynote .exhibition-keynote__meta {
-    grid-column: 3 / 13;
-    grid-row: 3;
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    align-self: center;
-  }
+      .page-exhibition .section-exhibition {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 1.3rem;
+        row-gap: 1.3rem;
+        align-content: start;
+        align-items: start;
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
 
-  .page-exhibition .exhibition-keynote__meta {
-    grid-column: 3 / 13;
-    font-size: 1.1rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    align-self: center;
-  }
+      /* Opening Section */
+      #contributions>h2,
+      .page-exhibition .section-exhibition-opening h2 {
+        grid-column: 1 / 11;
+        margin-top: 0;
+      }
 
-  .page-exhibition .exhibition-keynote__bio {
-    grid-column: 1 / 11;
-    width: 100%;
-    max-width: none;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-  }
+      .contribution-intro,
+      .contributions-intro,
+      .program-intro,
+      .page-exhibition .exhibition-intro {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 1.3rem;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
 
-  .page-exhibition .exhibition-keynote__bio p {
-    font-size: 1.2em;
-    font-weight: 100;
-    line-height: normal;
-    margin-bottom: 1rem;
-    max-width: none;
-  }
+      .contribution-intro__text,
+      .contributions-intro__text,
+      .program-intro__text,
+      .page-exhibition .exhibition-intro__text {
+        grid-column: 1 / 11;
+        font-size: 1.2em;
+        font-weight: 100;
+        line-height: normal;
+        margin: 0;
+      }
 
-  .page-exhibition .exhibition-keynote__bio p:last-child {
-    margin-bottom: 0;
-  }
+      /* Keynote Section & Program Keynote Block */
+      .program-keynote {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 1.3rem;
+        row-gap: 1.3rem;
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: -0.8rem;
+      }
 
-  #exhibition-keynote>figure,
-  .page-exhibition .exhibition-keynote__image {
-    grid-column: 3 / 11;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-  }
+      .program-keynote:first-of-type {
+        margin-top: 0;
+      }
 
-  /* Projects Section */
-  .page-exhibition .exhibition-projects__title {
-    grid-column: 1 / 11;
-    font-size: 2.5rem;
-    margin-top: 0;
-  }
+      .program-keynote .exhibition-keynote__category {
+        grid-column: 3 / 13;
+        grid-row: 1;
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: -0.6rem;
+      }
 
-  /* Contribution Sample Section */
-  .page-exhibition .exhibition-contribution-item {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 1.3rem;
-    row-gap: 0.35rem;
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
+      .page-exhibition .exhibition-keynote__category {
+        grid-column: 3 / 13;
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: -0.6rem;
+      }
 
-  .page-exhibition .exhibition-contribution-item h4 {
-    grid-column: 1 / 11;
-    margin: 0;
-  }
+      .program-keynote .exhibition-keynote__speaker {
+        grid-column: 3 / 13;
+        grid-row: 2;
+        font-size: 2.0801em;
+        font-weight: normal;
+        margin-top: 0;
+        margin-bottom: -0.6rem;
+      }
 
-  .page-exhibition .exhibition-contribution-item .submission-authors {
-    grid-column: 1 / 11;
-    margin: 0;
-  }
-}
+      #exhibition-keynote>h2,
+      .page-exhibition .exhibition-keynote__speaker {
+        grid-column: 3 / 13;
+        font-size: 2.0801em;
+        font-weight: normal;
+        margin-top: 0;
+        margin-bottom: -0.6rem;
+      }
+
+      .program-keynote .exhibition-keynote__meta {
+        grid-column: 3 / 13;
+        grid-row: 3;
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        align-self: center;
+      }
+
+      .page-exhibition .exhibition-keynote__meta {
+        grid-column: 3 / 13;
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        align-self: center;
+      }
+
+      .page-exhibition .exhibition-keynote__bio {
+        grid-column: 1 / 11;
+        width: 100%;
+        max-width: none;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      .page-exhibition .exhibition-keynote__bio p {
+        font-size: 1.2em;
+        font-weight: 100;
+        line-height: normal;
+        margin-bottom: 1rem;
+        max-width: none;
+      }
+
+      .page-exhibition .exhibition-keynote__bio p:last-child {
+        margin-bottom: 0;
+      }
+
+      #exhibition-keynote>figure,
+      .page-exhibition .exhibition-keynote__image {
+        grid-column: 3 / 11;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+      }
+
+      #exhibition-keynote>figure.exhibition-keynote__speaker,
+      .page-exhibition figure.exhibition-keynote__speaker {
+        grid-column: 3 / 11;
+        width: calc(100% / 3);
+        max-width: 100%;
+        margin: 0;
+      }
+
+      /* Projects Section */
+      .page-exhibition .exhibition-projects__title {
+        grid-column: 1 / 11;
+        font-size: 2.5rem;
+        margin-top: 0;
+      }
+
+      /* Contribution Sample Section */
+      .page-exhibition .exhibition-contribution-item {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 1.3rem;
+        row-gap: 0.35rem;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+
+      .page-exhibition .exhibition-contribution-item h4 {
+        grid-column: 1 / 11;
+        margin: 0;
+      }
+
+      .page-exhibition .exhibition-contribution-item .submission-authors {
+        grid-column: 1 / 11;
+        margin: 0;
+      }
+    }
