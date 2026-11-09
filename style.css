@@ -561,6 +561,32 @@ section>article,
   object-position: left center;
 }
 
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.sponsor-grid>article {
+  grid-column: auto;
+  width: 100%;
+  margin: 0;
+}
+
+.sponsor-grid .sponsor-logo {
+  max-width: none;
+  margin: 0;
+  text-align: left;
+}
+
+#sponsors .sponsor-grid .sponsor-logo img {
+  width: 50%;
+  height: auto;
+  margin-inline: 0;
+  object-fit: contain;
+  object-position: left;
+}
+
 
 /* ==================================================
    12. CONTRIBUTIONS GRID (Mobile Base)
@@ -1064,12 +1090,15 @@ body>footer>nav>ul>li>a {
 
   #sponsors,
   .section-sponsors {
-    row-gap: 0.8rem;
+    row-gap: 1.3rem;
   }
 
-  #organizers>h2,
   #sponsors>h2,
   .section-sponsors>h2 {
+    margin-bottom: 1rem;
+  }
+
+  #organizers>h2 {
     margin-bottom: 0.2rem;
   }
 
@@ -1102,6 +1131,22 @@ body>footer>nav>ul>li>a {
     margin: 0;
     margin-top: 0.5rem;
     padding: 0;
+  }
+
+  .section-sponsors .sponsor-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.3rem;
+    width: 100%;
+    max-width: none;
+  }
+
+  .section-sponsors .sponsor-grid>article {
+    grid-column: auto;
+    justify-self: stretch;
+    max-width: none;
+    margin: 0;
   }
 
   #sponsors>article:empty,
