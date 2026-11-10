@@ -314,6 +314,11 @@ nav.open #menu {
   font-size: 1.4422em;
 }
 
+#info>time+time {
+  display: block;
+  margin-top: 0.25em;
+}
+
 #info a {
   color: inherit;
   text-decoration: underline;
