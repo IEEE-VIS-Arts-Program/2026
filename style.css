@@ -322,10 +322,29 @@ nav.open #menu {
 
 #opening {
   grid-row-start: 10;
+  margin-top: -0.5rem;
+}
+
+#opening .info-sub {
+  display: block;
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+#opening a {
+  color: black;
+  text-decoration: underline;
+}
+
+#opening a:hover,
+#opening a:focus-visible {
+  color: var(--purple);
 }
 
 #alongside {
   grid-row-start: 11;
+  margin-top: 1.25rem;
 }
 
 #alongside a {
@@ -907,6 +926,7 @@ body>footer>nav>ul>li>a {
     font-size: 1.1em;
   }
 
+  #opening a,
   #alongside a {
     color: #000;
   }
@@ -1855,6 +1875,8 @@ body>footer>nav>ul>li>a {
   /* Coloured links (lilac from palette) on hover & keyboard focus */
   .link-coloured:hover,
   .link-coloured:focus-visible,
+  #opening a:hover,
+  #opening a:focus-visible,
   #alongside a:hover,
   #alongside a:focus-visible,
   #submissions a:hover,
